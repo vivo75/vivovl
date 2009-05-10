@@ -1,0 +1,11 @@
+diff -Naur kdegraphics-4.2.71/okular.orig/ui/minibar.cpp kdegraphics-4.2.71/okular/ui/minibar.cpp
+--- kdegraphics-4.2.71/okular.orig/ui/minibar.cpp	2008-11-28 16:33:12.000000000 +0100
++++ kdegraphics-4.2.71/okular/ui/minibar.cpp	2009-05-07 14:10:43.697670532 +0200
+@@ -320,7 +320,6 @@
+ 
+     // customize text properties
+     setAlignment( Qt::AlignCenter );
+-    setMaxLength( 4 );
+ 
+     // send a focus out event
+     QFocusEvent fe( QEvent::FocusOut );
