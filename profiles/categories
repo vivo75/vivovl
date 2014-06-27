@@ -6,6 +6,7 @@ dev-db
 dev-lang
 dev-libs
 dev-python
+dev-rust
 dev-util
 kde-apps
 media-gfx
