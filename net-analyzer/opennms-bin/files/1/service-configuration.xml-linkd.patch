@@ -1,0 +1,18 @@
+--- etc/service-configuration.xml	2010-10-09 10:50:51.000000000 +0200
++++ etc/service-configuration.xml.linkd	2010-10-09 10:51:04.000000000 +0200
+@@ -307,7 +307,6 @@
+     <invoke at="status" pass="0" method="status"/>
+     <invoke at="stop" pass="0" method="stop"/>
+   </service>
+-<!--
+   <service>
+     <name>OpenNMS:Name=Linkd</name>
+     <class-name>org.opennms.netmgt.linkd.jmx.Linkd</class-name>
+@@ -316,6 +315,7 @@
+     <invoke at="status" pass="0" method="status"/>
+     <invoke at="stop" pass="0" method="stop"/>
+   </service>
++<!--
+   <service>
+     <name>OpenNMS:Name=Importer</name>
+     <class-name>org.opennms.netmgt.importer.jmx.ImporterService</class-name>

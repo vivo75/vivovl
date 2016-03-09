@@ -1,0 +1,11 @@
+--- etc/opennms.properties.orig	2010-10-09 10:30:34.000000000 +0200
++++ etc/opennms.properties	2010-10-09 10:30:57.000000000 +0200
+@@ -57,7 +57,7 @@
+ # it indicates which files need to exist for each graph. 
+ # 
+ # Default: false
+-org.opennms.rrd.storeByGroup=false
++org.opennms.rrd.storeByGroup=true
+ 
+ # RRD base directory 
+ rrd.base.dir=/opt/opennms/share/rrd

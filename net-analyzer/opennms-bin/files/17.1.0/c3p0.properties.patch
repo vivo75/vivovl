@@ -1,0 +1,20 @@
+--- etc/c3p0.properties	2010-09-21 00:55:51.000000000 +0200
++++ etc/c3p0.properties.new	2010-09-21 00:58:52.000000000 +0200
+@@ -107,7 +107,7 @@
+ #but unchecked-out connections, every this number of seconds. 
+ #[See "Configuring Connection Testing"]
+ 
+-c3p0.initialPoolSize=50
++c3p0.initialPoolSize=5
+ #Default: 3
+ #Number of Connections a pool will try to acquire upon startup. 
+ #Should be between minPoolSize and maxPoolSize. [See "Basic Pool 
+@@ -160,7 +160,7 @@
+ #may find maxStatementsPerConnection more intuitive to use. 
+ #[See "Configuring Statement Pooling"]
+ 
+-c3p0.minPoolSize=50
++c3p0.minPoolSize=3
+ #Default: 3
+ #Minimum number of Connections a pool will maintain at any 
+ #given time. [See "Basic Pool Configuration"]

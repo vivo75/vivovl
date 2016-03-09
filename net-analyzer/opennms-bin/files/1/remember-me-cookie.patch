@@ -1,0 +1,36 @@
+diff --git jetty-webapps/opennms/WEB-INF/applicationContext-spring-security.xml jetty-webapps/opennms/WEB-INF/applicationContext-spring-security.xml
+--- jetty-webapps/opennms/WEB-INF/applicationContext-spring-security.xml
++++ jetty-webapps/opennms/WEB-INF/applicationContext-spring-security.xml
+@@ -42,15 +41,8 @@
+     <anonymous />
+     <http-basic />
+     <logout logout-success-url="/logoff.jsp" />
+-    <!-- 
+-    
+-    I have not used auto-config because I am not certain that the remember me service will work with LDAP  
+-    If you can get remember-me to work with LDAP then it may be an interesting service to use
+-    
+-    Since I'm relying on others help with LDAP I didn't want to have anything here to make it harder for them :-)
+-        
+-    <remember-me />
+-    -->
++	  
++	<remember-me token-validity-seconds="86400" />
+   </http>
+   
+    <authentication-provider user-service-ref="openNMSUserDetailsService">
+diff --git jetty-webapps/opennms/login.jsp jetty-webapps/opennms/login.jsp
+--- jetty-webapps/opennms/login.jsp
++++ jetty-webapps/opennms/login.jsp
+@@ -24,10 +24,8 @@
+       Password: <input type='password' name='j_password'>
+     </p>
+       
+-    <!--
+-    <p><input type="checkbox" name="_spring_security_remember_me"> Don't ask for my password for two weeks</p>
+-    -->
+-    
++    <p><input type="checkbox" name="_spring_security_remember_me">Remember me</p>
++
+     <input name="reset" type="reset" value="Reset" />
+     <input name="Login" type="submit" value="Login" />
