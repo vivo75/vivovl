@@ -27,7 +27,7 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg gexiv2 +introspection jpeg2k lcms lensfun libav openexr raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg gexiv2 +introspection jpeg jpeg2k lcms lensfun libav openexr png raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_IUSE="
 	svg? ( cairo )
 	vala? ( introspection )
@@ -48,12 +48,12 @@ RDEPEND="
 	)
 	gexiv2? ( media-libs/gexiv2 )
 	introspection? ( >=dev-libs/gobject-introspection-1.32 )
-	virtual/jpeg:0=
+	jpeg? ( virtual/jpeg:0= )
 	jpeg2k? ( >=media-libs/jasper-1.900.1 )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( media-libs/openexr )
-	media-libs/libpng:0=
+	png? ( media-libs/libpng:0= )
 	raw? ( >=media-libs/libraw-0.15.4 )
 	sdl? ( media-libs/libsdl )
 	svg? ( >=gnome-base/librsvg-2.14:2 )
@@ -147,12 +147,14 @@ src_configure() {
 		$(use_with gexiv2 gexiv2 ) \
 		$(use_with ffmpeg libavformat) \
 		--without-graphviz \
+		$(use_with jpeg libjpeg) \
 		$(use_with jpeg2k jasper) \
 		$(use_with lcms) \
 		$(use_with lensfun) \
 		--without-lua \
 		--without-mrg \
 		$(use_with openexr) \
+		$(use_with png libpng) \
 		$(use_with raw libraw) \
 		$(use_with sdl) \
 		$(use_with svg librsvg) \
