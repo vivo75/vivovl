@@ -6,33 +6,41 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit multilib scons-utils toolchain-funcs git-r3 python-r1 python-utils-r1
+inherit autotools multilib toolchain-funcs git-r3 python-r1 python-utils-r1
 
-DESCRIPTION=""
-HOMEPAGE=""
+DESCRIPTION=" libmypaint, a.k.a. "brushlib", is a library for making brushstrokes which is used by MyPaint and other"
+HOMEPAGE="https://github.com/mypaint/libmypaint/wiki"
 EGIT_REPO_URI="https://github.com/mypaint/libmypaint.git"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="+gegl openmp"
+IUSE="doc gegl +openmp"
+#IUSE="doc gegl gperf introspection nls +openmp"
 
-RDEPEND="gegl? ( media-libs/gegl )"
+RDEPEND=""
 DEPEND="${RDEPEND}"
 
 pkg_pretend() {
-	if use openmp ; then
+    if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
 }
 
-src_compile() {
-	escons CC="$(tc-getCC)" enable_gegl=true use_sharedlib=yes prefix="${D}"/usr
+src_prepare() {
+	./autogen.sh ${myconf} || die
+
+	# Fix "libtoolize --force" of autogen.sh (bug #476626)
+	rm install-sh ltmain.sh || die
+	_elibtoolize --copy --install || die
+
+	gnome2_src_prepare
 }
-src_install() {
-	escons enable_gegl=true use_sharedlib=yes prefix="${D}"/usr install
-	python_export_best
-	python_optimize "${D}"usr/share/${PN}
-	sed -i -e "s:${D}::" ${D}/usr/lib/pkgconfig/*.pc || die "cannot sanitize *.pc files"
+
+src_configure() {
+	econf \
+	$(use_enable doc docs) \
+	$(use_enable gegl) \
+	$(use_enable openmp)
 }
 
