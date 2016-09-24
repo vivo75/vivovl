@@ -51,7 +51,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	webkit? ( >=net-libs/webkit-gtk-1.6.1:2 )
 	virtual/jpeg:0
 	jpeg2k? ( media-libs/jasper )
-	>=media-libs/lcms-2.2:2
+	>=media-libs/lcms-2.7:2
 	mng? ( media-libs/libmng )
 	openexr? ( >=media-libs/openexr-1.6.1 )
 	pdf? ( >=app-text/poppler-0.12.4[cairo] >=app-text/poppler-data-0.4.7 )
