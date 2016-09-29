@@ -33,13 +33,16 @@ PATCHES=(
 	)
 
 python_prepare_all() {
-	local wand
+	local wand wandI
 	wand=$(pkg-config --libs MagickWand | sed -e "s:^ *::g" -e "s: *$::g" -e "s:-l:\':g" -e "s: :',:g" -e "s:$:':g" -e "s:,'$::g")
+	wandI=$(pkg-config --cflags-only-I MagickWand)
+	wandI="${wandI//-I\/usr\/include\/}"
 
 	distutils-r1_python_prepare_all
 
 	sed \
 		-e "/libraries/s:'MagickWand':${wand}:g" \
+		-e "/include_dirs/s:ImageMagick-6:${wandI}:g"\
 		-i setup.py || die
 
 	ln -sf \
