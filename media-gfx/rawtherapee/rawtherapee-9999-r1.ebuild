@@ -30,7 +30,9 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	<dev-cpp/gtkmm-3.20
+	<x11-libs/gtk+-3.20"
 
 pkg_pretend() {
 	if use openmp ; then
