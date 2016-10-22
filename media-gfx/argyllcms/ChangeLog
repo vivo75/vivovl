@@ -1,0 +1,156 @@
+# ChangeLog for media-gfx/argyllcms
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
+# (auto-generated from git log)
+
+*argyllcms-1.7.0 (09 Aug 2015)
+*argyllcms-1.6.3-r1 (09 Aug 2015)
+*argyllcms-1.6.3 (09 Aug 2015)
+*argyllcms-1.6.2 (09 Aug 2015)
+*argyllcms-1.5.1 (09 Aug 2015)
+*argyllcms-1.4.0-r2 (09 Aug 2015)
+*argyllcms-1.4.0-r1 (09 Aug 2015)
+
+  09 Aug 2015; Robin H. Johnson <robbat2@gentoo.org>
+  +argyllcms-1.4.0-r1.ebuild, +argyllcms-1.4.0-r2.ebuild,
+  +argyllcms-1.5.1.ebuild, +argyllcms-1.6.2.ebuild, +argyllcms-1.6.3.ebuild,
+  +argyllcms-1.6.3-r1.ebuild, +argyllcms-1.7.0.ebuild,
+  +files/argyllcms-1.4.0-CVE-2012-4405.patch,
+  +files/argyllcms-1.4.0-jpeg.patch, +files/argyllcms-1.6.3-usb-db.patch,
+  +metadata.xml:
+  proj/gentoo: Initial commit
+
+  This commit represents a new era for Gentoo:
+  Storing the gentoo-x86 tree in Git, as converted from CVS.
+
+  This commit is the start of the NEW history.
+  Any historical data is intended to be grafted onto this point.
+
+  Creation process:
+  1. Take final CVS checkout snapshot
+  2. Remove ALL ChangeLog* files
+  3. Transform all Manifests to thin
+  4. Remove empty Manifests
+  5. Convert all stale $Header$/$Id$ CVS keywords to non-expanded Git $Id$
+  5.1. Do not touch files with -kb/-ko keyword flags.
+
+  Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+  X-Thanks: Alec Warner <antarus@gentoo.org> - did the GSoC 2006 migration
+  tests
+  X-Thanks: Robin H. Johnson <robbat2@gentoo.org> - infra guy, herding this
+  project
+  X-Thanks: Nguyen Thai Ngoc Duy <pclouds@gentoo.org> - Former Gentoo
+  developer, wrote Git features for the migration
+  X-Thanks: Brian Harring <ferringb@gentoo.org> - wrote much python to improve
+  cvs2svn
+  X-Thanks: Rich Freeman <rich0@gentoo.org> - validation scripts
+  X-Thanks: Patrick Lauer <patrick@gentoo.org> - Gentoo dev, running new 2014
+  work in migration
+  X-Thanks: Michał Górny <mgorny@gentoo.org> - scripts, QA, nagging
+  X-Thanks: All of other Gentoo developers - many ideas and lots of paint on
+  the bikeshed
+
+  24 Aug 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Use https by default
+
+  Convert all URLs for sites supporting encrypted connections from http to
+  https
+
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
+  24 Aug 2015; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Revert DOCTYPE SYSTEM https changes in metadata.xml
+
+  repoman does not yet accept the https version.
+  This partially reverts eaaface92ee81f30a6ac66fe7acbcc42c00dc450.
+
+  Bug: https://bugs.gentoo.org/552720
+
+*argyllcms-1.8.0 (03 Sep 2015)
+
+  03 Sep 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  +argyllcms-1.8.0.ebuild:
+  version bump
+
+  Includes support for some new hardware, bug fixes
+
+  Package-Manager: portage-2.2.20.1
+
+  04 Sep 2015; Bernard Cafarelli <voyageur@gentoo.org> argyllcms-1.8.0.ebuild,
+  +files/argyllcms-1.8.0-gcc5.patch:
+  fix compilation with GCC 5
+
+  Bug #559534 by tetromino
+
+  Package-Manager: portage-2.2.20.1
+
+  12 Sep 2015; Jeroen Roovers <jer@gentoo.org> argyllcms-1.7.0.ebuild:
+  Stable for HPPA (bug #559480).
+
+  Package-Manager: portage-2.2.20.1
+
+  19 Sep 2015; Agostino Sarubbo <ago@gentoo.org> argyllcms-1.7.0.ebuild:
+  amd64 stable wrt bug #559480
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="amd64"
+
+  20 Sep 2015; Agostino Sarubbo <ago@gentoo.org> argyllcms-1.7.0.ebuild:
+  x86 stable wrt bug #559480
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="x86"
+
+  28 Sep 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  -argyllcms-1.4.0-r1.ebuild, -argyllcms-1.4.0-r2.ebuild,
+  -argyllcms-1.5.1.ebuild, -argyllcms-1.6.2.ebuild,
+  -argyllcms-1.6.3-r1.ebuild, -files/argyllcms-1.4.0-CVE-2012-4405.patch,
+  -files/argyllcms-1.4.0-jpeg.patch, -files/argyllcms-1.6.3-usb-db.patch:
+  drop old ~arch versions
+
+  Package-Manager: portage-2.2.22
+
+*argyllcms-1.8.2 (28 Sep 2015)
+
+  28 Sep 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  +argyllcms-1.8.2.ebuild:
+  version bump, bug #561188
+
+  Package-Manager: portage-2.2.22
+
+*argyllcms-1.8.3 (17 Nov 2015)
+
+  17 Nov 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  +argyllcms-1.8.3.ebuild:
+  version bump, bug #565780
+
+  Thanks Alexander Bezrukov <phmagic@mail.ru> for the bug report
+  Also dropped base eclass inherit in latest ebuild
+
+  Package-Manager: portage-2.2.24
+
+  17 Nov 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  -argyllcms-1.6.3.ebuild, -argyllcms-1.8.0.ebuild:
+  clean some versions
+
+  Package-Manager: portage-2.2.24
+
+  23 Nov 2015; Bernard Cafarelli <voyageur@gentoo.org> argyllcms-1.8.3.ebuild:
+  fix patch application, bug #566476
+
+  Thanks Michelangelo Scopelliti <kernelpanic@gmx.it> for the report
+
+  Package-Manager: portage-2.2.25
+
+  24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Set appropriate maintainer types in metadata.xml (GLEP 67)
+
+*argyllcms-1.9.1 (11 Oct 2016)
+
+  11 Oct 2016; Bernard Cafarelli <voyageur@gentoo.org>
+  +argyllcms-1.9.1.ebuild:
+  version bump to 1.9.1, bug #596790
+
+  Update ebuild to EAPI 6, use PATCHES variable and replace dohtml by dodoc
+
+  Package-Manager: portage-2.3.1
+
