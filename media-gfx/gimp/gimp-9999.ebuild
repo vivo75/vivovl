@@ -55,7 +55,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	mng? ( media-libs/libmng )
 	openexr? ( >=media-libs/openexr-1.6.1 )
 	pdf? ( >=app-text/poppler-0.12.4[cairo] >=app-text/poppler-data-0.4.7 )
-	>=media-libs/libpng-1.2.37:0
+	>=media-libs/libpng-1.6.25:0
 	python?	(
 		${PYTHON_DEPS}
 		>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
