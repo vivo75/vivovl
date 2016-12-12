@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,12 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
-	KEYWORDS=""
+	#SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
+	#KEYWORDS=" ~amd64"
+	inherit git-r3 linux-mod
+	AUTOTOOLS_AUTORECONF="1"
+	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
+	EGIT_COMMIT="f200b836734550ba258a0d7e05381dc8cebf80f4"
 fi
 
 inherit flag-o-matic linux-info linux-mod autotools-utils
@@ -41,6 +45,7 @@ pkg_setup() {
 		!DEBUG_LOCK_ALLOC
 		MODULES
 		KALLSYMS
+		!GRKERNSEC_RANDSTRUCT
 		!PAX_KERNEXEC_PLUGIN_METHOD_OR
 		!PAX_SIZE_OVERFLOW
 		ZLIB_DEFLATE
@@ -56,16 +61,12 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 3 || die "Linux 4.3 is the latest supported version."; }
+		{ kernel_is le 4 9 || die "Linux 4.9 is the latest supported version."; }
 
 	check_extra_config
 }
 
 src_prepare() {
-	# Workaround for hard coded path
-	sed -i "s|/sbin/lsmod|/bin/lsmod|" "${S}/scripts/check.sh" || \
-		die "Cannot patch check.sh"
-
 	# splat is unnecessary unless we are debugging
 	use debug || { sed -e 's/^subdir-m += splat$//' -i "${S}/module/Makefile.in" || die ; }
 

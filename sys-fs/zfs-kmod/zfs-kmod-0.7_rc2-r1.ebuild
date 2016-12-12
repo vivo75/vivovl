@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,9 +9,13 @@ if [ ${PV} == "9999" ]; then
 	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
-	S="${WORKDIR}/zfs-${PV}"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+	#SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
+	#S="${WORKDIR}/zfs-${PV}"
+	#KEYWORDS=" ~amd64"
+	AUTOTOOLS_AUTORECONF="1"
+	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
+	EGIT_COMMIT="616fa7c02b0cc373f011998f56ed53bb37742d13"
+	inherit git-r3
 fi
 
 inherit flag-o-matic linux-info linux-mod toolchain-funcs autotools-utils
@@ -65,7 +69,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 5 || die "Linux 4.5 is the latest supported version."; }
+		{ kernel_is le 4 9 || die "Linux 4.9 is the latest supported version."; }
 
 	check_extra_config
 }

@@ -1,4 +1,12 @@
+cross-aarch64-unknown-linux-gnu
 dev-lang
+dev-libs
 media-gfx
 media-libs
+media-plugins
+media-video
+metadata
 net-analyzer
+profiles
+sys-fs
+sys-kernel
