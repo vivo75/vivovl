@@ -237,6 +237,8 @@ src_configure() {
 }
 
 src_compile() {
+	local cards
+	local card
 	if use pgo; then
 		addpredict /root
 		addpredict /etc/gconf
@@ -244,19 +246,22 @@ src_compile() {
 		gnome2_environment_reset
 
 		# Firefox tries to use dri stuff when it's run, see bug 380283
-		shopt -s nullglob
-		cards=$(echo -n /dev/dri/card* | sed 's/ /:/g')
-		if test -z "${cards}"; then
-			cards=$(echo -n /dev/ati/card* /dev/nvidiactl* | sed 's/ /:/g')
-			if test -n "${cards}"; then
+		cards=/dev/dri/card*
+		cards="${cards#/dev/dri/card\*}"
+		if [[ ${cards} == "" ]] ; then
+			cards="/dev/ati/card* /dev/nvidiactl*"
+			cards="${cards#/dev/ati/card\* }"
+			cards="${cards%/dev/nvidiactl\*}"
+			if [[ ${cards} != "" ]] ; then
 				# Binary drivers seem to cause access violations anyway, so
 				# let's use indirect rendering so that the device files aren't
 				# touched at all. See bug 394715.
 				export LIBGL_ALWAYS_INDIRECT=1
 			fi
 		fi
-		shopt -u nullglob
-		addpredict "${cards}"
+		for card in ${cards} ; do
+			addpredict ${card}
+		done
 
 		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 		virtx emake -f client.mk profiledbuild || die "virtx emake failed"
