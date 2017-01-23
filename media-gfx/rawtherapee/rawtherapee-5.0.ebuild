@@ -49,6 +49,7 @@ src_configure() {
 		-DCREDITSDIR=/usr/share/${PN}
 		-DLICENCEDIR=/usr/share/${PN}
 		-DCACHE_NAME_SUFFIX=""
+		-DCMAKE_CXX_FLAGS="-std=c++11"
 	)
 	cmake-utils_src_configure
 }
