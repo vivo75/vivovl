@@ -8,20 +8,20 @@ inherit cmake-utils toolchain-funcs git-r3
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
+EGIT_BRANCH="gtk3"
 EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
+EGIT_COMMIT="5.0-gtk3"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64"
 IUSE="bzip2 openmp"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
-	>=x11-libs/gtk+-2.24.18:2
-	>=dev-cpp/gtkmm-2.12:2.4
-	>=dev-cpp/glibmm-2.16:2
+	x11-libs/gtk+:3
 	dev-libs/expat
 	dev-libs/libsigc++:2
-	media-libs/libcanberra[gtk]
+	media-libs/libcanberra[gtk3]
 	media-libs/tiff:0
 	media-libs/libpng:0
 	media-libs/libiptcdata
@@ -31,7 +31,9 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	<dev-cpp/gtkmm-3.20
+	<x11-libs/gtk+-3.20"
 
 pkg_pretend() {
 	if use openmp ; then

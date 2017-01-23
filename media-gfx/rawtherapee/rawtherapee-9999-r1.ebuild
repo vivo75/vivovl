@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS=""
 IUSE="bzip2 openmp"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )

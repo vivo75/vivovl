@@ -13,7 +13,7 @@ EGIT_COMMIT="f0611fe9bacb47f1cc55a285eabf3d2ee2a93007"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS=""
 IUSE="bzip2 openmp"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
