@@ -36,6 +36,14 @@ pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
+	# https://bugs.gentoo.org/show_bug.cgi?id=606896#c2
+	# https://github.com/vivo75/vivovl/issues/2
+	if [[ $(get-flag -O3) != "-O3" ]] ; then
+		ewarn "upstream suggest using {C,CXX}FLAGS+=\"-O3\" for better performances"
+		ewarn "see bug#606896#c2"
+		ewarn "take a look at https://wiki.gentoo.org/wiki//etc/portage/package.env"
+		ewarn "for suggestion on how to change environment for a single package"
+	fi
 }
 
 src_configure() {
