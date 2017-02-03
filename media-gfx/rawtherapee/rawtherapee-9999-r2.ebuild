@@ -9,7 +9,7 @@ inherit cmake-utils toolchain-funcs git-r3
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
 EGIT_BRANCH="dev"
-EGIT_REPO_URI="git@github.com:Beep6581/RawTherapee.git"
+EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
 
 LICENSE="GPL-3"
 SLOT="0"
