@@ -8,8 +8,8 @@ inherit cmake-utils toolchain-funcs git-r3
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
-EGIT_BRANCH="gtk3-bugfix-vivo"
-EGIT_REPO_URI="https://github.com/vivo75/RawTherapee.git"
+EGIT_BRANCH="dev"
+EGIT_REPO_URI="git@github.com:Beep6581/RawTherapee.git"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -45,7 +45,7 @@ src_configure() {
 		-DDOCDIR=/usr/share/doc/${PF}
 		-DCREDITSDIR=/usr/share/${PN}
 		-DLICENCEDIR=/usr/share/${PN}
-		-DCACHE_NAME_SUFFIX=""
+		-DCACHE_NAME_SUFFIX="5-dev"
 	)
 	cmake-utils_src_configure
 }
