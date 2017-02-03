@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils toolchain-funcs git-r3
+inherit cmake-utils toolchain-funcs git-r3 flag-o-matic
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
@@ -39,6 +39,7 @@ pkg_pretend() {
 }
 
 src_configure() {
+	filter-flags -ffast-math
 	local mycmakeargs=(
 		$(cmake-utils_use openmp OPTION_OMP)
 		$(cmake-utils_use_with bzip2 BZIP)
