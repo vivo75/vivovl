@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit virtualx autotools eutils gnome2 fdo-mime multilib python-single-r1 git-r3
+inherit virtualx autotools eutils gnome2 fdo-mime multilib python-single-r1 git-r3 flag-o-matic
 
 EGIT_REPO_URI="git://git.gnome.org/gimp"
 
@@ -85,29 +85,6 @@ DOCS="AUTHORS ChangeLog* HACKING NEWS README*"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	G2CONF="--enable-default-binary \
-		--disable-silent-rules \
-		$(use_with !aqua x) \
-		$(use_with aalib aa) \
-		$(use_with alsa) \
-		$(use_enable altivec) \
-		$(use_with webkit) \
-		$(use_with jpeg2k libjasper) \
-		$(use_with postscript gs) \
-		$(use_enable cpu_flags_x86_mmx mmx) \
-		$(use_with mng libmng) \
-		$(use_with openexr) \
-		$(use_with pdf poppler) \
-		$(use_enable python) \
-		$(use_enable smp mp) \
-		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_with svg librsvg) \
-		$(use_with udev gudev) \
-		$(use_with wmf) \
-		--with-xmc \
-		$(use_with xpm libxpm) \
-		--without-xvfb-run"
-
 	if use python; then
 		python-single-r1_pkg_setup
 	fi
@@ -133,7 +110,33 @@ src_prepare() {
 }
 
 src_configure() {
-	GEGL=/usr/bin/gegl-0.3 gnome2_src_configure
+	local _G2CONF
+	_G2CONF="--enable-default-binary \
+		--disable-silent-rules \
+		$(use_with !aqua x) \
+		$(use_with aalib aa) \
+		$(use_with alsa) \
+		$(use_enable altivec) \
+		$(use_with webkit) \
+		$(use_with jpeg2k libjasper) \
+		$(use_with postscript gs) \
+		$(use_enable cpu_flags_x86_mmx mmx) \
+		$(use_with mng libmng) \
+		$(use_with openexr) \
+		$(use_with pdf poppler) \
+		$(use_enable python) \
+		$(use_enable smp mp) \
+		$(use_enable cpu_flags_x86_sse sse) \
+		$(use_with svg librsvg) \
+		$(use_with udev gudev) \
+		$(use_with wmf) \
+		--with-xmc \
+		$(use_with xpm libxpm) \
+		--without-xvfb-run"
+
+	# https://mail.gnome.org/archives/gimp-developer-list/2017-January/msg00024.html
+	# append-cppflags -DGIMP_DISABLE_DEPRECATED=false
+	GEGL=/usr/bin/gegl-0.3 gnome2_src_configure ${_G2CONF}
 }
 
 src_compile() {
@@ -141,6 +144,7 @@ src_compile() {
 	addwrite /dev/dri/  # bug #574038
 	addwrite /dev/ati/card0
 	addwrite /etc/ati/amdpcsdb
+	#append-cppflags -DGIMP_DISABLE_DEPRECATED=false
 	gnome2_src_compile
 }
 
