@@ -2,27 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 AT_M4DIR="config"
-AUTOTOOLS_AUTORECONF="1"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
 
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3 linux-mod
-	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 else
 	# SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	# KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 	inherit git-r3 linux-mod
-	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 	EGIT_COMMIT="2e0e443ac40c7e825a02519a497328226bd866ff"
 fi
 
-inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
+inherit autotools bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="http://zfsonlinux.org/"
@@ -32,9 +28,7 @@ SLOT="0"
 IUSE="custom-cflags debug kernel-builtin +rootfs test-suite static-libs"
 RESTRICT="test"
 
-# Sigh, libtirpc is an automagic dep
 COMMON_DEPEND="
-	net-libs/libtirpc
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
@@ -68,9 +62,6 @@ RDEPEND="${COMMON_DEPEND}
 	!>=sys-fs/udev-init-scripts-28
 "
 
-AT_M4DIR="config"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
-
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
 		linux-info_pkg_setup
@@ -100,8 +91,8 @@ src_prepare() {
 		-e "s|/usr/bin/scsi-rescan|/usr/sbin/rescan-scsi-bus|" \
 		-e "s|/sbin/parted|/usr/sbin/parted|" \
 		-i scripts/common.sh.in
-
-	autotools-utils_src_prepare
+	eautoreconf
+	default
 }
 
 src_configure() {
@@ -114,10 +105,9 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
-		--with-blkid
 		$(use_enable debug)
 	)
-	autotools-utils_src_configure
+	econf ${myeconfargs[@]}
 
 	# prepare systemd unit and helper script
 	cat "${FILESDIR}/zfs.service.in" | \
@@ -131,7 +121,7 @@ src_configure() {
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
 	use test-suite || rm -rf "${ED}usr/share/zfs"
 
