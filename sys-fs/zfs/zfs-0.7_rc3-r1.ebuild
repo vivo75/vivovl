@@ -65,7 +65,7 @@ RDEPEND="${COMMON_DEPEND}
 		app-misc/pax-utils
 		!<sys-boot/grub-2.00-r2:2
 		)
-	!>=sys-fs/udev-init-scripts-28
+	sys-fs/udev-init-scripts
 "
 
 AT_M4DIR="config"
