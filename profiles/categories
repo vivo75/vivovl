@@ -1,12 +1,14 @@
+app-forensics
 cross-aarch64-unknown-linux-gnu
 dev-lang
 dev-libs
+dev-python
+dev-util
 media-gfx
 media-libs
 media-plugins
 media-video
-metadata
 net-analyzer
-profiles
 sys-fs
 sys-kernel
+www-client
