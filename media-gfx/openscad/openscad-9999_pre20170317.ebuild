@@ -24,9 +24,9 @@ IUSE=""
 
 CDEPEND="media-gfx/opencsg
 	sci-mathematics/cgal
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4[-egl]
-	dev-qt/qtopengl:4[-egl]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
 	dev-cpp/eigen:3
 	dev-libs/glib:2
 	dev-libs/gmp:0=
@@ -36,7 +36,7 @@ CDEPEND="media-gfx/opencsg
 	media-libs/freetype:2
 	media-libs/glew:*
 	media-libs/harfbuzz
-	x11-libs/qscintilla:=[qt4(-)]"
+	x11-libs/qscintilla:=[qt5(-)]"
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}"
 [[ ${PV#9999} == ${PV} ]] && S="${WORKDIR}/${PN}-${MY_PV}"
@@ -54,7 +54,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake4 "${PN}.pro"
+	eqmake5 "${PN}.pro"
 }
 
 src_install() {
