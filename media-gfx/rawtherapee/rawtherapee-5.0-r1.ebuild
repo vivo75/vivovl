@@ -14,7 +14,7 @@ EGIT_COMMIT="5.0-gtk3"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS=""
 IUSE="bzip2 openmp"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
