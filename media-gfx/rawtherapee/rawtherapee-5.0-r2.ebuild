@@ -14,7 +14,7 @@ SRC_URI="http://rawtherapee.com/shared/source/${MY_P}-gtk3.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="bzip2 openmp"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
