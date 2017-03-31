@@ -13,7 +13,7 @@ else
 	#KEYWORDS=" ~amd64"
 	inherit git-r3 linux-mod
 	AUTOTOOLS_AUTORECONF="1"
-	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
+	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 	EGIT_COMMIT="bf8abea4dade111bdf3aeae30bd4bd75d49aca70"
 fi
 

@@ -12,13 +12,13 @@ AUTOTOOLS_IN_SOURCE_BUILD="1"
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3 linux-mod
 	AUTOTOOLS_AUTORECONF="1"
-	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
+	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 else
 	# SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	# KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 	inherit git-r3 linux-mod
 	AUTOTOOLS_AUTORECONF="1"
-	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
+	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 	EGIT_COMMIT="7b0dc2a317a3d149d396bc48dae7b8e9bf1a1a6b"
 fi
 
