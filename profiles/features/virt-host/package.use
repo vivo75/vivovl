@@ -1,0 +1,2 @@
+app-emulation/lxc cgmanager python
+app-emulation/qemu -iscsi numa smartcard snappy spice ssh vde ncurses

@@ -1,42 +1,25 @@
-sys-process/lsof rpc
-app-admin/sysstat lm_sensors
-app-emulation/lxc cgmanager python
-app-emulation/qemu -iscsi numa smartcard snappy spice ssh vde ncurses
 app-misc/ca-certificates -cacert
-app-portage/eix -deprecated
 app-text/asciidoc python_single_target_python2_7
-dev-db/mariadb -bindist openssl -pam -perl -server
-dev-db/mysql -* minimal
 dev-lang/python sqlite
 dev-libs/elfutils static-libs
 dev-libs/libpcre pcre16
 dev-libs/libxml2 icu lzma
 dev-libs/openssl rfc3779
-dev-vcs/git -perl -webdav curl
 media-libs/gd png
-media-libs/libsdl -* alsa
 net-dns/bind -berkdb geoip gost idn json nslint python sit
-net-dns/bind-tools idn
 net-firewall/iptables conntrack netlink nftables pcap
 net-firewall/xtables-addons -modules
 net-libs/libnetfilter_conntrack static-libs
 net-libs/libnftnl threads examples json static-libs xml
 net-libs/libpcap canusb dbus netlink static-libs
-net-misc/bridge-utils sysfs
 net-misc/curl ssl
 net-misc/iputils arping caps filecaps clockdiff gcrypt idn rarpd rdisc tracepath
-net-misc/ntp caps
 net-misc/openssh X509
-net-vpn/openvpn ssl examples iproute2 -minimal passwordsave -static threads
 sys-apps/busybox static
-sys-apps/lm_sensors sensord
 sys-apps/openrc tools
-sys-apps/usbutils -python
 sys-apps/util-linux tty-helpers
-sys-boot/grub -device-mapper -truetype
 sys-fs/lvm2 -thin
 sys-fs/squashfs-tools lz4 lzma
-sys-kernel/dracut crypt mdraid syslog
 sys-libs/glibc nscd
 sys-libs/libseccomp static-libs
 sys-libs/zlib minizip

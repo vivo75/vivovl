@@ -1,0 +1,4 @@
+sys-apps/lm_sensors sensord
+sys-apps/usbutils -python
+sys-boot/grub -device-mapper -truetype
+sys-kernel/dracut crypt mdraid syslog

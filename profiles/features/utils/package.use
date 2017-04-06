@@ -1,0 +1,2 @@
+dev-db/mariadb -bindist openssl -pam -perl -server
+dev-vcs/git -perl -webdav curl

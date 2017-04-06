@@ -1,0 +1,6 @@
+<sys-apps/apparmor-9999 amd64
+<sys-apps/apparmor-utils-9999 amd64
+<sys-apps/nvme-cli-9999 amd64
+<sys-apps/smartmontools-9999 amd64
+<sys-kernel/dracut-9999 amd64
+<sys-libs/libhugetlbfs-9999 amd64
