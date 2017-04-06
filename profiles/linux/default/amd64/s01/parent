@@ -1,0 +1,12 @@
+..
+vivovl:features/mgmt
+vivovl:features/netboot-server
+vivovl:features/game-server
+vivovl:features/bonding
+vivovl:features/cherrypy
+vivovl:features/content-deployment
+vivovl:features/chroot-management
+vivovl:features/dualroot
+vivovl:features/deployment-target
+vivovl:features/go15
+vivovl:features/lvm

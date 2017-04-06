@@ -1,0 +1,37 @@
+# miscellanous
+app-admin/salt openssl
+net-fs/nfs-utils nfsv4 nfsv41
+dev-python/pyyaml libyaml
+net-misc/openssh hpn
+sys-apps/openrc tools
+net-misc/lldpd seccomp
+app-admin/rsyslog rfc3195
+dev-libs/liblogging rfc3195
+dev-python/ipython -smp
+net-misc/openssh -ssh1
+net-nds/rpcbind warmstarts
+net-dns/bind-tools seccomp
+dev-util/strace unwind
+
+# we want to be able to build a partially static perf
+sys-libs/binutils-libs static-libs
+sys-devel/binutils static-libs
+sys-libs/libunwind static-libs
+
+# python targets
+sys-apps/util-linux tty-helpers -suid
+
+# booting
+sys-boot/grub device-mapper -themes -fonts
+
+# miscellanous
+net-misc/dhcp -server -vim-syntax
+sys-fs/lvm2 device-mapper-only -lvm1 -static -thin
+net-nds/rpcbind -tcpd
+net-libs/gnutls -cxx -crywrap
+dev-scheme/guile -deprecated
+sys-apps/hwloc pci plugins numa xml
+
+# required by unscd
+sys-libs/glibc nscd
+
