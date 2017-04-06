@@ -22,7 +22,7 @@ sys-libs/libunwind static-libs
 sys-apps/util-linux tty-helpers -suid
 
 # booting
-sys-boot/grub device-mapper -themes -fonts
+sys-boot/grub device-mapper fonts -themes
 
 # miscellanous
 net-misc/dhcp -server -vim-syntax

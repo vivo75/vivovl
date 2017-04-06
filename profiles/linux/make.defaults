@@ -27,7 +27,7 @@ DISTDIR="/var/portage/distfiles"
 PKGDIR="/var/portage/packages"
 
 # default languages
-LINGUAS="en it"
+LINGUAS="en"
 L10N="en"
 
 # don't config protect /etc/mtab
