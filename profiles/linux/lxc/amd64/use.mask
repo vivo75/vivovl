@@ -1,0 +1,7 @@
+nls
+bash-completion
+vim-syntax
+udev
+gpm
+netifrc
+
