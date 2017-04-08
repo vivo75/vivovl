@@ -1,5 +1,4 @@
 app-forensics
-cross-aarch64-unknown-linux-gnu
 dev-lang
 dev-libs
 dev-python
@@ -11,4 +10,5 @@ media-video
 net-analyzer
 sys-fs
 sys-kernel
+virtuals
 www-client
