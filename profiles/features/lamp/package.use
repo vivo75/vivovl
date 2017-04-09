@@ -1,0 +1,6 @@
+www-servers/apache ssl threads
+dev-lang/php  apache2 bcmath calendar curl debug exif flatfile fpm ftp gd gmp imap inifile intl mysqli pdo sockets sqlite threads tidy truetype vpx xmlreader xmlrpc xmlwriter xslt zip libmysqlclient mysql
+app-eselect/eselect-php fpm apache2
+www-misc/awstats geoip
+net-misc/curl http2 idn
+
