@@ -1,0 +1,10 @@
+app-admin/logrotate
+app-editors/vim
+app-misc/colordiff
+app-misc/symlinks
+app-misc/tmux
+dev-vcs/git
+net-analyzer/net-snmp
+net-mail/email
+sys-process/lsof
+www-client/elinks
