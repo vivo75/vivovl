@@ -2,11 +2,6 @@ app-admin/ansible
 app-admin/logrotate
 app-admin/sudo
 app-admin/syslog-ng
-app-arch/p7zip
-app-arch/pixz
-app-arch/pxz
-app-arch/unrar
-app-arch/zip
 app-crypt/easy-rsa
 app-crypt/gpgme
 app-editors/vim
