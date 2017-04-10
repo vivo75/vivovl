@@ -1,0 +1,72 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+export IFACE="${IFACE:-eth0}"
+
+_has_carrier()
+{
+	LC_ALL=C ip link show dev "${IFACE}" | grep -q "LOWER_UP"
+}
+
+_wait_for_carrier()
+{
+	local timeout=
+
+	_has_carrier  && return 0
+
+	eval timeout=\$carrier_timeout_${IFACE}
+	timeout=${timeout:-${carrier_timeout:-2}}
+
+	# Incase users don't want this nice feature ...
+	[ ${timeout} -le 0 ] && return 0
+
+	einfon "Waiting for carrier (${timeout} seconds) "
+	while [ ${timeout} -gt 0 ]; do
+		if _has_carrier; then
+			echo
+			eend 0
+			return 0
+		fi
+		sleep 1
+		: $(( timeout -= 1 ))
+		printf "."
+	done
+
+	echo
+	eend 1
+	return 1
+}
+
+_get_inet_addresses()
+{
+	LC_ALL=C ip -family inet addr show dev "${IFACE}" up | \
+	sed -n -e 's/.*inet \([^ ]*\).*/\1/p'
+}
+
+_get_inet6_addresses()
+{
+	LC_ALL=C ip -family inet6 addr show dev "${IFACE}" up -tentative primary | \
+	sed -n -e 's/.*inet6 \([^ ]*\).*/\1/p'
+}
+
+_get_mac_address()
+{
+	LC_ALL=C ip link show "${IFACE}" \
+	| sed -n   -e 's|^.*link/ether \<\(..:..:..:..:..:..\)\>.*|\1|p'
+}
+
+depend() {
+	provide net
+}
+
+start() {
+	local ret=0
+	ebegin "checking ${IFACE} connectivity"
+	ret=$( _wait_for_carrier ${IFACE} )
+	einfo IPv4: $( _get_inet_addresses )
+	einfo IPv6: $( _get_inet6_addresses )
+	einfo MAC: $( _get_mac_address )
+	eend ${ret}
+}
+

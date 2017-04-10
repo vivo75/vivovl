@@ -1,6 +1,10 @@
 app-admin/logrotate
 app-editors/vim
 app-misc/colordiff
+
+# we need something to provide net, this or alter man conf.d files
+net-misc/lxc-fake-net
+
 app-misc/symlinks
 app-misc/tmux
 dev-vcs/git

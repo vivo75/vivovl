@@ -8,6 +8,7 @@ media-libs
 media-plugins
 media-video
 net-analyzer
+net-misc
 sys-fs
 sys-kernel
 virtuals
