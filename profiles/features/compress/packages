@@ -9,6 +9,7 @@ app-arch/snappy
 app-arch/tardelta
 app-arch/unarj
 app-arch/unrar
+app-arch/unzip
 app-arch/unshield
 app-arch/zip
 app-arch/zpaq

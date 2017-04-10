@@ -1,4 +1,5 @@
 app-admin/logrotate
+app-admin/rsyslog
 app-editors/vim
 app-misc/colordiff
 

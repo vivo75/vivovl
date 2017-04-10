@@ -1,0 +1,14 @@
+-mail-mta/ssmtp
+
+app-antivirus/clamav
+dev-python/pyzor
+mail-filter/amavisd-new
+mail-filter/dovecot-antispam
+mail-filter/dspam
+mail-filter/opendkim
+mail-filter/opendmarc
+mail-filter/razor
+mail-filter/spamassassin
+mail-filter/spampd
+mail-mta/postfix
+net-mail/dovecot
