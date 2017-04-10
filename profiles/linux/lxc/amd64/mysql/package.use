@@ -1,0 +1,4 @@
+# required by mariadb
+sys-libs/zlib minizip
+
+dev-db/mariadb openssl extraengine perl server xml
