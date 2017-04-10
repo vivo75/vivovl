@@ -2,6 +2,7 @@ app-admin/logrotate
 app-admin/rsyslog
 app-editors/vim
 app-misc/colordiff
+app-misc/jq
 
 # we need something to provide net, this or alter man conf.d files
 net-misc/lxc-fake-net
@@ -12,5 +13,6 @@ dev-util/debugedit
 dev-vcs/git
 net-analyzer/net-snmp
 net-mail/email
+sys-apps/pv
 sys-process/lsof
 www-client/elinks
