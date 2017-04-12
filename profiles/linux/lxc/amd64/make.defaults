@@ -39,6 +39,9 @@ CONFIG_PROTECT_MASK="/etc/mtab"
 PYTHON_TARGETS="python3_4"
 PYTHON_SINGLE_TARGET="python3_4"
 
+# set videocards to dummy and qemu, will be unused most of the times
+VIDEO_CARDS="cirrus dummy qxl"
+
 INSTALL_MASK="/usr/share/man
         /usr/share/info
         /usr/share/doc
