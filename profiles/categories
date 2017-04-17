@@ -1,15 +1,14 @@
 app-forensics
 dev-db
 dev-lang
-dev-libs
 dev-python
-dev-util
 media-gfx
 media-libs
 media-plugins
 media-video
 net-analyzer
 net-misc
+sys-apps
 sys-fs
 sys-kernel
 virtuals
