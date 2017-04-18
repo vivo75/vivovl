@@ -1,0 +1,54 @@
+#! /bin/bash
+
+# <li>Package: Lynis</li>
+# <li>Version: 2.4.8</li>
+# <li>SHA1 hash: 91b7e94c1b39c4b41340c55c0ff601e04aef7387</li>
+# <li>SHA256 hash: 6be0dcb0e3c66c76266944b1c5b6f1d8ba617dc1ce89b8d278f4e1f990a6f70a</li>
+
+source /lib64/rc/sh/functions.sh
+
+# define known variables
+REPO=vivovl
+REPO_PATH=$( portageq get_repo_path / ${REPO} )
+CATEGORY=app-forensics
+PN=lynis
+HTML=$( mktemp /tmp/${CATEGORY}--${PN}.XXXXXX )
+
+# get upstream download page, which will tell us also the version
+wget -c -O - https://cisofy.com/download/lynis/ \
+| xmllint --html - \
+2> /dev/null \
+> "${HTML}"
+
+PV="$( sed -rn -e 's|<li>Version: ([0-9.]*)</li>|\1|p' "${HTML}" )"
+HASH=$( sed -rn -e 's|<li>SHA256 hash: ([0-9a-f]*)</li>|\1|p' "${HTML}" )
+
+# empty if the version is not already
+CHECK=$( equery --quiet list "~${CATEGORY}/${PN}-${PV}")
+DEST="$(portageq envvar DISTDIR)/lynis-${PV}.tar.gz"
+
+export REPO REPO_PATH CATEGORY PN DEST HTML PV HASH
+
+if [[ ${CHECK} == "" ]] ; then
+    SRC_URI="https://cisofy.com/files/${PN}-${PV}.tar.gz"
+    wget -O "${DEST}" "${SRC_URI}"
+    CHECK=$( sha256sum "${DEST}" | grep -c ^${HASH} )
+    if [[ ${CHECK} == 0 ]] ; then
+        rm -f "${DEST}"
+        wget -O "${DEST}" "${SRC_URI}"
+        CHECK=$( sha256sum "${DEST}" | grep -c ^${HASH} )
+    fi
+fi
+
+if [[ ${CHECK} -ge 1 ]] ; then
+    LAST_VERSION="$(equery --quiet which -e app-forensics/lynis | head -n1)"
+    NEXT_VERSION="${REPO_PATH}/${CATEGORY}/${PN}/${PN}-${PV}.ebuild"
+    einfo "Found new version \"${PV}\""
+    einfo "Try the following commands for a preliminary test:"
+    echo "cp -i \\"
+    echo " ${LAST_VERSION} \\"
+    echo " ${NEXT_VERSION}"
+    einfo ""
+    echo "ebuild ${NEXT_VERSION} manifest install clean"
+fi
+rm -f ${HTML}
