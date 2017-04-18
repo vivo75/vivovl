@@ -1,0 +1,33 @@
+#! /bin/bash
+
+# gpg --keyserver pgp.mit.edu --recv-key 1E8ABDC773EDE252
+#  <p>The latest official version is 1.11. Read the
+
+source /lib64/rc/sh/functions.sh
+
+# known variables
+source "${0%/*}"/common.sh
+VERSION_URI=https://www.djangoproject.com/download/
+
+# get upstream download page, which will tell us also the version
+wget -q -c -O - ${VERSION_URI} | xmllint --html - 2> /dev/null > "${HTML}"
+
+PV="$( sed -rn -e 's|^.*<p>The latest official version is ([0-9.]*). Read.*$|\1|p' "${HTML}" )"
+
+einfo "found version \"${PV}\""
+
+if ! check_ver ${CATEGORY} ${PN} ${PV} ; then
+    A=Django-${PV}.tar.gz
+    SRC_URI="https://www.djangoproject.com/download/${PV}/tarball/"
+    wget "https://www.djangoproject.com/m/pgp/Django-${PV}.checksum.txt"
+    wget -O ${A} "${SRC_URI}"
+    gpg --verify Django-${PV}.checksum.txt
+    CHECK=${?}
+    if [[ ${CHECK} ]] ; then
+        message_and_cleanup ${A}
+        rm -f Django-${PV}.checksum.txt
+    fi
+else
+    einfo "already there"
+fi
+rm -f ${HTML}

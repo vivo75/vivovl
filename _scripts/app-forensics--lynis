@@ -8,8 +8,6 @@
 source /lib64/rc/sh/functions.sh
 
 # known variables
-CATEGORY=app-forensics
-PN=lynis
 source "${0%/*}"/common.sh
 VERSION_URI=https://cisofy.com/download/lynis/
 
@@ -30,20 +28,11 @@ if ! check_ver ${CATEGORY} ${PN} ${PV} ; then
     if [[ ${CHECK} == 0 ]] ; then
         error "wrong sha256sum \"${SRC_URI}\""
         exit 1
-    else
-        mv -i ${A} ${DISTDIR}
     fi
 
-    LAST_VERSION="$(equery --quiet which -e ${CATEGORY}/${PN} | head -n1)"
-    NEXT_VERSION="${REPO_PATH}/${CATEGORY}/${PN}/${PN}-${PV}.ebuild"
-    einfo "Found new version \"${PV}\""
-    einfo "Try the following commands for a preliminary test:"
-    echo "cp -i \\"
-    echo " ${LAST_VERSION} \\"
-    echo " ${NEXT_VERSION}"
-    einfo ""
-    echo "ebuild ${NEXT_VERSION} manifest install clean"
-else
+    message_and_cleanup ${A}
+    rm -f ${A}.md5sum
+    else
     einfo "already there"
 fi
 rm -f ${HTML}
