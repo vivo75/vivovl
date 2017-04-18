@@ -4,12 +4,7 @@ dev-lang
 dev-python
 media-gfx
 media-libs
-media-plugins
-media-video
-net-analyzer
 net-misc
-sys-apps
 sys-fs
 sys-kernel
 virtuals
-www-client
