@@ -1,0 +1,52 @@
+#! /bin/bash
+
+# <option value="percona-toolkit/3.0.2" selected>Percona Toolkit 3.0.2</option>
+
+source /lib64/rc/sh/functions.sh
+
+# known variables
+CATEGORY=dev-db
+PN=percona-toolkit
+source "${0%/*}"/common.sh
+VERSION_URI=https://www.percona.com/downloads/percona-toolkit/
+
+check_ver() {
+    local CATEGORY=${1}
+    local PN=${2}
+    local PV=${3}
+    ACCEPT_KEYWORDS="~amd64 **" \
+    emerge -p --nodeps --color=n ~${CATEGORY}/${PN}-${PV} \
+    &> /dev/null
+}
+
+# get upstream download page, which will tell us also the version
+wget -q -c -O - ${VERSION_URI} | xmllint --html - 2> /dev/null > "${HTML}"
+
+PV="$( sed -rn -e 's|<option value="percona-toolkit/([0-9.]*)" selected>Percona Toolkit [0-9.]*</option>|\1|p' "${HTML}" )"
+
+einfo "found version \"${PV}\""
+
+if ! check_ver ${CATEGORY} ${PN} ${PV} ; then
+    A=${PN}-${PV}.tar.gz
+    SRC_URI="wget https://www.percona.com/downloads/${PN}/${PV}/source/tarball/${A}"
+    wget "${SRC_URI}".md5sum
+    wget "${SRC_URI}"
+    md5sum -c ${A}.md5sum
+    CHECK=${?}
+    if [[ ${CHECK} ]] ; then
+        mv ${A} "${DISTDIR}"
+        rm -f ${A}.md5sum
+        LAST_VERSION="$(equery --quiet which -e ${CATEGORY}/${PN} | head -n1)"
+        NEXT_VERSION="${REPO_PATH}/${CATEGORY}/${PN}/${PN}-${PV}.ebuild"
+        einfo "Found new version \"${PV}\""
+        einfo "Try the following commands for a preliminary test:"
+        echo "cp -i \\"
+        echo " ${LAST_VERSION} \\"
+        echo " ${NEXT_VERSION}"
+        einfo ""
+        echo "ebuild ${NEXT_VERSION} manifest install clean"
+    fi
+else
+    einfo "already there"
+fi
+rm -f ${HTML}

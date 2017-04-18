@@ -7,41 +7,34 @@
 
 source /lib64/rc/sh/functions.sh
 
-# define known variables
-REPO=vivovl
-REPO_PATH=$( portageq get_repo_path / ${REPO} )
+# known variables
 CATEGORY=app-forensics
 PN=lynis
-HTML=$( mktemp /tmp/${CATEGORY}--${PN}.XXXXXX )
+source "${0%/*}"/common.sh
+VERSION_URI=https://cisofy.com/download/lynis/
 
 # get upstream download page, which will tell us also the version
-wget -c -O - https://cisofy.com/download/lynis/ \
-| xmllint --html - \
-2> /dev/null \
-> "${HTML}"
+wget -q -c -O - ${VERSION_URI} | xmllint --html - 2> /dev/null > "${HTML}"
 
 PV="$( sed -rn -e 's|<li>Version: ([0-9.]*)</li>|\1|p' "${HTML}" )"
 HASH=$( sed -rn -e 's|<li>SHA256 hash: ([0-9a-f]*)</li>|\1|p' "${HTML}" )
 
-# empty if the version is not already
-CHECK=$( equery --quiet list "~${CATEGORY}/${PN}-${PV}")
-DEST="$(portageq envvar DISTDIR)/lynis-${PV}.tar.gz"
+einfo "found version \"${PV}\""
+einfo "SHA256 hash:  \"${HASH}\""
 
-export REPO REPO_PATH CATEGORY PN DEST HTML PV HASH
-
-if [[ ${CHECK} == "" ]] ; then
-    SRC_URI="https://cisofy.com/files/${PN}-${PV}.tar.gz"
-    wget -O "${DEST}" "${SRC_URI}"
-    CHECK=$( sha256sum "${DEST}" | grep -c ^${HASH} )
+if ! check_ver ${CATEGORY} ${PN} ${PV} ; then
+    A=${PN}-${PV}.tar.gz
+    SRC_URI="https://cisofy.com/files/${A}"
+    wget "${SRC_URI}"
+    CHECK=$( sha256sum "${A}" | grep -c ^${HASH} )
     if [[ ${CHECK} == 0 ]] ; then
-        rm -f "${DEST}"
-        wget -O "${DEST}" "${SRC_URI}"
-        CHECK=$( sha256sum "${DEST}" | grep -c ^${HASH} )
+        error "wrong sha256sum \"${SRC_URI}\""
+        exit 1
+    else
+        mv -i ${A} ${DISTDIR}
     fi
-fi
 
-if [[ ${CHECK} -ge 1 ]] ; then
-    LAST_VERSION="$(equery --quiet which -e app-forensics/lynis | head -n1)"
+    LAST_VERSION="$(equery --quiet which -e ${CATEGORY}/${PN} | head -n1)"
     NEXT_VERSION="${REPO_PATH}/${CATEGORY}/${PN}/${PN}-${PV}.ebuild"
     einfo "Found new version \"${PV}\""
     einfo "Try the following commands for a preliminary test:"
@@ -50,5 +43,7 @@ if [[ ${CHECK} -ge 1 ]] ; then
     echo " ${NEXT_VERSION}"
     einfo ""
     echo "ebuild ${NEXT_VERSION} manifest install clean"
+else
+    einfo "already there"
 fi
 rm -f ${HTML}
