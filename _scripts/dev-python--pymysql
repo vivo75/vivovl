@@ -1,0 +1,34 @@
+#! /bin/bash
+
+source /lib64/rc/sh/functions.sh
+
+# known variables
+source "${0%/*}"/common.sh
+DOAP_URI="https://pypi.python.org/pypi?:action=doap&name=PyMySQL"
+
+# get upstream download page, which will tell us also the version
+wget -q -c -O - ${DOAP_URI} | xmllint - 2> /dev/null > "${HTML}"
+
+PV="$( sed -rn -e 's|^.*<release><Version><revision>([0-9.]*)</revision></Version></release>.*$|\1|p' "${HTML}" )"
+HASH="$( sed -rn -e 's|^.*<foaf:mbox_sha1sum>([0-9a-f]*)</foaf:mbox_sha1sum>.*$|\1|p' "${HTML}" )"
+
+einfo "found version \"${PV}\""
+einfo "SHA1 hash \"${HASH}\""
+
+if ! check_ver ${CATEGORY} ${PN} ${PV} ; then
+    A=${PN}-${PV}.tar.gz
+    SRC_URI="https://github.com/PyMySQL/PyMySQL/archive/v${PV}.tar.gz"
+
+    wget -O ${A} "${SRC_URI}"
+    CHECK=$( sha256sum "${A}" | grep -c ^${HASH} )
+
+    if [[ ${CHECK} == 0 ]] ; then
+        einfo "wrong checksum!"
+        einfo "This is normal github package has different checksum than pip"
+    else
+        message_and_cleanup ${A}
+    fi
+else
+    einfo "already there"
+fi
+rm -f ${HTML}
