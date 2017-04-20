@@ -1,0 +1,25 @@
+diff -Naur luminance-hdr-2.5.0.orig/src/MainCli/commandline.cpp luminance-hdr-2.5.0/src/MainCli/commandline.cpp
+--- luminance-hdr-2.5.0.orig/src/MainCli/commandline.cpp	2017-04-16 20:33:50.000000000 +0200
++++ luminance-hdr-2.5.0/src/MainCli/commandline.cpp	2017-04-20 22:43:56.199638178 +0200
+@@ -291,8 +291,7 @@
+             return 1;
+         }
+         if (vm.count("version")) {
+-            cout << tr("Luminance HDR version ").toStdString() + LUMINANCEVERSION +
+-                " [Build " + QString(g_GIT_SHA1).left(6).toStdString() + "]" << endl;
++            cout << tr("Luminance HDR version ").toStdString() + LUMINANCEVERSION << endl;
+             return 1;
+         }
+         if (vm.count("verbose")) {
+diff -Naur luminance-hdr-2.5.0.orig/src/MainWindow/SupportedCamerasDialog.cpp luminance-hdr-2.5.0/src/MainWindow/SupportedCamerasDialog.cpp
+--- luminance-hdr-2.5.0.orig/src/MainWindow/SupportedCamerasDialog.cpp	2017-04-16 20:33:50.000000000 +0200
++++ luminance-hdr-2.5.0/src/MainWindow/SupportedCamerasDialog.cpp	2017-04-20 22:44:26.363638176 +0200
+@@ -39,7 +39,7 @@
+ {
+     m_Ui->setupUi(this);
+ 
+-    m_Ui->labelVersion->setText(QString(LUMINANCEVERSION) + " [Build " + QString(g_GIT_SHA1).left(6) + "]");
++    m_Ui->labelVersion->setText(QString(LUMINANCEVERSION));
+ 
+     const char *version = LibRaw::version();
+     int count = LibRaw::cameraCount();

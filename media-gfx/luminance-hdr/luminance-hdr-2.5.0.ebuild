@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils toolchain-funcs eutils flag-o-matic
 
@@ -43,15 +43,14 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-DOCS=( AUTHORS BUGS Changelog README TODO )
+DOCS=( AUTHORS BUGS Changelog README.md TODO )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.3.1-no-git.patch
-	"${FILESDIR}"/${PN}-2.3.1-docs.patch
-	"${FILESDIR}"/${PN}-2.3.1-openmp-automagic.patch
+	"${FILESDIR}"/${P}-docs.patch
 	"${FILESDIR}"/${P}-fits-automagic.patch
-	"${FILESDIR}"/${P}-qtprinter.patch
-	"${FILESDIR}"/${P}-qtquick.patch
+	"${FILESDIR}"/${PN}-2.3.1-no-git.patch
+	"${FILESDIR}"/${P}-no-git.patch
+	"${FILESDIR}"/${PN}-2.3.1-openmp-automagic.patch
 )
 
 pkg_pretend() {
@@ -69,8 +68,8 @@ pkg_pretend() {
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_use openmp OPENMP)
-		$(cmake-utils_use_use fits FITS)
+		-DUSE_OPENMP="$(usex openmp)"
+		-DUSE_FITS="$(usex fits)"
 	)
 	cmake-utils_src_configure
 }
