@@ -3,14 +3,15 @@
 
 EAPI=6
 
-inherit cmake-utils bash-completion-r1 git-r3 qmake-utils
+inherit git-r3 qmake-utils cmake-utils
 
 DESCRIPTION="GREYC's Magic Image Converter"
 HOMEPAGE="http://gmic.eu/ https://github.com/dtschump/gmic"
-SRC_URI="http://gmic.eu/files/source/${PN}_${PV}.tar.gz"
-GMICQT_REPO_DIR="https://github.com/c-koi/gmic-qt.git"
+SRC_URI= #"http://gmic.eu/files/source/${PN}_${PV}.tar.gz"
+EGIT_REPO_URI="https://github.com/dtschump/gmic.git"
+GMICQT_REPO_URI="https://github.com/c-koi/gmic-qt.git"
 
-LICENSE="CeCILL-2 FDL-1.3"
+LICENSE="CeCILL-2 FDL-1.3 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+cli ffmpeg fftw +gimp graphicsmagick jpeg +krita opencv openexr openmp +png static-libs tiff X zlib"
@@ -47,8 +48,8 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-flags.patch
-	"${FILESDIR}"/${P}-man.patch
+	"${FILESDIR}"/${PN}-1.7.9-flags.patch
+	"${FILESDIR}"/${PN}-1.7.9-man.patch
 )
 
 pkg_pretend() {
@@ -63,13 +64,12 @@ pkg_pretend() {
 
 src_unpack() {
 	default
-	#EGIT_CHECKOUT_DIR="${S}/gmic-qt" git-r3_src_unpack
-	#EGIT_COMMIT="${WINE_COMMIT}"
-	git-r3_fetch "${GMICQT_REPO_DIR}"
-	# "${STAGING_COMMIT}"
-	git-r3_checkout "${GMICQT_REPO_DIR}" "${WORKDIR}/gmic-qt"
+	git-r3_fetch "${EGIT_REPO_URI}"
+	git-r3_checkout "${EGIT_REPO_URI}" "${WORKDIR}/${P}"
 	# this symlink is needed to build gmic-qt
 	ln -s ${WORKDIR}/${P} "${WORKDIR}/${PN}"
+	git-r3_fetch "${GMICQT_REPO_URI}"
+	git-r3_checkout "${GMICQT_REPO_URI}" "${WORKDIR}/gmic-qt"
 }
 
 
@@ -114,7 +114,7 @@ src_compile() {
 	local luse
 	local quse
 
-	default
+	cmake-utils_src_compile
 	pushd "${WORKDIR}/gmic-qt"
 	for x in cli:none gimp:gimp krita:krita ; do
 		luse=${x%:*}
@@ -130,7 +130,6 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	dodoc README
-    use cli && newbashcomp resources/${PN}_bashcompletion.sh ${PN}
 	pushd ${WORKDIR}/gmic-qt
 	if use cli; then
 		exeinto /usr/bin
