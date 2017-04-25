@@ -13,7 +13,7 @@ GMICQT_REPO_URI="https://github.com/c-koi/gmic-qt.git"
 
 LICENSE="CeCILL-2 FDL-1.3 GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="+cli ffmpeg fftw +gimp graphicsmagick jpeg +krita opencv openexr openmp +png static-libs tiff X zlib"
 REQUIRED_USE="|| ( cli gimp )"
 
@@ -47,10 +47,11 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.9-flags.patch
-	"${FILESDIR}"/${PN}-1.7.9-man.patch
-)
+# PATCHES=(
+# 	"${FILESDIR}"/${P}-typedef_confusion.patch
+# )
+# 	"${FILESDIR}"/${PN}-1.7.9-flags.patch
+# 	"${FILESDIR}"/${PN}-1.7.9-man.patch
 
 pkg_pretend() {
 	if use openmp ; then
@@ -71,7 +72,6 @@ src_unpack() {
 	git-r3_fetch "${GMICQT_REPO_URI}"
 	git-r3_checkout "${GMICQT_REPO_URI}" "${WORKDIR}/gmic-qt"
 }
-
 
 src_configure() {
 	local x
@@ -100,8 +100,7 @@ src_configure() {
 	cmake-utils_src_configure
 	pushd "${WORKDIR}/gmic-qt"
 		for x in cli:none gimp:gimp krita:krita ; do
-		luse=${x%:*}
-		quse=${x#*:}
+		luse=${x%:*} ; quse=${x#*:}
 		if use ${luse} ; then
 			eqmake5 HOST=${quse} && mv Makefile Makefile.${quse} || die
 		fi
@@ -117,8 +116,7 @@ src_compile() {
 	cmake-utils_src_compile
 	pushd "${WORKDIR}/gmic-qt"
 	for x in cli:none gimp:gimp krita:krita ; do
-		luse=${x%:*}
-		quse=${x#*:}
+		luse=${x%:*} ; quse=${x#*:}
 		if use ${luse} ; then
 			emake -f Makefile.${quse}
 			# emake clean
@@ -130,11 +128,10 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	dodoc README
-	pushd ${WORKDIR}/gmic-qt
 	if use cli; then
 		exeinto /usr/bin
 		doexe gmic_qt
-    fi
+	fi
 	if use gimp; then
 		exeinto $(gimptool-2.0 --gimpplugindir)/plug-ins
 		doexe gmic_gimp_qt
@@ -143,5 +140,4 @@ src_install() {
 		exeinto /usr/$(get_libdir)/kritaplugins
 		doexe gmic_krita_qt
 	fi
-	popd
 }

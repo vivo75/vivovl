@@ -1,0 +1,13 @@
+diff --git a/src/gmic_gimp_gtk.cpp b/src/gmic_gimp_gtk.cpp
+index 6bd68d4..b49230a 100644
+--- a/src/gmic_gimp_gtk.cpp
++++ b/src/gmic_gimp_gtk.cpp
+@@ -387,7 +387,7 @@ void load_dialog_params() {
+ 
+ // Get layer blending mode from string.
+ //-------------------------------------
+-#if (GIMP_MAJOR_VERSION>=3 || GIMP_MINOR_VERSION>8) && !defined(GIMP_NORMAL_MODE)
++#if 0 && (GIMP_MAJOR_VERSION>=3 || GIMP_MINOR_VERSION>8) && !defined(GIMP_NORMAL_MODE)
+ typedef GimpLayerMode GimpLayerModeEffects;
+ #define GIMP_NORMAL_MODE GIMP_LAYER_MODE_NORMAL
+ #endif
