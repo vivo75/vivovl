@@ -8,7 +8,7 @@ inherit cmake-utils toolchain-funcs git-r3 flag-o-matic
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
-EGIT_BRANCH="dev"
+EGIT_BRANCH="locallab_dev"
 EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
 
 LICENSE="GPL-3"
@@ -30,7 +30,8 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	dev-cpp/gtkmm:3.0"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -54,7 +55,8 @@ src_configure() {
 		-DDOCDIR=/usr/share/doc/${PF}
 		-DCREDITSDIR=/usr/share/${PN}
 		-DLICENCEDIR=/usr/share/${PN}
-		-DCACHE_NAME_SUFFIX="5-dev"
+		-DCACHE_NAME_SUFFIX="${EGIT_BRANCH}"
+		-DCMAKE_CXX_FLAGS="-std=c++11"
 	)
 	cmake-utils_src_configure
 }
