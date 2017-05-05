@@ -3,6 +3,7 @@
 <dev-go/go-net-9999 amd64
 <dev-go/go-text-9999 amd64
 <dev-lang/tcc-9999 amd64
+<net-analyzer/zabbix-3.3
 <net-firewall/iptables-9999 amd64
 <net-libs/libnetfilter_conntrack-9999 amd64
 <net-libs/libnftnl-9999 amd64

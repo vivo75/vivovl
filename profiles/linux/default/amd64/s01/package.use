@@ -6,6 +6,8 @@ dev-libs/libpcre pcre16
 dev-libs/libxml2 icu lzma
 dev-libs/openssl rfc3779
 media-libs/gd png
+net-analyzer/fping suid
+net-analyzer/zabbix -sqlite curl libxml2 mysql server ssh
 net-dns/bind -berkdb geoip gost idn json nslint python sit
 net-firewall/iptables conntrack netlink nftables pcap
 net-firewall/xtables-addons -modules
