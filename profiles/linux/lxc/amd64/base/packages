@@ -9,6 +9,7 @@ net-misc/lxc-fake-net
 
 app-misc/symlinks
 app-misc/tmux
+app-portage/gentoolkit
 dev-util/debugedit
 dev-vcs/git
 net-analyzer/net-snmp
