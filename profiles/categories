@@ -4,6 +4,7 @@ dev-lang
 dev-python
 media-gfx
 media-libs
+net-mail
 net-misc
 sys-fs
 sys-kernel
