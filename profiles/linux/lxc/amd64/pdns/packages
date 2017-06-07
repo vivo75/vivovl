@@ -1,0 +1,9 @@
+app-arch/pixz
+dev-db/innotop
+dev-db/mongodb
+dev-db/mysqltuner
+dev-db/percona-toolkit
+dev-python/mysql-python
+dev-python/pymysql
+net-dns/pdns
+net-dns/pdns-recursor
