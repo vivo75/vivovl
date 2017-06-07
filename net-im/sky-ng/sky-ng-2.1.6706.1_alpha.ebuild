@@ -23,9 +23,9 @@ RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/openssl:0
 	>=dev-qt/qtcore-5.5:5
-	>=dev-qt/qtgui-5.5:5[gtkstyle,jpeg,xcb,png,gif]
+	>=dev-qt/qtgui-5.5:5[jpeg,xcb,png,gif]
 	>=dev-qt/qtnetwork-5.5:5
-	>=dev-qt/qtwidgets-5.5:5[gtkstyle]
+	>=dev-qt/qtwidgets-5.5:5
 	media-libs/alsa-lib
 	media-libs/libv4l
 	media-libs/mesa
