@@ -1,8 +1,8 @@
 mail-filter/amavisd-new clamav dkim mysql razor spamassassin
 mail-filter/opendmarc spf
 mail-filter/spamassassin mysql
-mail-mta/postfix mysql
+mail-mta/postfix mysql dovecot-sasl
 net-analyzer/net-snmp perl
-# "textcat" make lucene fail for dovecot?
+# USE="textcat" make lucene fail for dovecot
 net-mail/dovecot lucene lz4 managesieve mysql
 
