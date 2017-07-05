@@ -3,5 +3,6 @@ mail-filter/opendmarc spf
 mail-filter/spamassassin mysql
 mail-mta/postfix mysql
 net-analyzer/net-snmp perl
-net-mail/dovecot lucene lz4 managesieve mysql textcat
+# "textcat" make lucene fail for dovecot?
+net-mail/dovecot lucene lz4 managesieve mysql
 
