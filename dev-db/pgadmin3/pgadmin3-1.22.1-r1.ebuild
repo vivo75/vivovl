@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}"
 pkg_setup() {
 	local pgslot=$(postgresql-config show)
 
-	if [[ ${pgslot//.} < 84 ]] ; then
+	if [[ ${pgslot//.} < 84 || ${pgslot//.} == ${pgslot} ]] ; then
 		eerror "PostgreSQL slot must be set to 8.4 or higher."
 		eerror "    postgresql-config set 8.4"
 		die "PostgreSQL slot is not set to 8.4 or higher."
