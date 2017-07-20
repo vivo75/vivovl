@@ -6,11 +6,14 @@ MY_P=${P}-src
 MY_V=${PV//\./-}
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,xml"
-inherit cmake-utils python-r1
+inherit cmake-utils python-r1 git-r3
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
 HOMEPAGE="https://ukoethe.github.io/vigra/"
-SRC_URI="https://github.com/ukoethe/vigra/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
+#SRC_URI="https://github.com/ukoethe/vigra/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
+
+EGIT_REPO_URI="https://github.com/ukoethe/${PN}.git"
+EGIT_COMMIT="fb427440da8c42f96e14ebb60f7f22bdf0b7b1b2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -53,7 +56,7 @@ src_prepare() {
 
 	einfo "Removing shipped docs and VCS files"
 	rm -rf doc || die
-	rm .git* .travis.yml || die
+	rm .git?* .travis.yml || die
 
 	cmake-utils_src_prepare
 
