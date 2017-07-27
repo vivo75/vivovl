@@ -1,0 +1,16 @@
+--- configure.orig	2015-05-07 08:14:56.000000000 -0600
++++ configure	2016-10-26 20:49:48.669033314 -0600
+@@ -2537,6 +2537,13 @@
+     fi
+ done
+ 
++# work around for https://bugs.gentoo.org/show_bug.cgi?id=564554
++# if called with -arch i386, then set CFG_MYSQL_CONFIG as if
++# -config_mysql had been passed in with appropriate value as well
++if [ "$CFG_ARCH" == i386 ]; then
++    CFG_MYSQL_CONFIG=/usr/bin/i686-pc-linux-gnu-mysql_config
++fi
++
+ if [ "$CFG_QCONFIG" != "full" ] && [ "$CFG_QT3SUPPORT" = "yes" ]; then
+     echo "Warning: '-qconfig $CFG_QCONFIG' will disable the qt3support library."
+     CFG_QT3SUPPORT="no"
