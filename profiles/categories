@@ -1,8 +1,9 @@
 app-forensics
 dev-db
-dev-qt
 dev-lang
+dev-libs
 dev-python
+dev-qt
 media-gfx
 media-libs
 net-im
