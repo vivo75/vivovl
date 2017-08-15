@@ -1,0 +1,12 @@
+diff -u a/Makefile.PL b/Makefile.PL
+--- a/Makefile.PL	2017-04-10 21:24:29.730488506 +0200
++++ b/Makefile.PL	2017-04-10 21:24:36.450488457 +0200
+@@ -1,7 +1,7 @@
+ use ExtUtils::MakeMaker;
+ 
+ WriteMakefile(
+-    NAME      => 'percona-toolkit',
++    NAME      => 'Percona::Toolkit',
+     VERSION   => '3.0.4',
+     EXE_FILES => [ <bin/*> ],
+     MAN1PODS  => {
