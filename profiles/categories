@@ -21,3 +21,4 @@ sys-fs
 sys-kernel
 sys-process
 virtuals
+x11-drivers
