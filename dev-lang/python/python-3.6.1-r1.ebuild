@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 WANT_LIBTOOL="none"
 
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs
@@ -67,7 +67,7 @@ src_prepare() {
 	epatch "${FILESDIR}/3.6.1-test_socket-AEAD.patch"
 	epatch "${FILESDIR}/3.6-blake2.patch"
 
-	epatch_user
+	eapply_user
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		Lib/distutils/command/install.py \
