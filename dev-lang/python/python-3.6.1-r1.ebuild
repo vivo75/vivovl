@@ -66,6 +66,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
 	epatch "${FILESDIR}/3.6.1-test_socket-AEAD.patch"
 	epatch "${FILESDIR}/3.6-blake2.patch"
+	# python seems to get rebuilt in src_install (bug 569908)
+	epatch "${FILESDIR}/3.6.1-fix-double-build.patch"
 
 	eapply_user
 
@@ -231,14 +233,6 @@ src_install() {
 		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
 		# Create python-3.5m.pc symlink
 		dosym "python-${PYVER}.pc" "/usr/$(get_libdir)/pkgconfig/${abiver/${PYVER}/-${PYVER}}.pc"
-	fi
-
-	# python seems to get rebuilt in src_install (bug 569908)
-	# Work around it for now.
-	if has_version dev-libs/libffi[pax_kernel]; then
-		pax-mark E "${ED}usr/bin/${abiver}"
-	else
-		pax-mark m "${ED}usr/bin/${abiver}"
 	fi
 
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
