@@ -35,7 +35,8 @@ python_prepare_all() {
 	# ensure install of the file glances.conf in /etc/${PN}
 	sed \
 		-e '/share\/doc\/glances/d' \
-		-e "s:'conf/glances.conf':('etc/glances', ['conf/glances.conf':g" \
+		-e "s/'CONTRIBUTING.md',//" \
+		-e "s:'conf/glances.conf':('/etc/glances', ['conf/glances.conf':g" \
 		-i setup.py || die
 
 	distutils-r1_python_prepare_all
@@ -43,7 +44,7 @@ python_prepare_all() {
 
 python_install_all() {
 	# add an intended file from original data set from setup.py to DOCS
-	local DOCS=( README.rst conf/glances.conf )
+	local DOCS=( README.rst CONTRIBUTING.md conf/glances.conf )
 	# setup for pre-built html docs in setup.py
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
