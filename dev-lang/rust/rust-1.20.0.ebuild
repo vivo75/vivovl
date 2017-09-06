@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit python-any-r1 versionator toolchain-funcs
 
@@ -29,8 +29,8 @@ else
 fi
 
 CARGO_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
-STAGE0_VERSION="1.$(($(get_version_component_range 2) - 1)).0"
-STAGE0_VERSION_CARGO="0.$(($(get_version_component_range 2))).0"
+STAGE0_VERSION="1.$(($(get_version_component_range 2) + 0)).0"
+STAGE0_VERSION_CARGO="0.$(($(get_version_component_range 2) + 1)).0"
 BOOTSTRAP_DATE="2017-06-08" # found in src/stage0.txt
 
 DESCRIPTION="Systems programming language from Mozilla"
