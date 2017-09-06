@@ -3,64 +3,77 @@
 
 EAPI=6
 
-CARGO_SNAPSHOT_DATE="2016-09-01"
+CARGO_SNAPSHOT_DATE="2017-06-23"
 CRATES="
 advapi32-sys-0.2.0
 aho-corasick-0.5.3
 aho-corasick-0.6.3
+atty-0.2.2
 backtrace-0.3.2
 backtrace-sys-0.1.11
+bitflags-0.7.0
 bitflags-0.9.1
 bufstream-0.1.3
 cargotest-0.1.0
-cfg-if-0.1.0
+cfg-if-0.1.2
 cmake-0.1.24
-crates-io-0.9.0
+conv-0.3.3
+core-foundation-0.4.4
+core-foundation-sys-0.4.4
+crates-io-0.10.0
 crossbeam-0.2.10
-curl-0.4.6
-curl-sys-0.3.12
+curl-0.4.7
+curl-sys-0.3.14
+custom_derive-0.1.7
 dbghelp-sys-0.2.0
-docopt-0.7.0
+docopt-0.8.1
 dtoa-0.4.1
 env_logger-0.4.3
-error-chain-0.10.0
+error-chain-0.11.0
 filetime-0.1.10
 flate2-0.2.19
+fnv-1.0.5
 foreign-types-0.2.0
-fs2-0.4.1
-gcc-0.3.50
-gdi32-sys-0.2.0
+fs2-0.4.2
+gcc-0.3.51
 git2-0.6.6
 git2-curl-0.7.0
 glob-0.2.11
+globset-0.2.0
 hamcrest-0.1.1
+hex-0.2.0
+home-0.3.0
 idna-0.1.2
+ignore-0.2.2
 itoa-0.3.1
 jobserver-0.1.6
 kernel32-sys-0.2.2
 lazy_static-0.2.8
-libc-0.2.23
+libc-0.2.25
 libgit2-sys-0.6.12
 libssh2-sys-0.2.6
-libz-sys-1.0.14
+libz-sys-1.0.16
 log-0.3.8
-matches-0.1.4
+magenta-0.1.1
+magenta-sys-0.1.1
+matches-0.1.6
 memchr-0.1.11
 memchr-1.0.1
 miniz-sys-0.1.9
 miow-0.2.1
 net2-0.2.29
-num-0.1.37
-num-bigint-0.1.37
-num-complex-0.1.37
+num-0.1.39
+num-bigint-0.1.39
+num-complex-0.1.38
 num-integer-0.1.34
 num-iter-0.1.33
-num-rational-0.1.36
-num-traits-0.1.37
-num_cpus-1.5.0
-openssl-0.9.13
+num-rational-0.1.38
+num-traits-0.1.39
+num_cpus-1.6.2
+openssl-0.9.14
 openssl-probe-0.1.1
-openssl-sys-0.9.13
+openssl-sys-0.9.14
+percent-encoding-1.0.0
 pkg-config-0.3.9
 psapi-sys-0.1.0
 quote-0.3.15
@@ -71,44 +84,48 @@ regex-syntax-0.3.9
 regex-syntax-0.4.1
 rustc-demangle-0.1.4
 rustc-serialize-0.3.24
+same-file-0.1.3
 scoped-tls-0.1.0
+scopeguard-0.1.2
 semver-0.7.0
 semver-parser-0.7.0
-serde-1.0.8
-serde_derive-1.0.8
+serde-1.0.9
+serde_derive-1.0.9
 serde_derive_internals-0.15.1
 serde_ignored-0.0.3
 serde_json-1.0.2
 shell-escape-0.1.3
+socket2-0.2.1
 strsim-0.6.0
 syn-0.11.11
 synom-0.11.3
 tar-0.4.13
 tempdir-0.3.5
-term-0.4.5
+termcolor-0.3.2
 thread-id-2.0.0
-thread-id-3.1.0
 thread_local-0.2.7
-thread_local-0.3.3
-toml-0.4.1
-unicode-bidi-0.3.3
-unicode-normalization-0.1.4
+thread_local-0.3.4
+toml-0.4.2
+unicode-bidi-0.3.4
+unicode-normalization-0.1.5
 unicode-xid-0.0.4
-unreachable-0.1.1
-url-1.4.1
-user32-sys-0.2.0
+unreachable-1.0.0
+url-1.5.1
+userenv-sys-0.2.0
 utf8-ranges-0.1.3
 utf8-ranges-1.0.0
-vcpkg-0.2.1
+vcpkg-0.2.2
 void-1.0.2
+walkdir-1.0.7
 winapi-0.2.8
 winapi-build-0.1.1
+wincolor-0.1.4
 ws2_32-sys-0.2.1
 "
 
 inherit cargo bash-completion-r1 versionator
 
-BOOTSTRAP_VERSION="0.$(($(get_version_component_range 2) - 1)).0"
+BOOTSTRAP_VERSION="0.$(($(get_version_component_range 2) - 0)).0"
 
 DESCRIPTION="The Rust's package manager"
 HOMEPAGE="http://crates.io"
@@ -149,6 +166,18 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/diffutils
 	sys-apps/findutils
 	sys-apps/sed"
+
+
+src_prepare() {
+	find ${WORKDIR} -name "*.toml" \
+		-exec sed -e 's:error-chain = "0.11.0-rc.2":error-chain = "0.11.0":' \
+		-i {} +
+# 	find ${WORKDIR} -name "*.toml" \
+# 		-exec sed -e 's:serde_json = "1.0":serde_json = "1.0.2":' \
+# 		-i {} +
+	# serde_json = "1.0.2"   serde_json = "1.0"
+	default
+}
 
 src_configure() {
 	# Do nothing
