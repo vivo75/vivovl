@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+GNOME2_EAUTORECONF="yes"
 inherit gnome2
 
 DESCRIPTION="A GNOME application for managing encryption keys"
@@ -10,19 +11,18 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 IUSE="debug ldap zeroconf"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.11.91:=
-	>=dev-libs/glib-2.10:2
-	>=x11-libs/gtk+-3.4:3
-	>=app-crypt/libsecret-0.16
-	>=net-libs/libsoup-2.33.92:2.4
-	x11-misc/shared-mime-info
-
-	net-misc/openssh
-	>=app-crypt/gpgme-1
 	>=app-crypt/gnupg-2.0.12
+	>=app-crypt/gpgme-1
+	>=app-crypt/libsecret-0.16
+	>=dev-libs/glib-2.10:2
+	>=net-libs/libsoup-2.33.92:2.4
+	net-misc/openssh
+	>=x11-libs/gtk+-3.4:3
+	x11-misc/shared-mime-info
 
 	ldap? ( net-nds/openldap:= )
 	zeroconf? ( >=net-dns/avahi-0.6:= )
@@ -41,10 +41,13 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
+	# Bug #629864
+	eapply "${FILESDIR}/seahorse-3.20.0-gnupg-configure.patch"
+
 	# Do not mess with CFLAGS with USE="debug"
 	sed -e '/CFLAGS="$CFLAGS -g/d' \
 		-e '/CFLAGS="$CFLAGS -O0/d' \
-		-i configure.ac configure || die "sed 1 failed"
+		-i.bak configure.ac || die "sed 1 failed"
 
 	gnome2_src_prepare
 }
