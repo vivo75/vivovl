@@ -72,7 +72,7 @@ REQUIRED_USE="mdb? ( java )
 
 src_prepare() {
 	local PATCHES=()
-	local PATCHES=( "${FILESDIR}"/gdal-2.0.3-add-dlopen-support-for-jvm.patch )
+	# obsoleted? local PATCHES=( "${FILESDIR}"/gdal-2.0.3-add-dlopen-support-for-jvm.patch )
 
 	# -soname is only accepted by GNU ld/ELF
 	if [[ ${CHOST} == *-darwin* ]]; then
@@ -101,11 +101,11 @@ src_prepare() {
 	# Fix freexl configure check
 	sed -i \
 		-e 's:FREEXL_LIBS=missing):FREEXL_LIBS=missing,-lm):g' \
-		configure.in || die
+		configure.ac || die
 
 	sed \
 		-e "s: /usr/: \"${EPREFIX}\"/usr/:g" \
-		-i configure.in || die
+		-i configure.ac || die
 
 	sed \
 		-e 's:^ar:$(AR):g' \
@@ -126,8 +126,6 @@ src_prepare() {
 	use pdf && append-cxxflags -std=c++11
 
 	tc-export AR RANLIB
-
-	mv configure.{in,ac} || die
 
 	eautoreconf
 }
