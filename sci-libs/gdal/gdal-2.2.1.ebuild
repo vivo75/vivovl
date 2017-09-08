@@ -18,7 +18,7 @@ SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 SLOT="0/2"
 LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads xls"
+IUSE="armadillo +aux_xml crypto++ curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb +mrf mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python qhull spatialite sqlite threads xls"
 
 COMMON_DEPEND="dev-libs/expat
 	dev-libs/json-c:=
@@ -28,6 +28,7 @@ COMMON_DEPEND="dev-libs/expat
 	sci-libs/libgeotiff
 	sys-libs/zlib[minizip(+)]
 	armadillo? ( sci-libs/armadillo:=[lapack] )
+	crypto++? ( dev-libs/crypto++ )
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio:= )
 	geos?   ( >=sci-libs/geos-2.2.1 )
@@ -52,6 +53,7 @@ COMMON_DEPEND="dev-libs/expat
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
+	qhull? ( media-libs/qhull )
 	sqlite? ( dev-db/sqlite:3 )
 	spatialite? ( dev-db/spatialite )
 	xls? ( dev-libs/freexl )"
@@ -153,6 +155,7 @@ src_configure() {
 	# ingres - same story as oracle oci
 	# jasper - disabled because unmaintained and vulnerable; openjpeg will be used as JPEG-2000 provider instead
 	# podofo - we use poppler instead they are exclusive for each other
+	# 2.2 pdfium, like podofo
 	# tiff is a hard dep
 	ECONF_SOURCE="${S}" econf \
 		--includedir="${EPREFIX}/usr/include/${PN}" \
@@ -163,12 +166,11 @@ src_configure() {
 		--with-grib \
 		--with-libtiff \
 		--with-libz="${EPREFIX}/usr/" \
-		--with-ogr \
 		--without-bsb \
 		--without-dods-root \
-		--without-dwgdirect \
 		--without-epsilon \
 		--without-fme \
+		--without-gnm \
 		--without-grass \
 		--without-hdf4 \
 		--without-idb \
@@ -177,11 +179,16 @@ src_configure() {
 		--without-jp2mrsid \
 		--without-kakadu \
 		--without-libtool \
+		--without-mongocxx \
 		--without-mrsid \
 		--without-msg \
 		--without-pcraster \
 		--without-podofo \
+		--without-pdfium \
+		--without-rasterlite2 \
 		--without-sde \
+		--without-sfcgal \
+		--without-teigha \
 		$(use_enable debug) \
 		$(use_with armadillo) \
 		$(use_with aux_xml pam) \
@@ -195,6 +202,7 @@ src_configure() {
 		$(use_with jpeg pcidsk) \
 		$(use_with jpeg) \
 		$(use_with jpeg2k openjpeg) \
+		$(use_with mrf) \
 		$(use_with mysql mysql "${EPREFIX}"/usr/bin/mysql_config) \
 		$(use_with netcdf) \
 		$(use_with oracle oci) \
@@ -206,6 +214,7 @@ src_configure() {
 		$(use_with png) \
 		$(use_with postgres pg) \
 		$(use_with python) \
+		$(use_with qhull) \
 		$(use_with spatialite) \
 		$(use_with sqlite sqlite3 "${EPREFIX}"/usr) \
 		$(use_with threads) \
