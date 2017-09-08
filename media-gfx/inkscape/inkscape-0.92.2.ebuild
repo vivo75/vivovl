@@ -5,18 +5,20 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit eutils cmake-utils flag-o-matic gnome2-utils fdo-mime toolchain-funcs python-single-r1
+inherit autotools eutils flag-o-matic gnome2-utils fdo-mime toolchain-funcs python-single-r1
 
 MY_P=${P/_/}
 
 DESCRIPTION="A SVG based generic vector-drawing program"
-HOMEPAGE="http://www.inkscape.org/"
+HOMEPAGE="https://inkscape.org/"
 SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
-IUSE="cdr dia dbus gnome imagemagick openmp postscript latex lcms nls spell static-libs visio wpg"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+IUSE="cdr dia dbus exif gnome imagemagick openmp postscript inkjar jpeg latex"
+IUSE+=" lcms nls spell static-libs visio wpg"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 WPG_DEPS="
@@ -38,6 +40,8 @@ COMMON_DEPEND="
 	>=dev-libs/libxslt-1.0.15
 	dev-libs/popt
 	dev-python/lxml[${PYTHON_USEDEP}]
+	media-gfx/potrace
+	media-gfx/scour[${PYTHON_USEDEP}]
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0
@@ -50,10 +54,10 @@ COMMON_DEPEND="
 		${WPG_DEPS}
 	)
 	dbus? ( dev-libs/dbus-glib )
-	media-libs/libexif
+	exif? ( media-libs/libexif )
 	gnome? ( >=gnome-base/gnome-vfs-2.0 )
 	imagemagick? ( media-gfx/imagemagick:=[cxx] )
-	virtual/jpeg
+	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	spell? (
 		app-text/aspell
@@ -72,7 +76,7 @@ COMMON_DEPEND="
 # on that.
 RDEPEND="${COMMON_DEPEND}
 	dev-python/numpy[${PYTHON_USEDEP}]
-	cdr? ( media-gfx/uniconvertor )
+	media-gfx/uniconvertor
 	dia? ( app-office/dia )
 	latex? (
 		media-gfx/pstoedit[plotutils]
@@ -89,16 +93,14 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
-
-# PATCHES=(
-# 	"${FILESDIR}/${PN}-0.91_pre3-automagic.patch"
-# 	"${FILESDIR}/${PN}-0.91_pre3-desktop.patch"
-# 	"${FILESDIR}/${PN}-0.91_pre3-cppflags.patch"
-# 	"${FILESDIR}/${PN}-0.91-fix-gtkmm-2.48.patch"
-# 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
-# 	"${FILESDIR}/${PN}-0.91_pre3-exif.patch"
-# 	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
-# )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.92.1-automagic.patch"
+	"${FILESDIR}/${PN}-0.91_pre3-cppflags.patch"
+	"${FILESDIR}/${PN}-0.92.1-desktop.patch"
+	"${FILESDIR}/${PN}-0.91_pre3-exif.patch"
+	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
+	"${FILESDIR}/${PN}-0.48.4-epython.patch"
+)
 
 S=${WORKDIR}/${MY_P}
 
@@ -116,9 +118,10 @@ src_prepare() {
 	sed -i "s#@EPYTHON@#${EPYTHON}#" \
 		src/extension/implementation/script.cpp || die
 
+	eautoreconf
+
 	# bug 421111
 	python_fix_shebang share/extensions
-	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -129,42 +132,31 @@ src_configure() {
 	# https://bugs.launchpad.net/inkscape/+bug/1488079
 	append-cxxflags -std=c++11
 
-	# GMOCK_PRESENT before enabling this (and gmock deps) re-enable "test"
-	# TODO: option(WITH_GTK3_EXPERIMENTAL "Enable compilation with GTK+3 (EXPERIMENTAL!)" OFF)
-	# TODO: option(WITH_PROFILING "Turn on profiling" OFF) # Set to true if compiler/linker should enable profiling
-	# TODO: option(WITH_SVG2 "Compile with support for new SVG2 features" ON)
-	# TODO: option(WITH_LPETOOL "Compile with LPE Tool and experimental LPEs enabled" OFF)
-	# TODO: option(ENABLE_BINRELOC "Enable relocatable binaries" OFF)
-	# missing: econf \
-	# missing: 	$(use_enable static-libs static) \
-	# missing: 	$(use_enable exif) \
-	# missing: 	$(use_enable jpeg) \
-	# missing: 	$(use_with inkjar) \
-
-	local mycmakeargs=(
-		-DENABLE_LCMS="$(usex lcms)"
-		-DWITH_DBUS="$(usex dbus)"
-		-DWITH_GNOME_GNOME_VFS="$(usex gnome)"
-		-DWITH_SPELL="$(usex spell)"
-		-DWITH_IMAGE_MAGICK="$(usex imagemagick)"
-		-DWITH_LIBCDR="$(usex cdr)"
-		-DWITH_LIBVISIO="$(usex visio)"
-		-DWITH_LIBWPG="$(usex wpg)"
-		-DWITH_NLS="$(usex nls)"
-		-DWITH_OPENMP="$(usex openmp)"
-		-DENABLE_POPPLER_CAIRO=on
-	)
-
-	cmake-utils_src_configure
+	econf \
+		$(use_enable static-libs static) \
+		$(use_enable nls) \
+		$(use_enable openmp) \
+		$(use_enable exif) \
+		$(use_enable jpeg) \
+		$(use_enable lcms) \
+		--enable-poppler-cairo \
+		$(use_enable wpg) \
+		$(use_enable visio) \
+		$(use_enable cdr) \
+		$(use_enable dbus dbusapi) \
+		$(use_enable imagemagick magick) \
+		$(use_with gnome gnome-vfs) \
+		$(use_with inkjar) \
+		$(use_with spell gtkspell) \
+		$(use_with spell aspell)
 }
 
-# src_compile() {
-# 	emake AR="$(tc-getAR)"
-# }
+src_compile() {
+	emake AR="$(tc-getAR)"
+}
 
 src_install() {
 	default
-	cmake-utils_src_install
 
 	prune_libtool_files
 	python_optimize "${ED}"/usr/share/${PN}/extensions
