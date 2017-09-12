@@ -1,28 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-
-AT_M4DIR="config"
-AUTOTOOLS_AUTORECONF="1"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
+EAPI="6"
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 if [ ${PV} == "9999" ] ; then
-	inherit git-r3 linux-mod
-	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 else
 	# SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64"
-	inherit git-r3 linux-mod
-	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
-	EGIT_COMMIT="zfs-0.7.0-rc4"
+	EGIT_COMMIT="d9549cba9640cd3b09d76b8cbd54387728b7be24"
 fi
 
-inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
+inherit autotools bash-completion-r1 flag-o-matic git-r3 linux-info linux-mod python-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="http://zfsonlinux.org/"
@@ -45,10 +36,7 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	!=sys-apps/grep-2.13*
-	!kernel-builtin? (
-		=sys-fs/zfs-kmod-${PV}*
-		!<sys-fs/zfs-kmod-0.6.5.3-r1
-		)
+	!kernel-builtin? ( =sys-fs/zfs-kmod-${PV}* )
 	!sys-fs/zfs-fuse
 	!prefix? ( virtual/udev )
 	test-suite? (
@@ -64,12 +52,15 @@ RDEPEND="${COMMON_DEPEND}
 		app-arch/cpio
 		app-misc/pax-utils
 		!<sys-boot/grub-2.00-r2:2
+		!<sys-kernel/genkernel-3.5.1.1
+		!<sys-kernel/genkernel-next-67
+		!<sys-kernel/bliss-initramfs-7.1.0
+		!<sys-kernel/dracut-044-r1
 		)
 	sys-fs/udev-init-scripts
 "
 
 AT_M4DIR="config"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
 
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
@@ -91,7 +82,6 @@ pkg_setup() {
 			fi
 		fi
 	fi
-
 }
 
 src_prepare() {
@@ -101,7 +91,10 @@ src_prepare() {
 		-e "s|/sbin/parted|/usr/sbin/parted|" \
 		-i scripts/common.sh.in
 
-	autotools-utils_src_prepare
+	default
+
+	eautoreconf || die
+	elibtoolize --patch-only || die
 }
 
 src_configure() {
@@ -117,7 +110,7 @@ src_configure() {
 		--with-blkid
 		$(use_enable debug)
 	)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 
 	# prepare systemd unit and helper script
 	cat "${FILESDIR}/zfs.service.in" | \
@@ -130,8 +123,13 @@ src_configure() {
 		> "${T}/zfs-init.sh" || die
 }
 
+src_compile() {
+	default
+}
+
 src_install() {
-	autotools-utils_src_install
+	emake DESTDIR="${D}" install || die "emake install failed"
+
 	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
 	use test-suite || rm -rf "${ED}usr/share/zfs"
 
@@ -201,22 +199,6 @@ pkg_postinst() {
 		rm "${EROOT}etc/runlevels/shutdown/zfs-shutdown"
 	fi
 
-	einfo "sys-kernel/spl-0.6.5.3-r1, sys-fs/zfs-kmod-0.6.5.3-r1 and "
-	einfo "sys-fs/zfs-0.6.5.3-r1 have introduced a partial stable "
-	einfo "/dev/zfs API developed by ClusterHQ. This means that situations "
-	einfo "arising from the kernel modules and userland tools being "
-	einfo "mismatched on future updates will not cause problems."
-	einfo
-	einfo "In specific, this should solve the failure to mount filesystems when "
-	einfo "old modules are cached in an old initramfs provided that those "
-	einfo "modules support this API"
-	if use rootfs
-	then
-		einfo
-		ewarn "The older modules will *NOT* work with the new userland code."
-		ewarn "It is very important that you update your initramfs after this "
-		ewarn "update."
-	fi
 }
 
 pkg_postrm() {

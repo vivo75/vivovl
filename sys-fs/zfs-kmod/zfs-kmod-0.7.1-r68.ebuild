@@ -1,24 +1,23 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="6"
+
+inherit autotools git-r3
 
 if [ ${PV} == "9999" ]; then
 	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
-	inherit git-r3
 else
 	#SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	#S="${WORKDIR}/zfs-${PV}"
 	KEYWORDS="~amd64"
 	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
-	EGIT_COMMIT="zfs-0.7.0-rc4"
-	inherit git-r3
+	EGIT_COMMIT="d9549cba9640cd3b09d76b8cbd54387728b7be24"
 fi
 
-inherit flag-o-matic linux-info linux-mod toolchain-funcs autotools-utils
+inherit flag-o-matic linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="http://zfsonlinux.org/"
@@ -44,6 +43,7 @@ AUTOTOOLS_IN_SOURCE_BUILD="1"
 DOCS=( AUTHORS COPYRIGHT DISCLAIMER README.markdown )
 
 pkg_setup() {
+
 	linux-info_pkg_setup
 	CONFIG_CHECK="!DEBUG_LOCK_ALLOC
 		EFI_PARTITION
@@ -69,7 +69,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 11 || die "Linux 4.11 is the latest supported version."; }
+		{ kernel_is le 4 13 || die "Linux 4.13 is the latest supported version."; }
 
 	check_extra_config
 }
@@ -82,7 +82,10 @@ src_prepare() {
 	[ ${PV} != "9999" ] && \
 		{ sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" "${S}/META" || die "Could not set Gentoo release"; }
 
-	autotools-utils_src_prepare
+	default
+
+	eautoreconf || die
+	elibtoolize --patch-only || die
 }
 
 src_configure() {
@@ -99,14 +102,19 @@ src_configure() {
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-spl="${EROOT}usr/src/${SPL_PATH}"
 		--with-spl-obj="${EROOT}usr/src/${SPL_PATH}/${KV_FULL}"
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug)
 	)
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
+}
+
+src_compile() {
+	default
 }
 
 src_install() {
-	autotools-utils_src_install INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}"
+	emake DESTDIR="${D}" INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}" install || die "emake install failed"
 }
 
 pkg_postinst() {

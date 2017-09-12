@@ -1,25 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="6"
 
 if [[ ${PV} == "9999" ]] ; then
-	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
-	inherit git-r3
 else
 	#SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
-	inherit git-r3 linux-mod
-	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
-	EGIT_COMMIT="spl-0.7.0-rc4"
+	EGIT_COMMIT="9df9692637aeee416f509c7f39655beb2d35b549"
 fi
 
-inherit flag-o-matic linux-info linux-mod autotools-utils
+inherit flag-o-matic git-r3 linux-info linux-mod autotools
 
-DESCRIPTION="The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs"
+DESCRIPTION="The Solaris Porting Layer provides Solaris kernel APIs in a Linux module"
 HOMEPAGE="http://zfsonlinux.org/"
 
 LICENSE="GPL-2"
@@ -61,7 +56,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 11 || die "Linux 4.11 is the latest supported version."; }
+		{ kernel_is le 4 13 || die "Linux 4.13 is the latest supported version."; }
 
 	check_extra_config
 }
@@ -74,7 +69,10 @@ src_prepare() {
 	[ ${PV} != "9999" ] && \
 		{ sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" "${S}/META" || die "Could not set Gentoo release"; }
 
-	autotools-utils_src_prepare
+	eautoreconf || die
+	elibtoolize --patch-only || die
+
+	default
 }
 
 src_configure() {
@@ -89,12 +87,18 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		$(use_enable debug)
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 	)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
+}
+
+src_compile() {
+	emake
 }
 
 src_install() {
-	autotools-utils_src_install INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}"
+	emake DESTDIR="${D}" INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}" install
+	dodoc -r "${DOCS[@]}"
 }
 
 pkg_postinst() {
