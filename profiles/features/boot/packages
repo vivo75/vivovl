@@ -20,11 +20,11 @@ sys-boot/grub
 sys-fs/cryptsetup
 sys-fs/mdadm
 sys-fs/sysfsutils
-sys-fs/zfs-kmod
-sys-fs/zfs
+sys-fs/zfs-kmod::gentoo
+sys-fs/zfs::gentoo
 sys-kernel/dracut
 sys-kernel/genkernel-next
-sys-kernel/spl
+sys-kernel/spl::gentoo
 sys-libs/libhugetlbfs
 sys-power/acpid
 sys-process/numad
