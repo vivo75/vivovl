@@ -23,7 +23,6 @@ sys-fs/sysfsutils
 sys-fs/zfs-kmod
 sys-fs/zfs
 sys-kernel/dracut
-sys-kernel/genkernel-next
 sys-kernel/spl
 sys-libs/libhugetlbfs
 sys-power/acpid
