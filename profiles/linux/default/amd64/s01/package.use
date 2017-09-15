@@ -26,4 +26,4 @@ sys-fs/squashfs-tools lz4 lzma
 sys-libs/glibc nscd
 sys-libs/libseccomp static-libs
 sys-libs/zlib minizip
-
+virtual/mysql -server
