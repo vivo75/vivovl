@@ -32,7 +32,15 @@ lxc_get_net_link_type() {
 		{if(_link != "" && _type != ""){
 			printf("%s:%s\n", _link, _type );
 			_link=""; _type="";
-		}; }' <${CONFIGFILE}
+		}; };
+
+		$1 == "lxc.net.0.type" {_type=$2;}
+		$1 == "lxc.net.0.link" {_link=$2;}
+		{if(_link != "" && _type != ""){
+			printf("%s:%s\n", _link, _type );
+			_link=""; _type="";
+		};
+		}' <${CONFIGFILE}
 }
 
 checkconfig() {
@@ -46,6 +54,7 @@ checkconfig() {
 	[ -z "${CONFIGFILE}" ] && return 1
 
 	utsname=$(lxc_get_var lxc.utsname)
+	[[ -z ${utsname} ]] && utsname=$(lxc_get_var lxc.uts.name)
 	if [ ${CONTAINER} != ${utsname} ]; then
 	    eerror "You should use the same name for the service and the"
 	    eerror "container. Right now the container is called ${utsname}"
@@ -82,6 +91,7 @@ start() {
 	rm -f /var/log/lxc/${CONTAINER}.log
 
 	rootpath=$(lxc_get_var lxc.rootfs)
+	[[ -z ${rootpath} ]] && rootpath=$(lxc_get_var lxc.rootfs.path)
 
 	# Check the format of our init and the chroot's init, to see
 	# if we have to use linux32 or linux64; always use setarch
@@ -94,7 +104,7 @@ start() {
 
 	ebegin "Starting ${CONTAINER}"
 	env -i ${setarch} $(which lxc-start) -l WARN -n ${CONTAINER} -f ${CONFIGFILE} -d -o /var/log/lxc/${CONTAINER}.log
-	sleep 1
+	sleep 0.5
 
 	# lxc-start -d will _always_ report a correct startup, even if it
 	# failed, so rather than trust that, check that the cgroup exists.
@@ -103,6 +113,8 @@ start() {
 }
 
 stop() {
+	local timeout=10
+
 	checkconfig || return 1
 
 
@@ -113,6 +125,11 @@ stop() {
 
 	# 10s should be enough to shut everything down
 	ebegin "Stopping ${CONTAINER}"
-	lxc-stop -t 10 -n ${CONTAINER}
+	lxc-attach -n ${CONTAINER} -- shutdown -P now "container shutdown now"
+	for i in $(seq 1 ${timeout}) ; do
+		lxc-info -n ${CONTAINER} | grep -q STOPPED && continue
+		sleep 1
+	done
+	lxc-info -n ${CONTAINER} | grep -q STOPPED || lxc-stop --kill -n ${CONTAINER}
 	eend $?
 }

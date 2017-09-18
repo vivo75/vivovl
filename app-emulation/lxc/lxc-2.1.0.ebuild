@@ -175,7 +175,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete
 
 	# Gentoo-specific additions!
-	newinitd "${FILESDIR}/${PN}.initd.5" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd.7" ${PN}
 
 	# Remember to compare our systemd unit file with the upstream one
 	# config/init/systemd/lxc.service.in
