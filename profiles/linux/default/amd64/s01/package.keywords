@@ -1,4 +1,5 @@
 <app-antivirus/clamav-unofficial-sigs-9999 amd64
+<app-forensics/lynis-9999 amd64
 <dev-go/go-crypto-9999 amd64
 <dev-go/go-net-9999 amd64
 <dev-go/go-text-9999 amd64
