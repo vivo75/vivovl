@@ -14,6 +14,7 @@ dev-util/debugedit
 dev-vcs/git
 net-analyzer/net-snmp
 net-mail/email
+net-misc/openssh
 sys-apps/pv
 sys-process/lsof
 www-client/elinks
