@@ -75,7 +75,7 @@ COMMON_DEPEND="
 		uchardet? ( app-i18n/uchardet )
 	)
 	jack? ( virtual/jack )
-	javascript? ( dev-lang/mujs )
+	javascript? ( >=dev-lang/mujs-1.0.0 )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	libass? (
