@@ -511,6 +511,14 @@ get_version() {
 	KV_MAJOR=$(getfilevar_noexec VERSION "${KERNEL_MAKEFILE}")
 	KV_MINOR=$(getfilevar_noexec PATCHLEVEL "${KERNEL_MAKEFILE}")
 	KV_PATCH=$(getfilevar_noexec SUBLEVEL "${KERNEL_MAKEFILE}")
+
+	# this could happen, seen after a "make O=builddir modules_prepare"
+	if [ -n "${KV_MAJOR}" -a -n "${KV_MINOR}" -a -z "${KV_PATCH}" ]
+	then
+		qeerror "Could not detect complete kernel version, assuming ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
+		KV_PATCH=0
+	fi
+
 	KV_EXTRA=$(getfilevar_noexec EXTRAVERSION "${KERNEL_MAKEFILE}")
 
 	if [ -z "${KV_MAJOR}" -o -z "${KV_MINOR}" -o -z "${KV_PATCH}" ]
