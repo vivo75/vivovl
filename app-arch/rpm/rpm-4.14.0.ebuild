@@ -16,7 +16,7 @@ SLOT="0"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 KEYWORDS="~amd64"
 
-IUSE="acl caps debugedit doc lua ndb nls openssl python selinux zstd"
+IUSE="acl caps debugedit doc lua ndb nls python selinux zstd"
 
 CDEPEND="!app-arch/rpm5
 	app-arch/libarchive
@@ -29,8 +29,7 @@ CDEPEND="!app-arch/rpm5
 	virtual/libintl
 	>=dev-lang/perl-5.8.8
 	debugedit? ( !dev-util/debugedit )
-	!openssl? ( dev-libs/nss )
-	openssl? ( dev-libs/openssl:0 )
+	dev-libs/nss
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
 	lua? ( >=dev-lang/lua-5.1.0:0[deprecated] )
@@ -67,15 +66,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local cryptolib=$( usev openssl )
-	cryptolib=${cryptolib:-nss}
-
 	append-cppflags -I"${EPREFIX}/usr/include/nss" -I"${EPREFIX}/usr/include/nspr"
 	econf \
 		--without-imaevm \
 		--without-selinux \
 		--with-external-db \
-		--with-crypto=${cryptolib} \
+		--with-crypto=nss \
 		--disable-lmdb \
 		$(use_enable ndb) \
 		$(use_enable python) \
