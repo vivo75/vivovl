@@ -9,17 +9,18 @@ inherit eutils autotools flag-o-matic perl-module python-single-r1 versionator
 
 DESCRIPTION="Red Hat Package Management Utils"
 HOMEPAGE="http://www.rpm.org"
-SRC_URI="http://rpm.org/releases/rpm-$(get_version_component_range 1-2).x/${P}.tar.bz2"
+SRC_URI="http://ftp.rpm.org/releases/rpm-$(get_version_component_range 1-2).x/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64"
 
-IUSE="nls python doc caps lua acl selinux"
+IUSE="acl caps debugedit doc lua ndb nls openssl python selinux zstd"
 
 CDEPEND="!app-arch/rpm5
 	app-arch/libarchive
-	>=sys-libs/db-4.5
+	>=sys-libs/db-4.5:=
 	>=sys-libs/zlib-1.2.3-r1
 	>=app-arch/bzip2-1.0.1
 	>=dev-libs/popt-1.7
@@ -27,12 +28,15 @@ CDEPEND="!app-arch/rpm5
 	dev-libs/elfutils
 	virtual/libintl
 	>=dev-lang/perl-5.8.8
-	dev-libs/nss
+	debugedit? ( !dev-util/debugedit )
+	!openssl? ( dev-libs/nss )
+	openssl? ( dev-libs/openssl:0 )
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	lua? ( >=dev-lang/lua-5.1.0[deprecated] )
+	lua? ( >=dev-lang/lua-5.1.0:0[deprecated] )
 	acl? ( virtual/acl )
-	caps? ( >=sys-libs/libcap-2.0 )"
+	caps? ( >=sys-libs/libcap-2.0 )
+	zstd? ( app-arch/zstd )"
 
 DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
@@ -63,17 +67,24 @@ src_prepare() {
 }
 
 src_configure() {
+	local cryptolib=$( usev openssl )
+	cryptolib=${cryptolib:-nss}
+
 	append-cppflags -I"${EPREFIX}/usr/include/nss" -I"${EPREFIX}/usr/include/nspr"
 	econf \
+		--without-imaevm \
 		--without-selinux \
 		--with-external-db \
-		--without-beecrypt \
+		--with-crypto=${cryptolib} \
+		--disable-lmdb \
+		$(use_enable ndb) \
 		$(use_enable python) \
 		$(use_with doc hackingdocs) \
 		$(use_enable nls) \
 		$(use_with lua) \
 		$(use_with caps cap) \
-		$(use_with acl)
+		$(use_with acl) \
+		$(use_enable zstd)
 }
 
 src_compile() {
@@ -86,18 +97,18 @@ src_install() {
 	# remove la files
 	prune_libtool_files --all
 
-	mv "${ED}"/bin/rpm "${ED}"/usr/bin
-	rmdir "${ED}"/bin
-	# fix symlinks to /bin/rpm (#349840)
+	use nls || rm -rf "${ED}"/usr/share/man/??
+
+	# this will conflict with dev-util/debugedit
+	use debugedit && ln -snf "${EROOT}"usr/libexec/rpm/debugedit "${ED}"/usr/bin/debugedit
+
 	for binary in rpmquery rpmverify;do
 		ln -sf rpm "${ED}"/usr/bin/${binary}
 	done
 
-	use nls || rm -rf "${ED}"/usr/share/man/??
-
 	keepdir /usr/src/rpm/{SRPMS,SPECS,SOURCES,RPMS,BUILD}
 
-	dodoc CHANGES CREDITS GROUPS README*
+	dodoc CREDITS README*
 	if use doc; then
 		pushd doc/hacking/html
 		dohtml -p hacking -r .
