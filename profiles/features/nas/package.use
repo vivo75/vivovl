@@ -1,4 +1,4 @@
 net-fs/cifs-utils acl ads caps caps-ng pam creds
 net-fs/s3fs -nss -gnutls openssl
-net-fs/samba addc addns ads client fam quota syslog winbind zeroconf client 
+net-fs/samba -system-mitkrb5 addc addns ads client fam gnutls ldap quota syslog winbind zeroconf client 
 sys-fs/ntfs3g acl external-fuse ntfsprogs xattr ntfsdecrypt suid
