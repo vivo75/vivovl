@@ -2,3 +2,7 @@ net-fs/cifs-utils acl ads caps caps-ng pam creds
 net-fs/s3fs -nss -gnutls openssl
 net-fs/samba -X509 -system-mitkrb5 addc addns ads client fam gnutls ldap quota syslog winbind zeroconf client 
 sys-fs/ntfs3g acl external-fuse ntfsprogs xattr ntfsdecrypt suid
+
+# required by net-fs/samba-4.7.0-r1::gentoo[addns]
+net-dns/bind-tools gssapi
+

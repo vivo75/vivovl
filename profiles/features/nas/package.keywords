@@ -2,3 +2,23 @@
 <net-fs/samba-9999 amd64
 <net-p2p/go-ipfs-bin-9999 amd64
 <net-misc/rclone-9999 amd64
+
+# required by sys-libs/ldb-1.3.0::gentoo
+# required by net-fs/samba-4.7.0-r1::gentoo
+<sys-libs/tevent-9999 amd64
+<dev-util/cmocka-9999 amd64
+
+# required by net-fs/samba-4.7.0-r1::gentoo
+<sys-libs/ldb-9999 amd64
+
+# required by sys-libs/tevent-0.9.33::gentoo
+<sys-libs/talloc-9999 amd64
+
+# required by sys-libs/ldb-1.3.0::gentoo
+# required by net-fs/samba-4.7.0-r1::gentoo
+<sys-libs/tdb-9999 amd64
+
+
+# required by net-fs/samba-4.7.0-r1::gentoo[addns]
+net-dns/bind-tools gssapi
+
