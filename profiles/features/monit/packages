@@ -18,5 +18,6 @@ sys-process/criu
 sys-process/htop
 sys-process/iotop
 sys-process/lsof
+sys-process/nmon
 sys-process/tiptop
 www-misc/awstats
