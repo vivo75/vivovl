@@ -1,5 +1,6 @@
 app-misc/ca-certificates -cacert
 app-text/asciidoc python_single_target_python2_7
+dev-db/mariadb innodb-lz4 server xml
 dev-lang/python sqlite
 dev-libs/elfutils static-libs
 dev-libs/libpcre pcre16
