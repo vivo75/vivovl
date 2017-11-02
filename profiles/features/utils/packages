@@ -13,6 +13,11 @@ app-misc/tmux
 dev-db/mariadb
 dev-db/sqlite
 dev-lang/lua
+
+# waiting for python 3.6
+dev-python/pyblake2
+
+dev-python/pymysql
 dev-python/virtualenv
 dev-util/debugedit
 dev-vcs/git
