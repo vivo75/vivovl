@@ -1,4 +1,5 @@
 app-admin/ansible
 net-analyzer/zabbix
 net-ftp/vsftpd
+net-misc/dhcpcd
 net-vpn/openvpn
