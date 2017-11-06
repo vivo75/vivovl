@@ -19,3 +19,6 @@
 <sys-boot/efibootmgr-9999 amd64
 <sys-libs/efivar-9999 amd64
 <sys-libs/libapparmor-9999 amd64
+
+# python 3.6
+=dev-python/pyudev-0.21.0 amd64
