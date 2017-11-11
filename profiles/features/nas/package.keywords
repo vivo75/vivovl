@@ -17,8 +17,3 @@
 # required by sys-libs/ldb-1.3.0::gentoo
 # required by net-fs/samba-4.7.0-r1::gentoo
 <sys-libs/tdb-9999 amd64
-
-
-# required by net-fs/samba-4.7.0-r1::gentoo[addns]
-net-dns/bind-tools gssapi
-
