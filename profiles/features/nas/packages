@@ -1,5 +1,6 @@
 app-benchmarks/iozone
 dev-python/psutil
+dev-python/python-magic
 dev-python/s3fs
 net-fs/cifs-utils
 net-fs/s3fs
