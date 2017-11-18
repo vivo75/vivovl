@@ -1,4 +1,3 @@
 -sys-block/megactl
--dev-util/debugedit
--app-emulation/qemu
 -sys-block/megacli
+-dev-util/debugedit

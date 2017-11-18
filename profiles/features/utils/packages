@@ -19,7 +19,6 @@ dev-python/pyblake2
 
 dev-python/pymysql
 dev-python/virtualenv
-dev-util/debugedit
 dev-vcs/git
 mail-client/mailx
 mail-mta/ssmtp

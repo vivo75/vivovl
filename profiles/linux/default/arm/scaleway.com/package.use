@@ -7,7 +7,7 @@ dev-libs/libxml2 icu lzma
 dev-libs/openssl rfc3779
 media-libs/gd png
 net-analyzer/fping suid
-net-analyzer/zabbix -frontend -server -sqlite curl libxml2 mysql ssh
+net-analyzer/zabbix -frontend -postgres -server -sqlite curl libxml2 mysql ssh
 net-dns/bind -berkdb geoip gost idn json nslint python sit
 net-firewall/iptables conntrack netlink nftables pcap
 net-firewall/xtables-addons -modules
@@ -16,7 +16,6 @@ net-libs/libnftnl threads examples json static-libs xml
 net-libs/libpcap canusb dbus netlink static-libs
 net-misc/curl ssl
 net-misc/iputils arping caps filecaps clockdiff gcrypt idn rarpd rdisc tracepath
-net-misc/openssh X509
 net-vpn/openvpn inotify lz4
 sys-apps/busybox static
 sys-apps/openrc tools
