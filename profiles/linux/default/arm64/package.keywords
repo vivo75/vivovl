@@ -1,0 +1,32 @@
+sys-devel/gcc:7.2.0 arm
+
+<app-admin/ansible-9999 *
+<app-arch/unshield-9999 *
+<app-arch/zpaq-9999 *
+<app-misc/byobu-9999 *
+<dev-perl/RPC-XML-9999 *
+<sys-apps/tuned-9999 *
+<sys-boot/efibootmgr-9999 *
+<sys-boot/grub-9999 *
+<sys-libs/efivar-9999 *
+
+<app-emulation/lxd-9999 ~*
+<app-emulation/spice-9999 ~*
+<app-forensics/aide-9999 ~*
+<app-forensics/lynis-9999 ~*
+<dev-util/lttng-tools-9999 ~*
+<net-analyzer/ifstat-9999 ~*
+<net-analyzer/zabbix-9999 ~*
+<net-firewall/ipset-9999 ~*
+<net-misc/usbip-9999 ~*
+<net-misc/vde-9999 ~*
+<sys-apps/apparmor-9999 ~*
+<sys-apps/apparmor-utils-9999 ~*
+<sys-apps/audio-entropyd-9999 ~*
+<sys-fs/lxcfs-9999 ~*
+<sys-fs/zfs-9999 ~*
+<sys-fs/zfs-kmod-9999 ~*
+<sys-kernel/spl-9999 ~*
+<sys-libs/libapparmor-9999 ~*
+<sys-process/tiptop-9999 ~*
+<www-misc/awstats-9999 ~*
