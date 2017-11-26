@@ -3,13 +3,10 @@
 
 EAPI="6"
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
-fi
+EGIT_REPO_URI="https://github.com/zfsonlinux/spl.git"
+inherit git-r3
+EGIT_COMMIT="ed19bccfb651843fa208232b3a2d3d22a4152bc8"
+KEYWORDS="~amd64"
 
 inherit flag-o-matic linux-info linux-mod autotools
 
@@ -55,7 +52,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 13 || die "Linux 4.13 is the latest supported version."; }
+		{ kernel_is le 4 14 || die "Linux 4.14 is the latest supported version."; }
 
 	check_extra_config
 }
