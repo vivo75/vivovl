@@ -10,6 +10,7 @@ dev-db
 dev-lang
 dev-libs
 dev-python
+dev-qt
 dev-rust
 dev-util
 dev-vcs
