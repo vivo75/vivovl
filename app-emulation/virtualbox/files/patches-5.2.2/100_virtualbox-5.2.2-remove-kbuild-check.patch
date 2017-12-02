@@ -1,0 +1,29 @@
+--- VirtualBox-5.2.2/Config.kmk.orig	2017-12-02 21:30:14.733426337 +0100
++++ VirtualBox-5.2.2/Config.kmk	2017-12-02 21:30:39.077030584 +0100
+@@ -163,26 +163,6 @@
+ # Delete targets on failure.
+ .DELETE_ON_ERROR:
+ 
+-# Notify about important kBuild updates.
+-if  $(KBUILD_VERSION_MAJOR) == 0 \
+- && (   $(KBUILD_VERSION_MINOR) >= 2 \
+-     || (   $(KBUILD_VERSION_MINOR) == 1 \
+-         && $(KBUILD_VERSION_PATCH) >= 999))
+- VBOX_MIN_KMK_REVISION        := 3093
+- VBOX_MIN_KBUILD_KMK_REVISION := $(if-expr "$(KBUILD_HOST)" == "win",3097,3074)
+- if $(KMK_REVISION) >= $(VBOX_MIN_KMK_REVISION)
+-  if $(KBUILD_KMK_REVISION) >= $(VBOX_MIN_KBUILD_KMK_REVISION)
+-   # OK.
+-  else
+-   $(error You must update kBuild! Requires kBuild binaries $(VBOX_MIN_KBUILD_KMK_REVISION) or later, kmk says $(KBUILD_KMK_REVISION) ($(KBUILD_VERSION)))
+-  endif
+- else
+-  $(error You must update kBuild! Requires kBuild revision $(VBOX_MIN_KMK_REVISION) or later, found $(KMK_REVISION) ($(KBUILD_VERSION)))
+- endif
+-else
+- $(error You must update kBuild! Requires 0.1.999 or later, found $(KBUILD_VERSION))
+-endif
+-
+ #
+ # Define USERNAME early on.
+ #

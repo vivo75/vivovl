@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/589392
+
+--- VirtualBox-5.1.4/configure
++++ VirtualBox-5.1.4/configure
+@@ -136,7 +136,7 @@
+ LIBVNCSERVER="-lvncserver"
+ INCDEVMAPPER=""
+ LIBDEVMAPPER="-ldevmapper"
+-CXX_FLAGS=""
++CXX_FLAGS="-std=c++11"
+ if [ "$OS" = "freebsd" ]; then
+   INCCURL="-I/usr/local/include"
+   LIBCURL="-L/usr/local/lib -lcurl"

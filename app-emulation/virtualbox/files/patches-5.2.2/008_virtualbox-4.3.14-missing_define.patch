@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/514658
+https://www.virtualbox.org/ticket/13199
+
+--- VirtualBox-4.3.14/src/VBox/Runtime/common/ldr/ldrkStuff.cpp
++++ VirtualBox-4.3.14/src/VBox/Runtime/common/ldr/ldrkStuff.cpp
+@@ -368,7 +368,7 @@
+  * We provide our own based on IPRT instead of using the kLdr ones.
+  */
+ extern "C" const KRDROPS g_kLdrRdrFileOps;
+-extern "C" const KRDROPS g_kLdrRdrFileOps =
++const KRDROPS g_kLdrRdrFileOps __attribute__((section(".rodata"))) =
+ {
+     /* .pszName = */        "IPRT",
+     /* .pNext = */          NULL,
