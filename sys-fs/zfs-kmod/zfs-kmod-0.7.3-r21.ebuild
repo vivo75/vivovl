@@ -5,7 +5,7 @@ EAPI="6"
 
 AUTOTOOLS_AUTORECONF="1"
 EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
-EGIT_COMMIT="94183a9d8a1133ff0d29666a86f84c24f2c4083c"
+EGIT_COMMIT="d4677269f286005768ae1a0fcd3389aa6015c4c7"
 inherit git-r3
 KEYWORDS="~amd64"
 

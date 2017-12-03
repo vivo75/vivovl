@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit git-r3
 EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
-EGIT_COMMIT="94183a9d8a1133ff0d29666a86f84c24f2c4083c"
+EGIT_COMMIT="d4677269f286005768ae1a0fcd3389aa6015c4c7"
 KEYWORDS="~amd64"
 
 inherit autotools bash-completion-r1 flag-o-matic linux-info linux-mod python-r1 systemd toolchain-funcs udev
