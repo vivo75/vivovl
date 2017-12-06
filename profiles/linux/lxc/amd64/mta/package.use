@@ -6,3 +6,7 @@ net-analyzer/net-snmp perl
 # USE="textcat" make lucene fail for dovecot
 net-mail/dovecot lucene lz4 managesieve mysql
 
+# mysql server is kept separate
+virtual/mysql -server
+dev-db/mariadb -server
+dev-db/mysql -server
