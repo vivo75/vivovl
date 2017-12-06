@@ -6,3 +6,8 @@ sys-devel/gcc:7.2.0 amd64
 
 # qemu require
 ~dev-lang/python-exec-2.4.5 amd64
+
+# permit kernel v4.14
+=sys-kernel/spl-0.7.3-r21 amd64
+=sys-fs/zfs-kmod-0.7.3-r21 amd64
+=sys-fs/zfs-0.7.3-r21 amd64
