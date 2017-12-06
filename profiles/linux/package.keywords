@@ -1,5 +1,5 @@
 # use a recent gcc
-sys-devel/gcc:6.3.0 amd64
+sys-devel/gcc:7.2.0 amd64
 
 # latest longterm kernel
 =dev-util/perf-4.9* amd64
@@ -14,3 +14,6 @@ sys-devel/gcc:6.3.0 amd64
 # Allow root password logins in the live-cds
 =net-misc/openssh-7.5*
 
+# python3_6 support
+~dev-python/setuptools-36.6.0 amd64
+~sys-devel/gdb-8.0.1 amd64

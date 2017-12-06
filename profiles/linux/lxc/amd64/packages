@@ -2,6 +2,7 @@
 *sys-apps/iproute2
 *sys-apps/openrc
 *virtuals/bdeps
+*sys-devel/bc
 
 # remove some stuff from upstream system set
 -*app-editors/nano
