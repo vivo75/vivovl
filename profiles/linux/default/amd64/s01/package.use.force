@@ -1,0 +1,2 @@
+# fail to build, missing conntrack functions
+net-firewall/iptables -static-libs
