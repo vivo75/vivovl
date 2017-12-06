@@ -93,6 +93,5 @@ sys-devel/gdb
 sys-fs/squashfs-tools
 sys-process/htop
 sys-process/time
-www-apache/mod_python
 www-apache/mod_tidy
 www-apache/mod_wsgi
