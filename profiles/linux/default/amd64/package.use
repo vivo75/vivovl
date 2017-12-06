@@ -1,0 +1,5 @@
+# compile with static use require to abandon snappy support
+app-emulation/qemu -snappy static-user
+
+# try to make compilation faster
+sys-devel/gcc pgo

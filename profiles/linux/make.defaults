@@ -40,8 +40,8 @@ GRUB_PLATFORMS="efi-64 efi-32 pc qemu"
 #USE_EXPAND="TEMPLATES"
 
 # python targets to build
-PYTHON_TARGETS="python2_7 python3_4"
-PYTHON_SINGLE_TARGET="python3_4"
+PYTHON_TARGETS="python2_7 python3_6"
+PYTHON_SINGLE_TARGET="python3_6"
 USE_PYTHON="2.7"
 
 # vim: setlocal filetype=gentoo-make-conf :

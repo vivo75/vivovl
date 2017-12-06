@@ -15,3 +15,7 @@ sci-visualization/gnuplot     X gd
 sys-devel/gcc:4.9.4           cxx gcj -openmp -sanitize -vtv
 x11-libs/cairo                X glib svg
 x11-libs/pango                X
+
+# required by libreoffice
+dev-libs/xmlsec               nss
+app-text/xmlto                text
