@@ -88,7 +88,6 @@ sys-apps/miscfiles
 sys-apps/mlocate
 sys-apps/xinetd
 sys-devel/bc
-sys-devel/gcc:4.9.4
 sys-devel/gdb
 sys-fs/squashfs-tools
 sys-process/htop
