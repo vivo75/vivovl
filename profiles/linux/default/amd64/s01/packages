@@ -10,3 +10,6 @@ net-vpn/openvpn
 
 # handy for remote copies, manage google-drive
 net-misc/rclone
+
+# needed to use debian lxc images
+dev-util/debootstrap
