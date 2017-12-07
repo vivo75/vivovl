@@ -1,4 +1,12 @@
+# managment
 app-admin/ansible
+
+# monitoring
 net-analyzer/zabbix
+
+# essentials
 net-ftp/vsftpd
 net-vpn/openvpn
+
+# handy for remote copies, manage google-drive
+net-misc/rclone
