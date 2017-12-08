@@ -1,5 +1,2 @@
-app-admin/ansible
-net-analyzer/zabbix
-net-ftp/vsftpd
+# used in local networks
 net-misc/dhcpcd
-net-vpn/openvpn
