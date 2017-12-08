@@ -10,6 +10,7 @@
 <net-libs/libnetfilter_conntrack-9999 amd64
 <net-libs/libnftnl-9999 amd64
 <net-misc/netpipe-9999 amd64
+<net-misc/rclone-9999 amd64
 <net-misc/whois-9999 amd64
 <net-vpn/openvpn-9999 amd64
 <sys-block/megamgr-9999 amd64
