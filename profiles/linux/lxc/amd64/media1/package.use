@@ -19,3 +19,9 @@ x11-libs/pango                X
 # required by libreoffice
 dev-libs/xmlsec               nss
 app-text/xmlto                text
+app-office/libreoffice        -qt4 qt5
+dev-qt/qtcore                 icu
+dev-qt/qtgui                  -libinput
+x11-libs/libxcb               xkb
+x11-libs/libxkbcommon         X
+dev-libs/libpcre2             pcre16
