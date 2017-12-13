@@ -65,8 +65,8 @@ media-libs/fontconfig
 media-libs/giflib
 media-libs/jasper
 media-libs/jbigkit
-media-libs/jpeg
 media-libs/libart_lgpl
+media-libs/libjpeg-turbo
 media-libs/tiff
 media-libs/urt
 media-video/mpeg2vidcodec

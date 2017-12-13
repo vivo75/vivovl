@@ -8,7 +8,9 @@
 =dev-qt/qtchooser-0* amd64
 =dev-qt/qtcore-5.9* amd64
 =dev-qt/qtgui-5.9* amd64
+=dev-qt/qtnetwork-5.9* amd64
 =dev-qt/qtwidgets-5.9* amd64
 =kde-frameworks/extra-cmake-modules-5.40* amd64
 =kde-frameworks/breeze-icons-5.40* amd64
 =kde-frameworks/kcoreaddons-5.40* amd64
+~media-libs/libjpeg-turbo-1.5.2 amd64
