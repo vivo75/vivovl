@@ -1,3 +1,6 @@
+# compile with static use require to abandon snappy support
+app-emulation/qemu -snappy static-user
+
 app-misc/ca-certificates -cacert
 app-text/asciidoc python_single_target_python2_7
 dev-lang/python sqlite
