@@ -5,6 +5,7 @@ app-emulation
 app-forensics
 app-portage
 app-shells
+app-text
 app-vim
 dev-db
 dev-lang
