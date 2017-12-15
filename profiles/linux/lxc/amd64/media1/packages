@@ -18,6 +18,7 @@ app-text/code2html
 app-text/convmv
 app-text/dos2unix
 app-text/enchant
+app-text/libepubgen
 app-text/poppler
 app-text/pstotext
 app-text/recode
