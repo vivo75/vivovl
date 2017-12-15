@@ -52,6 +52,7 @@ dev-python/pyyaml
 dev-python/reportlab
 dev-python/sqlalchemy
 dev-python/werkzeug
+dev-qt/qtnetwork
 dev-util/dialog
 dev-util/diffstat
 dev-util/strace
