@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/vivo75/smalltools"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit distutils-r1 git-r3
-	EGIT_REPO_URI="https://github.com/vivo75/${PN}"
+	EGIT_REPO_URI="https://github.com/vivo75/${PN}.git"
 	KEYWORDS="~amd64 ~arm"
 else
 	inherit distutils-r1
