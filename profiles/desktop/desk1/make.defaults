@@ -19,7 +19,7 @@ USE="${USE} mmx sse sse2"
 USE="${USE} appstream clang cpudetection egl ffmpeg gles2 gpu lz4 metric pgo"
 USE="${USE} pulseaudio threads vaapi vulkan wayland"
 
-LLVM_TARGETS="AArch64 ARM X86"
+LLVM_TARGETS="AArch64 AMDGPU ARM BPF NVPTX X86"
 VIDEO_CARDS="-* intel i965 nouveau radeon radeonsi amdgpu qxl modesetting virgl"
 INPUT_DEVICES="-* evdev wacom libinput synaptics"
 SANE_BACKENDS="-* hp hp3500 hp3900 hp4200 hp5400 hp5590 hpljm1005"
