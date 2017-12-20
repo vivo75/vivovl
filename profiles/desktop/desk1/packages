@@ -2,7 +2,6 @@ app-admin/augeas
 app-admin/hddtemp
 app-admin/keepassxc
 app-admin/logrotate
-app-admin/logstash-bin
 app-admin/smalltools
 app-admin/sudo
 app-admin/tmpreaper
@@ -72,7 +71,6 @@ dev-db/postgresql
 dev-embedded/arduino
 dev-java/icedtea
 dev-java/jdbc-mysql
-dev-java/maven-bin
 dev-java/oracle-jdk-bin
 dev-java/pdfbox
 dev-lang/php
@@ -245,15 +243,12 @@ net-fs/sshfs
 net-ftp/tftp-hpa
 net-im/sky-ng
 net-im/skypeforlinux
-net-im/slack-bin
-net-im/telegram-desktop-bin
 net-irc/hexchat
 net-irc/quassel
 net-libs/libgmail
 net-libs/libtorrent
 net-libs/miniupnpc
 net-libs/nodejs
-net-mail/davmail-bin
 net-mail/email
 net-mail/up-imapproxy
 net-misc/bridge-utils
@@ -347,9 +342,7 @@ sys-process/lsof
 sys-process/nmon
 sys-process/parallel
 virtual/mpi
-www-apps/kibana-bin
 www-client/elinks
-www-client/firefox-bin
 www-client/google-chrome
 www-plugins/chrome-binary-plugins
 www-servers/gunicorn
