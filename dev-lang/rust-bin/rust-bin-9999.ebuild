@@ -7,7 +7,7 @@ inherit eutils bash-completion-r1
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="http://www.rust-lang.org/"
-MY_SRC_URI="http://static.rust-lang.org/dist/rust-nightly"
+MY_SRC_URI="https://static.rust-lang.org/dist/rust-nightly"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="nightly"
@@ -47,7 +47,7 @@ src_install() {
 	local components="rustc,${std}"
 	if use tools; then
 		local analysis=$(grep 'analysis' ./components)
-		components="${components},rls,${analysis}"
+		components="${components},rls-preview,${analysis}"
 	fi
 	use doc && components="${components},rust-docs"
 	./install.sh \
