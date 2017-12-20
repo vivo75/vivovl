@@ -118,7 +118,7 @@ kde-plasma/kwin -gles2
 kde-plasma/oxygen wayland
 kde-plasma/plasma-desktop pulseaudio -qt4
 lxqt-base/lxqt-panel -kbindicator
-mail-client/mutt -berkdb crypt -gdbm hcache nls ssl gpg idn imap kerberos lmdb notmuch -pop sasl sidebar smime smtp
+mail-client/mutt -berkdb crypt -gdbm hcache nls ssl gpg idn imap kerberos lmdb -pop sasl sidebar smime smtp
 mail-client/thunderbird -gstreamer custom-cflags custom-optimization system-harfbuzz system-icu system-jpeg system-libevent system-libvpx -system-sqlite
 media-gfx/darktable colord flickr opencl openexr webp
 media-gfx/enblend gpu openmp -openexr
