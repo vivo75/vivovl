@@ -15,7 +15,7 @@ KEYWORDS=""
 IUSE="libressl"
 
 EGIT_REPO_URI="https://github.com/rust-lang/cargo.git"
-BIN_CARGO_URI="http://static.rust-lang.org/dist/cargo-nightly"
+BIN_CARGO_URI="https://static.rust-lang.org/dist/cargo-nightly"
 
 COMMON_DEPEND=">=virtual/rust-999
 	sys-libs/zlib
@@ -39,10 +39,11 @@ pkg_setup() {
 
 	wget "${BIN_CARGO_URI}-${postfix}.tar.gz" || die
 	unpack "./cargo-nightly-${postfix}.tar.gz"
+	mv "./cargo-nightly-${postfix}" "./cargo"
 }
 
 src_compile() {
-	cargo build --release || die
+	"$HOME/cargo/cargo/bin/cargo" build --release || die
 }
 
 src_install() {

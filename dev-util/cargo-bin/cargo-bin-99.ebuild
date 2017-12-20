@@ -7,7 +7,7 @@ inherit bash-completion-r1
 
 DESCRIPTION="The Rust's package manager"
 HOMEPAGE="http://crates.io"
-MY_SRC_URI="http://static.rust-lang.org/dist/rust-beta"
+MY_SRC_URI="https://static.rust-lang.org/dist/rust-beta"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
@@ -46,6 +46,6 @@ src_install() {
 
 	dosym "/opt/${P}/bin/cargo" /usr/bin/cargo
 	dosym "/opt/${P}/share/zsh/site-functions/_cargo" /usr/share/zsh/site-functions/_cargo
-	#newbashcomp "${D}/opt/${P}/etc/bash_completions.d/cargo" cargo
+	newbashcomp "${D}/opt/${P}/etc/bash_completion.d/cargo" cargo
 	rm -rf "${D}/opt/${P}/etc" || die
 }
