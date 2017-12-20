@@ -1,0 +1,6 @@
+~media-libs/babl-9999 amd64
+~media-libs/gegl-9999 amd64
+=media-gfx/gimp-9999 amd64
+=media-gfx/rawtherapee-9999 amd64
+=net-misc/freerdp-9999 amd64
+

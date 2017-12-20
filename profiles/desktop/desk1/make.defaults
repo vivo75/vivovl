@@ -1,0 +1,35 @@
+
+ACCEPT_KEYWORDS="~amd64"
+ACCEPT_LICENSE="*"
+
+# Remove "multilib-strict" for now wrt #424423
+FEATURES="collision-protect sign test test-fail-continue userpriv usersandbox"
+FEATURES="${FEATURES} compress-build-logs ebuild-locks fail-clean multilib-strict"
+FEATURES="${FEATURES} split-elog split-log splitdebug compressdebug"
+FEATURES="${FEATURES} unknown-features-warn unmerge-logs noinfo usersync xattr"
+FEATURES="${FEATURES} -merge-sync"
+
+# Log eqawarn messages
+PORTAGE_ELOG_CLASSES="${PORTAGE_ELOG_CLASSES} qa"
+
+#USE="${USE} -python_targets_python2_7 -python_targets_python3_4 -python_targets_python3_5"
+#USE="${USE} -input_devices_keyboard -input_devices_mouse"
+#USE="${USE} -video_cards_dummy -video_cards_fbdev -video_cards_vesa"
+#USE="${USE} -python_single_target_python3_5"
+USE="${USE} -ruby_targets_ruby21 -ruby_targets_ruby22 -ruby_targets_ruby23"
+USE="${USE} -kdepim -handbook -oldwallet -bindist -qt4"
+USE="${USE} mmx sse sse2"
+USE="${USE} appstream clang cpudetection egl ffmpeg gles2 gpu lz4 metric pgo"
+USE="${USE} pulseaudio threads vaapi vulkan wayland"
+
+VIDEO_CARDS="-* intel i965 nouveau radeon radeonsi amdgpu qxl modesetting virgl"
+INPUT_DEVICES="-* evdev wacom libinput synaptics"
+
+ABI_X86="64 32"
+SANE_BACKENDS="-* hp hp3500 hp3900 hp4200 hp5400 hp5590 hpljm1005"
+PYTHON_SINGLE_TARGET="-* python3_6"
+PYTHON_TARGETS="-* python3_6 pypy3"
+RUBY_TARGETS="ruby24"
+CALLIGRA_FEATURES="krita"
+
+QEMU_SOFTMMU_TARGETS="x86_64 aarch64 arm"

@@ -1,0 +1,9 @@
+# crash too often
+dev-lang/ekopath
+=media-libs/vulkan-loader-1.0.54.0
+=media-libs/vulkan-loader-1.0.61.1
+sys-apps/man-db
+
+# problems with tensorflow
+~media-libs/opencv-3.3.0
+
