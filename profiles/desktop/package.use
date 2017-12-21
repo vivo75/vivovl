@@ -147,3 +147,11 @@ media-sound/pulseaudio gnome
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
+
+##########################################
+#### Local
+##########################################
+
+# absolutely needed to avoid conflict with openrc
+# openrc start the container, systemd the baremetal
+sys-apps/systemd -sysv-utils
