@@ -238,6 +238,7 @@ sys-cluster/openmpi cma heterogeneous mpi-threads numa
 sys-devel/distcc crossdev
 sys-devel/gcc  -gcj -go fortran graphite
 sys-devel/gdb lzma expat
+sys-devel/llvm gold
 >=sys-fabric/libibverbs-1.1.7-r1 static-libs
 >=sys-fabric/librdmacm-1.0.18-r1 static-libs
 sys-firmware/ipxe undi iso lkrn
