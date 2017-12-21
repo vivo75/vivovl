@@ -241,8 +241,6 @@ net-firewall/ipset
 net-fs/cifs-utils
 net-fs/sshfs
 net-ftp/tftp-hpa
-net-im/sky-ng
-net-im/skypeforlinux
 net-irc/hexchat
 net-irc/quassel
 net-libs/libgmail
