@@ -1,8 +1,8 @@
+# globally useful packages
 app-admin/apachetop
 app-crypt/certbot
 app-text/htmldoc
 dev-lang/php
-dev-lang/php:5.6
 dev-libs/elfutils
 dev-php/PEAR-Auth_SASL
 dev-php/PEAR-Mail_Mime
@@ -18,3 +18,9 @@ net-misc/socat
 virtual/mysql
 www-misc/awstats
 www-servers/apache
+
+# useful for Nextcloud
+dev-db/redis
+net-mail/up-imapproxy
+www-servers/uwsgi
+
