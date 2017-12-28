@@ -19,6 +19,12 @@ virtual/mysql
 www-misc/awstats
 www-servers/apache
 
+# php pecl additions
+dev-php/pecl-mailparse
+dev-php/pecl-memcached
+dev-php/pecl-redis
+dev-php/pecl-geoip
+
 # useful for Nextcloud
 dev-db/redis
 net-mail/up-imapproxy
