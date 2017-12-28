@@ -19,14 +19,15 @@ virtual/mysql
 www-misc/awstats
 www-servers/apache
 
-# php pecl additions
+# php pecl additions (also used by Nextcloud)
+dev-php/pecl-apcu
 dev-php/pecl-mailparse
 dev-php/pecl-memcached
 dev-php/pecl-redis
 dev-php/pecl-geoip
 
-# useful for Nextcloud
+# useful for Nextclouda
+app-admin/sudo
 dev-db/redis
 net-mail/up-imapproxy
 www-servers/uwsgi
-
