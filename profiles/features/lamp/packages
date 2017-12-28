@@ -21,6 +21,7 @@ www-servers/apache
 
 # php pecl additions (also used by Nextcloud)
 dev-php/pecl-apcu
+dev-php/pecl-apcu_bc
 dev-php/pecl-mailparse
 dev-php/pecl-memcached
 dev-php/pecl-redis
