@@ -6,3 +6,7 @@ net-misc/curl http2 idn
 www-misc/awstats geoip
 www-servers/apache ssl threads
 www-servers/uwsgi apache2
+
+# if apr-util is compiled without database support
+# apache cannot use *dbd* modules
+dev-libs/apr-util mysql openssl
