@@ -26,3 +26,4 @@ net-misc/radvd
 net-misc/socat
 net-misc/usbip
 net-vpn/openvpn
+net-vpn/wireguard
