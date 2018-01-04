@@ -14,7 +14,7 @@ net-firewall/xtables-addons -modules
 net-libs/libnftnl threads examples json xml
 net-libs/libpcap canusb dbus netlink
 net-misc/curl ssl
-net-misc/iputils arping caps filecaps clockdiff gcrypt idn rarpd rdisc tracepath
+net-misc/iputils arping caps filecaps clockdiff idn rarpd rdisc tracepath
 net-misc/openssh X509
 net-vpn/openvpn inotify lz4
 sys-apps/busybox static

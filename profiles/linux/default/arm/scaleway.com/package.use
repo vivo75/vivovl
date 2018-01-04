@@ -15,7 +15,7 @@ net-libs/libnetfilter_conntrack static-libs
 net-libs/libnftnl threads examples json static-libs xml
 net-libs/libpcap canusb dbus netlink static-libs
 net-misc/curl ssl
-net-misc/iputils arping caps filecaps clockdiff gcrypt idn rarpd rdisc tracepath
+net-misc/iputils arping caps filecaps clockdiff idn rarpd rdisc tracepath
 net-vpn/openvpn inotify lz4
 sys-apps/busybox static
 sys-apps/openrc tools
