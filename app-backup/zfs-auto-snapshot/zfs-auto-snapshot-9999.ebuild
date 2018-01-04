@@ -14,3 +14,14 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-fs/zfs"
 
+IUSE="+minimal"
+
+src_install() {
+
+	emake DESTDIR="${D}" PREFIX=/usr install || die
+
+	if use minimal; then
+		einfo "Removing cron files due to \"minimal\" use enabled"
+		rm -rfv "${D}"/etc/cron*
+	fi
+}
