@@ -1,6 +1,12 @@
-www-servers/apache ssl threads
-dev-lang/php  apache2 bcmath calendar curl debug exif flatfile fpm ftp gd gmp imap inifile intl mysqli pdo sockets sqlite threads tidy truetype vpx xmlreader xmlrpc xmlwriter xslt zip libmysqlclient mysql
 app-eselect/eselect-php fpm apache2
-www-misc/awstats geoip
+dev-lang/php  apache2 bcmath calendar curl debug exif flatfile fpm ftp gd gmp imap inifile intl mysqli pdo sockets sqlite threads tidy truetype vpx xmlreader xmlrpc xmlwriter xslt zip libmysqlclient mysql pcntl
+dev-php/pecl-memcached igbinary json
+dev-php/pecl-redis session igbinary
 net-misc/curl http2 idn
+www-misc/awstats geoip
+www-servers/apache ssl threads
+www-servers/uwsgi apache2
 
+# if apr-util is compiled without database support
+# apache cannot use *dbd* modules
+dev-libs/apr-util mysql openssl
