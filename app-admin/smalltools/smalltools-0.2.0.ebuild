@@ -1,4 +1,4 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2017-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/vivo75/smalltools"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit distutils-r1 git-r3
-	EGIT_REPO_URI="https://github.com/vivo75/${PN}"
+	EGIT_REPO_URI="https://github.com/vivo75/${PN}.git"
 	KEYWORDS="~amd64 ~arm"
 else
 	inherit distutils-r1
