@@ -12,6 +12,7 @@ net-analyzer/tcpdump
 net-analyzer/tcptraceroute
 net-analyzer/zabbix
 net-dns/bind-tools
+net-dns/unbound
 net-firewall/ipset
 net-firewall/nftables
 net-fs/sshfs
