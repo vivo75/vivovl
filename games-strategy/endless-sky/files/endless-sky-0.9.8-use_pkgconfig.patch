@@ -1,0 +1,25 @@
+--- endless-sky-0.9.8/SConstruct.orig	2018-01-13 16:37:23.111609105 +0100
++++ endless-sky-0.9.8/SConstruct	2018-01-13 16:44:46.212269837 +0100
+@@ -38,14 +38,16 @@
+ # -msse3 or (if just building for your own computer) -march=native.
+ env.Append(CCFLAGS = flags)
+ env.Append(LIBS = [
+-	"SDL2",
+-	"png",
+-	"jpeg",
+-	"GL",
+-	"GLEW",
+-	"openal",
+ 	"pthread"
+ ]);
++# Using pkg-config to find libraries when possible
++env.ParseConfig('pkg-config --cflags --libs sdl2')
++env.ParseConfig('pkg-config --cflags --libs libpng')
++env.ParseConfig('pkg-config --cflags --libs libjpeg')
++env.ParseConfig('pkg-config --cflags --libs gl')
++env.ParseConfig('pkg-config --cflags --libs glew')
++env.ParseConfig('pkg-config --cflags --libs openal')
++
+ # libmad is not in the Steam runtime, so link it statically:
+ if 'SCHROOT_CHROOT_NAME' in os.environ and 'steamrt_scout_i386' in os.environ['SCHROOT_CHROOT_NAME']:
+ 	env.Append(LIBS = File("/usr/lib/i386-linux-gnu/libmad.a"))
