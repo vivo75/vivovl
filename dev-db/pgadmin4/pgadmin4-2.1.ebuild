@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,7 +59,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/mimeparse-1.5.1[${PYTHON_USEDEP}]
 	>=dev-python/passlib-1.6.2[${PYTHON_USEDEP}]
 	>=dev-python/pbr-1.9.1[${PYTHON_USEDEP}]
-	>=dev-python/psycopg-2.7.1[${PYTHON_USEDEP}]
+	>=dev-python/psycopg-2.7.3.2[${PYTHON_USEDEP}]
 	>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
 	>=dev-python/pyrsistent-0.11.13[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.5.0[${PYTHON_USEDEP}]
@@ -81,7 +81,7 @@ src_prepare() {
 }
 
 src_configure() {
-		eqmake5
+	eqmake5
 }
 
 src_compile() {
