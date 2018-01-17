@@ -31,13 +31,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	if has_version ">=media-gfx/exiv2-0.26_p20171013"; then
-		sed -i 's|exiv2/xmp.hpp|exiv2/xmp_exiv2.hpp|' \
-			gexiv2/gexiv2-metadata-private.h \
-			gexiv2/gexiv2-metadata.cpp \
-			gexiv2/gexiv2-metadata-xmp.cpp \
-			gexiv2/gexiv2-startup.cpp || die
-	fi
 	xdg_environment_reset
 	tc-export CXX
 	default
