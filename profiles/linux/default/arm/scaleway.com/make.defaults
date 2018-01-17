@@ -1,0 +1,9 @@
+USE=""
+USE="${USE} -bindist -cups -devfs-compat -fortran -gpm -ldap"
+USE="${USE} acl berkdb bitmap-fonts bzip2 caps cli cracklib crypt dri"
+USE="${USE} gdbm hpn iconv idm ipv6 isdnlog midi mmx mudflap"
+USE="${USE} ncurses nls nptl nptlonly openmp pcre perl pgo ppds pppd python"
+USE="${USE} readline reflection session spl sse sse2 ssl"
+USE="${USE} tcpd threads truetype-fonts type1-fonts unicode urandom userlocales"
+USE="${USE} xattr xorg zlib"
+
