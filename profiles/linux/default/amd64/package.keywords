@@ -2,12 +2,6 @@ sys-devel/gcc:7.2.0 amd64
 
 # dev-python/certifi requires
 ~dev-python/six-1.11.0 amd64
-~dev-python/setuptools-36.7.2 amd64
 
-# qemu require
-~dev-lang/python-exec-2.4.5 amd64
-
-# permit kernel v4.14
-=sys-kernel/spl-0.7.3-r21 amd64
-=sys-fs/zfs-kmod-0.7.3-r21 amd64
-=sys-fs/zfs-0.7.3-r21 amd64
+# not stable yet
+<net-vpn/wireguard-9999 amd64
