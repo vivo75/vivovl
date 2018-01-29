@@ -1,2 +1,5 @@
 app-emulation/lxc cgmanager python
-app-emulation/qemu -iscsi numa smartcard snappy spice ssh vde ncurses
+app-emulation/qemu -iscsi numa rbd sdl sdl2 smartcard snappy spice ssh vde virgl virtfs ncurses
+
+# required by USE=sdl qemu
+media-libs/libsdl2 X
