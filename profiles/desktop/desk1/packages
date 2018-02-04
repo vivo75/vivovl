@@ -301,7 +301,6 @@ sys-apps/usbredir
 sys-apps/usbutils
 sys-block/gparted
 sys-block/nbd
-sys-block/open-iscsi
 sys-block/raid-check
 sys-boot/efibootmgr
 sys-boot/grub
