@@ -7,9 +7,9 @@ sys-devel/gcc:7.2.0 amd64
 # filesystem utilities
 <sys-fs/e2fsprogs-9999 amd64
 <sys-libs/e2fsprogs-libs-9999 amd64
-=sys-fs/zfs-kmod-0.7* amd64
-=sys-fs/zfs-0.7* amd64
-=sys-kernel/spl-0.7* amd64
+<sys-fs/zfs-kmod-0.7.9999 amd64
+<sys-fs/zfs-0.7.9999 amd64
+<sys-kernel/spl-0.7.9999 amd64
 
 # Allow root password logins in the live-cds
 =net-misc/openssh-7.5*

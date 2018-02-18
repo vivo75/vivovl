@@ -1,0 +1,4 @@
+# USE=kernel-builtin is dangerous. Only those that know what they are doing
+# yet, we know and build modules in a different container
+sys-fs/zfs -kernel-builtin
+

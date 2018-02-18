@@ -1,3 +1,4 @@
+dev-util/sysdig
 sys-apps/apparmor
 sys-apps/apparmor-utils
 sys-apps/audio-entropyd
@@ -20,10 +21,8 @@ sys-boot/grub
 sys-fs/cryptsetup
 sys-fs/mdadm
 sys-fs/sysfsutils
-sys-fs/zfs-kmod
 sys-fs/zfs
 sys-kernel/dracut
-sys-kernel/spl
 sys-libs/libhugetlbfs
 sys-power/acpid
 sys-process/numad

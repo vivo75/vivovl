@@ -2,3 +2,8 @@ sys-apps/lm_sensors sensord
 sys-apps/usbutils -python
 sys-boot/grub -device-mapper -truetype
 sys-kernel/dracut crypt mdraid syslog
+
+# modules are built in a different container
+net-vpn/wireguard -module
+dev-util/sysdig -modules
+sys-fs/zfs kernel-builtin

@@ -24,9 +24,9 @@ sys-devel/gcc:7.2.0 arm
 <sys-apps/apparmor-utils-9999 ~*
 <sys-apps/audio-entropyd-9999 ~*
 <sys-fs/lxcfs-9999 ~*
-<sys-fs/zfs-9999 ~*
-<sys-fs/zfs-kmod-9999 ~*
-<sys-kernel/spl-9999 ~*
+<sys-fs/zfs-0.7.9999 ~*
+<sys-fs/zfs-kmod-0.7.9999 ~*
+<sys-kernel/spl-0.7.9999 ~*
 <sys-libs/libapparmor-9999 ~*
 <sys-process/tiptop-9999 ~*
 <www-misc/awstats-9999 ~*

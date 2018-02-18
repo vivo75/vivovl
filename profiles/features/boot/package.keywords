@@ -4,3 +4,7 @@
 <sys-apps/smartmontools-9999 amd64
 <sys-kernel/dracut-9999 amd64
 <sys-libs/libhugetlbfs-9999 amd64
+
+# sysdig and deps
+<dev-util/sysdig-9999 amd64
+<dev-libs/libb64-9999 amd64
