@@ -1,5 +1,5 @@
 # use a recent gcc
-sys-devel/gcc:7.2.0 amd64
+sys-devel/gcc:7.3.0 amd64
 
 # latest longterm kernel
 =dev-util/perf-4.9* amd64

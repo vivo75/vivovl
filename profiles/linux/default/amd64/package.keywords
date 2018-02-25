@@ -1,4 +1,4 @@
-sys-devel/gcc:7.2.0 amd64
+sys-devel/gcc:7.3.0 amd64
 
 # dev-python/certifi requires
 ~dev-python/six-1.11.0 amd64
