@@ -54,3 +54,7 @@ dev-libs/libgudev static-libs
 # But package.use.mask doesn't have a way to express that, so this profile loses.
 sys-apps/flashrom static
 sys-apps/pciutils static-libs
+
+# test require python:2.7 - https://bugs.gentoo.org/648940
+sys-devel/automake test
+
