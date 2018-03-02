@@ -1,1 +1,8 @@
 sys-devel/gcc:7.3.0 amd64
+
+# needed to satisfy new gentoo dep
+virtual/mysql amd64
+virtual/libmysqlclient amd64
+=dev-db/mariadb-10.3* amd64
+dev-db/mysql-connector-c amd64
+dev-db/mariadb-connector-c amd64
