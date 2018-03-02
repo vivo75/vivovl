@@ -8,5 +8,5 @@ net-mail/dovecot lucene lz4 managesieve mysql
 
 # mysql server is kept separate
 virtual/mysql -server
-dev-db/mariadb -server
+dev-db/mariadb -client-libs -server
 dev-db/mysql -server

@@ -1,4 +1,4 @@
-dev-db/mariadb -bindist openssl -pam -perl -server
+dev-db/mariadb -client-libs -bindist openssl -pam -perl -server
 
 # it's a dep of ansible
 # [cli] bring in ipython which at this time is unwanted

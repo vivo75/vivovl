@@ -2,6 +2,7 @@ app-arch/pixz
 dev-db/innotop
 dev-db/mariadb
 dev-db/mongodb
+dev-db/mysql-connector-c
 dev-db/mysqltuner
 dev-db/percona-toolkit
 dev-db/postgresql

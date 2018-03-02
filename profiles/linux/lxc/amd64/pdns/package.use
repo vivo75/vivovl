@@ -1,7 +1,7 @@
 # required by mariadb
 sys-libs/zlib minizip
 
-dev-db/mariadb openssl extraengine perl server xml
+dev-db/mariadb -client-libs openssl extraengine perl server xml
 
 net-dns/pdns geoip luajit mysql sqlite tools
 net-dns/pdns-recursor luajit

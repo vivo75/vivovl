@@ -1,6 +1,7 @@
 -mail-mta/ssmtp
 
 app-antivirus/clamav
+dev-db/mysql-connector-c
 dev-python/pyzor
 mail-filter/amavisd-new
 mail-filter/dovecot-antispam
