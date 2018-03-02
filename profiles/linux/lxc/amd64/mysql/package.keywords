@@ -1,6 +1,5 @@
 =dev-db/innotop-1* amd64
 =dev-db/mysqltuner-1* amd64
-<app-arch/pixz-9999 amd64
 =dev-db/mariadb-10.2* amd64
 
 # DEP of mariadb-10.2

@@ -4,7 +4,6 @@ app-arch/lz4
 app-arch/lz5
 app-arch/lzop
 app-arch/p7zip
-app-arch/pixz
 app-arch/snappy
 app-arch/tardelta
 app-arch/unarj

@@ -12,7 +12,6 @@ app-arch/hardlink
 app-arch/lzop
 app-arch/p7zip
 app-arch/pigz
-app-arch/pixz
 app-arch/rpm
 app-arch/tardelta
 app-arch/unrar
