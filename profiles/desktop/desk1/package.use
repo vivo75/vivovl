@@ -1,5 +1,5 @@
 # virtualbox started to force kernel modules
-app-emulation/libvirt -virtualbox virt-network libssh apparmor
+app-emulation/libvirt -virtualbox virt-network libssh
 net-dns/dnsmasq script
 
 ##########################
