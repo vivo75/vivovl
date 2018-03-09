@@ -14,9 +14,6 @@ app-forensics/unhide arm arm64
 <net-analyzer/httping-9999 arm arm64
 <net-analyzer/netperf-9999 arm arm64
 <net-analyzer/zabbix-3.3
-<net-firewall/iptables-9999 arm arm64
-<net-libs/libnetfilter_conntrack-9999 arm arm64
-<net-libs/libnftnl-9999 arm arm64
 <net-mail/email-9999 arm arm64
 <net-misc/netpipe-9999 arm arm64
 <net-misc/nicstat-9999 arm arm64

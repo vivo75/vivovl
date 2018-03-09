@@ -17,3 +17,11 @@ sys-devel/gcc:7.3.0 amd64
 # python3_6 support
 ~dev-python/setuptools-36.6.0 amd64
 ~sys-devel/gdb-8.0.1 amd64
+
+# we keep kernel up to date
+<net-firewall/iptables-9999 amd64
+<net-firewall/ebtables-9999 amd64
+<net-firewall/nftables-9999 amd64
+<net-misc/ethertypes-9999 amd64
+<net-libs/libnetfilter_conntrack-9999 amd64
+<net-libs/libnftnl-9999 amd64
