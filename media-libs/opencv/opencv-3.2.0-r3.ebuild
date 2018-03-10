@@ -8,7 +8,7 @@ inherit toolchain-funcs python-r1 java-pkg-opt-2 java-ant-2 \
 	cmake-multilib
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
-HOMEPAGE="http://opencv.org"
+HOMEPAGE="https://opencv.org"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	contrib? ( https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
@@ -97,6 +97,26 @@ DEPEND="${RDEPEND}
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h
+	/usr/include/opencv2/opencv_modules.hpp
+	# [contrib_cvv]
+	/usr/include/opencv2/cvv.hpp
+	/usr/include/opencv2/cvv/call_meta_data.hpp
+	/usr/include/opencv2/cvv/cvv.hpp
+	/usr/include/opencv2/cvv/debug_mode.hpp
+	/usr/include/opencv2/cvv/dmatch.hpp
+	/usr/include/opencv2/cvv/filter.hpp
+	/usr/include/opencv2/cvv/final_show.hpp
+	/usr/include/opencv2/cvv/show_image.hpp
+	# [contrib_hdf]
+	/usr/include/opencv2/hdf.hpp
+	/usr/include/opencv2/hdf/hdf5.hpp
+	# [vtk]
+	/usr/include/opencv2/viz.hpp
+	/usr/include/opencv2/viz/types.hpp
+	/usr/include/opencv2/viz/viz3d.hpp
+	/usr/include/opencv2/viz/vizcore.hpp
+	/usr/include/opencv2/viz/widget_accessor.hpp
+	/usr/include/opencv2/viz/widgets.hpp
 )
 
 PATCHES=(
