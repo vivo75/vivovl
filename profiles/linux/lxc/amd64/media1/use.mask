@@ -1,2 +1,4 @@
 # openoffice need locale, in particular USE=nls boost
 -nls
+php_targets_php5-6
+php_targets_php7-0
