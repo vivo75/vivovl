@@ -3,7 +3,6 @@ app-antivirus/clamav
 app-forensics/aide
 app-forensics/chkrootkit
 app-forensics/lynis
-app-forensics/rkhunter
 app-forensics/unhide
 dev-util/fatrace
 dev-util/ltrace
