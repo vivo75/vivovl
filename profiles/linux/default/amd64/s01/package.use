@@ -4,6 +4,11 @@ app-emulation/qemu -snappy static-user
 # we use default cron script
 app-backup/zfs-auto-snapshot -minimal
 
+# virtualbox is used mainly for Sispac, with libvirt
+# modules are managed by a different container
+app-emulation/virtualbox -modules -qt5 -opengl -java -vboxwebsrv headless vnc
+app-emulation/libvirt virtualbox
+
 app-misc/ca-certificates -cacert
 app-text/asciidoc python_single_target_python2_7
 dev-lang/python sqlite
