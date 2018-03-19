@@ -15,9 +15,13 @@ media-gfx/imagemagick
 media-libs/gd
 net-misc/curl
 net-misc/socat
-virtual/mysql
+dev-db/mariadb
+dev-db/mysql-connector-c
 www-misc/awstats
 www-servers/apache
+
+# some older application still need it
+dev-lang/php:5.6
 
 # php pecl additions (also used by Nextcloud)
 dev-php/pecl-apcu
@@ -27,7 +31,7 @@ dev-php/pecl-memcached
 dev-php/pecl-redis
 dev-php/pecl-geoip
 
-# useful for Nextclouda
+# useful for Nextcloud
 app-admin/sudo
 dev-db/redis
 net-mail/up-imapproxy
