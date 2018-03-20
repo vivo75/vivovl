@@ -1,3 +1,6 @@
+# undo LAMP need for old php
+-dev-lang/php:5.6
+
 app-admin/analog
 app-admin/makepasswd
 app-admin/sudo
