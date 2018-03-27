@@ -1,0 +1,55 @@
+diff -Naur a/configure b/configure
+--- a/configure	2018-01-08 21:20:18.000000000 +0100
++++ b/configure	2018-03-27 18:25:41.678557899 +0200
+@@ -29553,7 +29553,7 @@
+ 
+ 
+ 
+-ac_config_files="$ac_config_files glib-2.0.pc gmodule-2.0.pc gmodule-export-2.0.pc gmodule-no-export-2.0.pc gthread-2.0.pc gobject-2.0.pc gio-2.0.pc gio-unix-2.0.pc gio-windows-2.0.pc glib-zip glib-gettextize Makefile build/Makefile build/win32/Makefile build/win32/dirent/Makefile win32/Makefile win32/vs9/Makefile win32/vs9/glib-version-paths.vsprops win32/vs10/Makefile win32/vs10/glib-version-paths.props win32/vs11/Makefile win32/vs12/Makefile win32/vs14/Makefile win32/vs15/Makefile glib/Makefile glib/libcharset/Makefile glib/gnulib/Makefile glib/pcre/Makefile glib/update-pcre/Makefile glib/tests/Makefile gmodule/Makefile gmodule/gmoduleconf.h gobject/Makefile gobject/glib-genmarshal gobject/glib-mkenums gobject/tests/Makefile gthread/Makefile gio/Makefile gio/gdbus-2.0/codegen/Makefile gio/gdbus-2.0/codegen/config.py gio/gnetworking.h gio/xdgmime/Makefile gio/inotify/Makefile gio/kqueue/Makefile gio/fam/Makefile gio/win32/Makefile gio/tests/Makefile gio/tests/gdbus-object-manager-example/Makefile gio/tests/services/Makefile gio/tests/services/org.gtk.GDBus.Examples.ObjectManager.service gio/tests/modules/Makefile po/Makefile.in docs/Makefile docs/reference/Makefile docs/reference/glib/Makefile docs/reference/glib/version.xml docs/reference/gobject/Makefile docs/reference/gobject/version.xml docs/reference/gio/Makefile docs/reference/gio/version.xml tests/Makefile tests/gobject/Makefile tests/refcount/Makefile m4macros/Makefile"
++ac_config_files="$ac_config_files glib-2.0.pc gmodule-2.0.pc gmodule-export-2.0.pc gmodule-no-export-2.0.pc gthread-2.0.pc gobject-2.0.pc gio-2.0.pc gio-unix-2.0.pc gio-windows-2.0.pc glib-zip glib-gettextize Makefile build/Makefile build/win32/Makefile build/win32/dirent/Makefile win32/Makefile win32/vs9/Makefile win32/vs9/glib-version-paths.vsprops win32/vs10/Makefile win32/vs10/glib-version-paths.props win32/vs11/Makefile win32/vs12/Makefile win32/vs14/Makefile win32/vs15/Makefile glib/Makefile glib/libcharset/Makefile glib/gnulib/Makefile glib/pcre/Makefile glib/update-pcre/Makefile glib/tests/Makefile gmodule/Makefile gmodule/gmoduleconf.h gobject/Makefile gobject/glib-genmarshal gobject/glib-mkenums gobject/tests/Makefile gthread/Makefile gio/Makefile gio/gnetworking.h gio/xdgmime/Makefile gio/inotify/Makefile gio/kqueue/Makefile gio/fam/Makefile gio/win32/Makefile gio/tests/Makefile gio/tests/gdbus-object-manager-example/Makefile gio/tests/services/Makefile gio/tests/services/org.gtk.GDBus.Examples.ObjectManager.service gio/tests/modules/Makefile po/Makefile.in docs/Makefile docs/reference/Makefile docs/reference/glib/Makefile docs/reference/glib/version.xml docs/reference/gobject/Makefile docs/reference/gobject/version.xml docs/reference/gio/Makefile docs/reference/gio/version.xml tests/Makefile tests/gobject/Makefile tests/refcount/Makefile m4macros/Makefile"
+ 
+ 
+ ac_config_commands="$ac_config_commands chmod-scripts"
+@@ -31185,8 +31185,6 @@
+     "gobject/tests/Makefile") CONFIG_FILES="$CONFIG_FILES gobject/tests/Makefile" ;;
+     "gthread/Makefile") CONFIG_FILES="$CONFIG_FILES gthread/Makefile" ;;
+     "gio/Makefile") CONFIG_FILES="$CONFIG_FILES gio/Makefile" ;;
+-    "gio/gdbus-2.0/codegen/Makefile") CONFIG_FILES="$CONFIG_FILES gio/gdbus-2.0/codegen/Makefile" ;;
+-    "gio/gdbus-2.0/codegen/config.py") CONFIG_FILES="$CONFIG_FILES gio/gdbus-2.0/codegen/config.py" ;;
+     "gio/gnetworking.h") CONFIG_FILES="$CONFIG_FILES gio/gnetworking.h" ;;
+     "gio/xdgmime/Makefile") CONFIG_FILES="$CONFIG_FILES gio/xdgmime/Makefile" ;;
+     "gio/inotify/Makefile") CONFIG_FILES="$CONFIG_FILES gio/inotify/Makefile" ;;
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2018-01-08 21:19:22.000000000 +0100
++++ b/configure.ac	2018-03-27 18:24:47.159457088 +0200
+@@ -3469,8 +3469,6 @@
+ gobject/tests/Makefile
+ gthread/Makefile
+ gio/Makefile
+-gio/gdbus-2.0/codegen/Makefile
+-gio/gdbus-2.0/codegen/config.py
+ gio/gnetworking.h
+ gio/xdgmime/Makefile
+ gio/inotify/Makefile
+diff -Naur a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2018-01-08 21:00:49.000000000 +0100
++++ b/Makefile.am	2018-03-27 18:25:55.934324964 +0200
+@@ -79,7 +79,6 @@
+ 	docs/reference/gobject/xml/gtkdocentities.ent.in \
+ 	docs/reference/gobject/xml/meson.build \
+ 	gio/data-to-c.py \
+-	gio/gdbus-2.0/codegen/meson.build \
+ 	gio/inotify/meson.build \
+ 	gio/kqueue/meson.build \
+ 	gio/meson.build \
+diff -Naur a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2018-01-08 21:20:20.000000000 +0100
++++ b/Makefile.in	2018-03-27 18:25:16.422972378 +0200
+@@ -858,7 +858,6 @@
+ 	docs/reference/gobject/xml/gtkdocentities.ent.in \
+ 	docs/reference/gobject/xml/meson.build \
+ 	gio/data-to-c.py \
+-	gio/gdbus-2.0/codegen/meson.build \
+ 	gio/inotify/meson.build \
+ 	gio/kqueue/meson.build \
+ 	gio/meson.build \
