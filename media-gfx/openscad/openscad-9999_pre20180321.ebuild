@@ -10,7 +10,7 @@ if [[ ${PV#9999} != ${PV} ]] ; then
 	inherit eutils git-r3 qmake-utils
 	SRC_URI=
 	EGIT_REPO_URI="https://github.com/openscad/openscad.git"
-	EGIT_COMMIT="3ad7670e026086a042d1962db5a599cfe2069078"
+	EGIT_COMMIT="41bee16364160524465def91945659926c006455"
 else
 	inherit eutils qmake-utils
 	MY_PV="2015.03-2"
