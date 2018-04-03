@@ -27,6 +27,7 @@ S="${WORKDIR}/glib-${PV}/gio/gdbus-2.0/codegen"
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	sed -e 's:from codegen import codegen_main:from gdbus_codegen import codegen_main:' -i gdbus-codegen.in
 	sed -e 's:#!/usr/bin/env @PYTHON@:#!/usr/bin/env python:' gdbus-codegen.in > gdbus-codegen || die
 	cp "${FILESDIR}/setup.py-2.32.4" setup.py || die "cp failed"
 	sed -e "s/@PV@/${PV}/" -i setup.py || die "sed setup.py failed"
