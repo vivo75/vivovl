@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 GNOME_ORG_MODULE="glib"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="xml"
@@ -27,7 +27,7 @@ S="${WORKDIR}/glib-${PV}/gio/gdbus-2.0/codegen"
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	sed -e 's:#!@PYTHON@:#!/usr/bin/env python:' gdbus-codegen.in > gdbus-codegen || die
+	sed -e 's:#!/usr/bin/env @PYTHON@:#!/usr/bin/env python:' gdbus-codegen.in > gdbus-codegen || die
 	cp "${FILESDIR}/setup.py-2.32.4" setup.py || die "cp failed"
 	sed -e "s/@PV@/${PV}/" -i setup.py || die "sed setup.py failed"
 }
