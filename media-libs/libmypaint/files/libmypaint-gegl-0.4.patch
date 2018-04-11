@@ -1,0 +1,21 @@
+--- ./configure.ac.orig	2018-04-27 19:01:20.441730206 +0200
++++ ./configure.ac	2018-04-27 19:09:56.653407475 +0200
+@@ -312,7 +312,7 @@
+ )
+ 
+ if eval "test x$enable_gegl = xyes"; then
+-  PKG_CHECK_MODULES(GEGL, gegl-0.3 >= gegl_required_version)
++  PKG_CHECK_MODULES(GEGL, gegl-0.3 >= gegl_required_version,, [ PKG_CHECK_MODULES(GEGL, gegl-0.4 >= gegl_required_version ) ])
+ fi
+ AM_CONDITIONAL(ENABLE_GEGL, test "x$enable_gegl" = "xyes")
+ 
+--- ./gegl/Makefile.am.orig	2018-04-27 19:20:51.330855694 +0200
++++ ./gegl/Makefile.am	2018-04-27 19:21:11.042537990 +0200
+@@ -12,6 +12,7 @@
+ INTROSPECTION_SCANNER_ARGS = \
+     --warn-all \
+     --pkg="gegl-0.3" \
++    --pkg="gegl-0.4" \
+     --pkg="glib-2.0" \
+     --namespace="MyPaintGegl" \
+     --nsversion="$(LIBMYPAINT_MAJOR_VERSION).$(LIBMYPAINT_MINOR_VERSION)" \
