@@ -19,11 +19,6 @@ RDEPEND="app-shells/bash"
 
 S="${WORKDIR}/${PN}"
 
-src_prepare() {
-	# Bug 507438
-	epatch_user
-}
-
 src_install() {
 	doman lynis.8
 	dodoc CHANGELOG.md FAQ README
