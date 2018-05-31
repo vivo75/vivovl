@@ -28,7 +28,7 @@ sys-boot/grub device-mapper fonts -themes
 net-misc/dhcp -server -vim-syntax
 sys-fs/lvm2 device-mapper-only -lvm1 -static -thin
 net-nds/rpcbind -tcpd
-net-libs/gnutls -cxx -crywrap
+net-libs/gnutls -cxx -crywrap tools
 dev-scheme/guile -deprecated
 sys-apps/hwloc pci plugins numa xml
 
