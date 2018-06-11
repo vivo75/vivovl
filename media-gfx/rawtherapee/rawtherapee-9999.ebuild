@@ -7,7 +7,7 @@ inherit cmake-utils toolchain-funcs flag-o-matic gnome2-utils xdg-utils git-r3
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
-EGIT_BRANCH="amaze_vng4"
+#EGIT_BRANCH="amaze_vng4"
 EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
 
 LICENSE="GPL-3"
