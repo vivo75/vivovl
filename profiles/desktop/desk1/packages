@@ -155,7 +155,7 @@ kde-apps/kompare
 kde-apps/kontact
 kde-apps/korganizer
 kde-apps/krdc
-kde-apps/okteta
+app-editors/okteta
 kde-apps/pim-sieve-editor
 kde-apps/poxml
 kde-misc/kdeconnect

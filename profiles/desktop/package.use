@@ -115,7 +115,7 @@ net-nds/openldap minimal
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Required by kde-apps/okteta
+# Required by app-editors/okteta
 dev-qt/qtscript:5 scripttools
 
 # Required by kde-apps/akonadi
