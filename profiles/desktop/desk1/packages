@@ -26,6 +26,7 @@ app-emulation/aqemu
 app-emulation/lxc
 app-emulation/q4wine
 app-emulation/qemu
+app-emulation/virt-manager
 app-emulation/virt-what
 app-emulation/wine-staging
 app-emulation/winetricks
@@ -141,6 +142,7 @@ kde-apps/kdeadmin-meta
 kde-apps/kdebase-meta
 kde-apps/kdecore-meta
 kde-apps/kdegraphics-meta
+kde-apps/kdenlive
 kde-apps/kdesdk-kioslaves
 kde-apps/kdesdk-thumbnailers
 kde-apps/kdeutils-meta
@@ -177,8 +179,6 @@ media-fonts/roboto
 media-fonts/takao-fonts
 media-gfx/argyllcms
 media-gfx/cairosvg
-media-gfx/cura
-media-gfx/curaengine
 media-gfx/dcraw
 media-gfx/displaycal
 media-gfx/gimp
@@ -218,6 +218,7 @@ media-video/mplayer
 media-video/mpv
 media-video/plasma-mediacenter
 media-video/transcode
+media-video/vlc
 net-analyzer/arp-scan
 net-analyzer/dhcp_probe
 net-analyzer/dhcpdump
@@ -270,6 +271,8 @@ net-misc/youtube-dl
 net-print/cups-pdf
 net-print/hplip
 net-wireless/wireless-tools
+sci-geosciences/gpx-viewer
+sci-geosciences/gpxsee
 sci-libs/alglib
 sci-libs/scipy
 sci-libs/umfpack
@@ -308,7 +311,9 @@ sys-firmware/b43-firmware
 sys-firmware/intel-microcode
 sys-fs/btrfs-progs
 sys-fs/dosfstools
+sys-fs/exfat-utils
 sys-fs/f2fs-tools
+sys-fs/fuse-exfat
 sys-fs/inotify-tools
 sys-fs/lxcfs
 sys-fs/mdadm
@@ -336,6 +341,7 @@ sys-process/nmon
 sys-process/parallel
 virtual/mpi
 www-client/elinks
+www-client/firefox
 www-client/google-chrome
 www-plugins/chrome-binary-plugins
 www-servers/gunicorn
