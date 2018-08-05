@@ -41,7 +41,7 @@ dev-java/icedtea nsplugin infinality
 dev-java/oracle-jdk-bin nsplugin
 dev-lang/luajit lua52compat
 >=dev-lang/perl-5.22.3_rc4 ithreads
-dev-lang/php gd bcmath calendar curl debug flatfile fpm gmp imap inifile mysql pcntl sockets sqlite sysvipc vpx xmlreader xmlrpc xmlwriter xslt zip pdo
+dev-lang/php gd bcmath calendar curl debug flatfile fpm gmp imap inifile mysql pcntl soap sockets sqlite sysvipc vpx xmlreader xmlrpc xmlwriter xslt zip pdo
 dev-lang/python sqlite pgo
 >=dev-libs/boost-1.56.0-r1 python
 dev-libs/elfutils static-libs
