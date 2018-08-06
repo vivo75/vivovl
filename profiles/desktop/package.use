@@ -137,7 +137,7 @@ media-libs/gd fontconfig
 media-libs/mesa egl wayland
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
+>=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt sdl2
 
 # Required by app-office/libreoffice
 media-libs/phonon designer

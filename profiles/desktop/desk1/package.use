@@ -122,7 +122,7 @@ kde-plasma/kwin -gles2
 kde-plasma/oxygen wayland
 kde-plasma/plasma-desktop pulseaudio -qt4
 lxqt-base/lxqt-panel -kbindicator
-mail-client/mutt -berkdb crypt -gdbm hcache nls ssl gpg idn imap kerberos lmdb -pop sasl sidebar smime smtp
+mail-client/mutt -berkdb crypt -gdbm -hcache nls ssl gpg idn imap kerberos -lmdb -pop sasl sidebar smime smtp
 mail-client/thunderbird -gstreamer custom-cflags custom-optimization system-harfbuzz system-icu system-jpeg system-libevent system-libvpx -system-sqlite
 media-gfx/darktable colord flickr opencl openexr webp
 media-gfx/enblend gpu openmp -openexr
@@ -156,7 +156,7 @@ media-libs/libsdl2 gles
 media-libs/libvpx svc
 >=media-libs/mesa-12.0.1 opencl
 media-libs/mesa -opencl wayland
-media-libs/mlt kdenlive melt qt5 sdl xml
+media-libs/mlt kdenlive melt qt5 sdl sdl2 xml
 media-libs/opencolorio opengl python
 media-libs/opencv -vtk -qt4 -qt5 -cuda
 media-libs/openimageio -colorio -opencv tbb
@@ -165,6 +165,7 @@ media-libs/phonon-gstreamer qt5
 media-libs/phonon qt5 -qt4 -designer
 media-libs/phonon-vlc  -qt4 qt5 x265
 media-libs/qt-gstreamer qt5
+media-libs/sdl2-image webp
 >=media-libs/vigra-1.9.0 openexr
 media-libs/x265 12bit
 media-plugins/audacious-plugins -gtk -gtk3 qt5

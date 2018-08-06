@@ -98,9 +98,6 @@ dev-python/pylint
 dev-python/pymdstat
 dev-python/pymysql
 dev-python/pyopengl
-dev-python/pysnmp
-dev-python/pysnmp-apps
-dev-python/pysnmp-mibs
 dev-python/python-evdev
 dev-python/python-memcached
 dev-python/python-xlib
