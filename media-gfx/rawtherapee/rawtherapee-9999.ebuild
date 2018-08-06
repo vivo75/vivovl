@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-cpp/gtkmm:3.0"
 
+PATCHES="${FILESDIR}/reshuffle-init.patch"
+
 pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
