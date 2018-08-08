@@ -24,7 +24,7 @@ REQUIRED_USE="volume? ( || ( alsa pulseaudio ) )"
 
 CDEPEND="
 	dev-libs/glib:2
-	>=dev-libs/libqtxdg-1.0.0
+	>=dev-libs/libqtxdg-3.2.0
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -55,9 +55,9 @@ RDEPEND="${CDEPEND}
 	dev-qt/qtsvg:5
 	>=lxde-base/lxmenu-data-0.1.2"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-undef-explicit.patch
-)
+#PATCHES=(
+#	"${FILESDIR}"/${P}-fix-undef-explicit.patch
+#)
 
 src_configure() {
 	local mycmakeargs i y

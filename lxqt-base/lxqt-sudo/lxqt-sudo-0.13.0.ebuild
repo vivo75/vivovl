@@ -4,7 +4,7 @@
 EAPI=5
 inherit cmake-utils
 
-DESCRIPTION="LXQt system integration plugin for Qt"
+DESCRIPTION="LXQt GUI frontend for sudo"
 HOMEPAGE="https://lxqt.org"
 
 if [[ ${PV} = *9999* ]]; then
@@ -18,16 +18,15 @@ fi
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
-RDEPEND="
-	dev-libs/libdbusmenu-qt[qt5(+)]
-	>=dev-libs/libqtxdg-2.0.0
+DEPEND="app-admin/sudo
+	>=dev-libs/libqtxdg-3.2.0
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	~lxqt-base/liblxqt-${PV}
-	x11-libs/libX11"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+	"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=( -DPULL_TRANSLATIONS=OFF )

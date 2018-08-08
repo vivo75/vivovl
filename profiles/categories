@@ -12,11 +12,17 @@ dev-qt
 dev-util
 dev-vcs
 games-strategy
+kde-plasma
 lxqt-base
+mail-filter
 media-gfx
 media-libs
+media-video
 net-mail
 net-misc
+profiles
 sci-libs
 sys-fs
 virtuals
+x11-libs
+x11-misc

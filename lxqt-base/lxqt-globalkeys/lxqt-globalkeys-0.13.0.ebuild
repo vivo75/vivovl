@@ -4,7 +4,7 @@
 EAPI=5
 inherit cmake-utils
 
-DESCRIPTION="LXQt system configuration control center"
+DESCRIPTION="Daemon and library for global keyboard shortcuts registration"
 HOMEPAGE="https://lxqt.org/"
 
 if [[ ${PV} = *9999* ]]; then
@@ -18,39 +18,25 @@ fi
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0"
 
-CDEPEND="
-	>=dev-libs/libqtxdg-1.0.0
-	dev-qt/qtconcurrent:5
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	kde-frameworks/kwindowsystem:5
-	kde-plasma/libkscreen:5=
 	~lxqt-base/liblxqt-${PV}
-	sys-libs/zlib
+	>=dev-libs/libqtxdg-3.2.0
 	x11-libs/libICE
 	x11-libs/libSM
-	x11-libs/libxcb:=
 	x11-libs/libX11
-	x11-libs/libXcursor
 	x11-libs/libXext
-	x11-libs/libXfixes"
-DEPEND="${CDEPEND}
-	dev-qt/linguist-tools:5"
-RDEPEND="${CDEPEND}
-	x11-apps/setxkbmap"
-
-PATCHES=( "${FILESDIR}/${P}-cmake-3.8.patch" )
+"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 src_configure() {
 	local mycmakeargs=( -DPULL_TRANSLATIONS=OFF )
 	cmake-utils_src_configure
-}
-
-src_install(){
-	cmake-utils_src_install
-	doman man/*.1 liblxqt-config-cursor/man/*.1 lxqt-config-appearance/man/*.1
 }
