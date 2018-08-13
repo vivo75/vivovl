@@ -26,6 +26,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	>=lxde-base/menu-cache-0.4.1
+	media-libs/libexif
 	>=x11-libs/libfm-1.2.0:=
 	x11-libs/libxcb:=
 	!<x11-misc/pcmanfm-qt-0.11.0
