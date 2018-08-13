@@ -26,6 +26,7 @@ RDEPEND=">=dev-libs/libqtxdg-3.2.0
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	kde-frameworks/kwindowsystem:5[X]
+	sys-auth/polkit-qt
 	x11-libs/libXScrnSaver"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
