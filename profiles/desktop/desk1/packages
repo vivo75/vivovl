@@ -260,7 +260,6 @@ net-misc/ntp
 net-misc/putty
 net-misc/rclone
 net-misc/rdesktop
-net-misc/remmina
 net-misc/sshpass
 net-misc/tigervnc
 net-misc/whois
