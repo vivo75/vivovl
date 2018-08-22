@@ -4,6 +4,7 @@ app-backup
 app-emulation
 app-forensics
 app-portage
+app-text
 dev-db
 dev-lang
 dev-libs
