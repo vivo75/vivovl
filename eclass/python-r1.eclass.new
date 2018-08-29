@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -32,7 +33,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6)
+	5|6|7)
 		# EAPI=5 is required for sane USE_EXPAND dependencies
 		;;
 	*)
@@ -75,7 +76,7 @@ fi
 # @CODE
 
 : ${PYTHON_ENABLED_IF_SOURCE:=python3_5}
-: ${PYTHON_ENABLE_IF:=python3_6}
+: ${PYTHON_ENABLE_IF:=python3_7 pypy3}
 [[ -n ${PYTHON_ENABLED_IF_SOURCE} && -n ${PYTHON_ENABLE_IF} ]] \
 && [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
 && [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
@@ -96,6 +97,25 @@ fi
 # Please note that you can also use bash brace expansion if you like:
 # @CODE
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
+# @CODE
+
+# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @INTERNAL
+# @DESCRIPTION:
+# This variable can be used when working with ebuilds to override
+# the in-ebuild PYTHON_COMPAT. It is a string listing all
+# the implementations which package will be built for. It need be
+# specified in the calling environment, and not in ebuilds.
+#
+# It should be noted that in order to preserve metadata immutability,
+# PYTHON_COMPAT_OVERRIDE does not affect IUSE nor dependencies.
+# The state of PYTHON_TARGETS is ignored, and all the implementations
+# in PYTHON_COMPAT_OVERRIDE are built. Dependencies need to be satisfied
+# manually.
+#
+# Example:
+# @CODE
+# PYTHON_COMPAT_OVERRIDE='pypy python3_3' emerge -1v dev-python/foo
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_REQ_USE
@@ -251,9 +271,24 @@ if [[ ! ${_PYTHON_R1} ]]; then
 # @FUNCTION: _python_validate_useflags
 # @INTERNAL
 # @DESCRIPTION:
-# Enforce the proper setting of PYTHON_TARGETS.
+# Enforce the proper setting of PYTHON_TARGETS, if PYTHON_COMPAT_OVERRIDE
+# is not in effect. If it is, just warn that the flags will be ignored.
 _python_validate_useflags() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		if [[ ! ${_PYTHON_COMPAT_OVERRIDE_WARNED} ]]; then
+			ewarn "WARNING: PYTHON_COMPAT_OVERRIDE in effect. The following Python"
+			ewarn "implementations will be enabled:"
+			ewarn
+			ewarn "	${PYTHON_COMPAT_OVERRIDE}"
+			ewarn
+			ewarn "Dependencies won't be satisfied, and PYTHON_TARGETS will be ignored."
+			_PYTHON_COMPAT_OVERRIDE_WARNED=1
+		fi
+		# we do not use flags with PCO
+		return
+	fi
 
 	local i
 
@@ -581,6 +616,11 @@ python_copy_sources() {
 _python_obtain_impls() {
 	_python_validate_useflags
 
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		MULTIBUILD_VARIANTS=( ${PYTHON_COMPAT_OVERRIDE} )
+		return
+	fi
+
 	MULTIBUILD_VARIANTS=()
 
 	local impl
@@ -700,6 +740,9 @@ python_setup() {
 
 	_python_validate_useflags
 	local pycompat=( "${PYTHON_COMPAT[@]}" )
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		pycompat=( ${PYTHON_COMPAT_OVERRIDE} )
+	fi
 
 	local has_check_deps
 	declare -f python_check_deps >/dev/null && has_check_deps=1
@@ -714,7 +757,7 @@ python_setup() {
 
 		# match USE flags only if override is not in effect
 		# and python_check_deps() is not defined
-		if [[ ! ${has_check_deps} ]]; then
+		if [[ ! ${PYTHON_COMPAT_OVERRIDE} && ! ${has_check_deps} ]]; then
 			use "python_targets_${impl}" || continue
 		fi
 
@@ -796,6 +839,7 @@ python_replicate_script() {
 		python_export PYTHON_SCRIPTDIR
 
 		(
+			exeopts -m 0755
 			exeinto "${PYTHON_SCRIPTDIR#${EPREFIX}}"
 			doexe "${files[@]}"
 		)

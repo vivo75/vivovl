@@ -1,6 +1,6 @@
---- python-any-r1.eclass.orig	2018-03-10 04:19:17.760578919 -0000
-+++ python-any-r1.eclass	2018-03-10 13:09:01.260319571 -0000
-@@ -57,6 +57,34 @@
+--- python-any-r1.eclass.orig	2018-08-29 19:17:38.284080164 +0200
++++ python-any-r1.eclass.new	2018-08-29 19:41:41.722820546 +0200
+@@ -58,6 +58,34 @@
  
  EXPORT_FUNCTIONS pkg_setup
  
@@ -25,8 +25,8 @@
 +# PYTHON_ENABLE_IF=python3_6
 +# @CODE
 +
-+: ${PYTHON_ENABLED_IF_SOURCE:=python3_6}
-+: ${PYTHON_ENABLE_IF:=python3_7}
++: ${PYTHON_ENABLED_IF_SOURCE:=python3_5}
++: ${PYTHON_ENABLE_IF:=python3_7 pyp3}
 +[[ -n ${PYTHON_ENABLED_IF_SOURCE} && -n ${PYTHON_ENABLE_IF} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
@@ -35,7 +35,7 @@
  # @ECLASS-VARIABLE: PYTHON_COMPAT
  # @REQUIRED
  # @DESCRIPTION:
-@@ -69,24 +97,6 @@
+@@ -70,24 +98,6 @@
  # PYTHON_COMPAT=( python{2_5,2_6,2_7} )
  # @CODE
  
@@ -60,7 +60,7 @@
  # @ECLASS-VARIABLE: PYTHON_REQ_USE
  # @DEFAULT_UNSET
  # @DESCRIPTION:
-@@ -282,23 +292,6 @@
+@@ -283,23 +293,6 @@
  python_setup() {
  	debug-print-function ${FUNCNAME} "${@}"
  

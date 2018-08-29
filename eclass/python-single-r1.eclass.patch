@@ -1,6 +1,6 @@
---- python-single-r1.eclass.orig	2018-03-10 01:04:38.074504753 +0100
-+++ python-single-r1.eclass.new	2018-03-10 01:41:35.049194891 +0100
-@@ -56,6 +56,34 @@
+--- python-single-r1.eclass.orig	2018-08-29 19:17:38.288080105 +0200
++++ python-single-r1.eclass.new	2018-08-29 19:44:09.328647178 +0200
+@@ -57,6 +57,34 @@
  
  EXPORT_FUNCTIONS pkg_setup
  
@@ -25,8 +25,8 @@
 +# PYTHON_ENABLE_IF=python3_6
 +# @CODE
 +
-+PYTHON_ENABLED_IF_SOURCE=python3_6
-+PYTHON_ENABLE_IF=python3_7
++: ${PYTHON_ENABLED_IF_SOURCE:=python3_5}
++: ${PYTHON_ENABLE_IF:=python3_7 pypy3}
 +[[ -n ${PYTHON_ENABLED_IF_SOURCE} && -n ${PYTHON_ENABLE_IF} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
@@ -35,7 +35,7 @@
  # @ECLASS-VARIABLE: PYTHON_COMPAT
  # @REQUIRED
  # @DESCRIPTION:
-@@ -73,25 +101,6 @@
+@@ -74,25 +102,6 @@
  # PYTHON_COMPAT=( python2_7 python3_{3,4} )
  # @CODE
  
@@ -61,7 +61,7 @@
  # @ECLASS-VARIABLE: PYTHON_REQ_USE
  # @DEFAULT_UNSET
  # @DESCRIPTION:
-@@ -487,23 +496,6 @@
+@@ -488,23 +497,6 @@
  
  	unset EPYTHON
  
