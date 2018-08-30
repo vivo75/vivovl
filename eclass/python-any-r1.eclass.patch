@@ -1,6 +1,6 @@
---- python-any-r1.eclass.orig	2018-08-29 19:17:38.284080164 +0200
-+++ python-any-r1.eclass.new	2018-08-29 19:41:41.722820546 +0200
-@@ -58,6 +58,34 @@
+--- python-any-r1.eclass.orig	2018-08-29 20:02:40.784938544 +0200
++++ python-any-r1.eclass.new	2018-08-31 00:58:45.296633616 +0200
+@@ -58,6 +58,45 @@
  
  EXPORT_FUNCTIONS pkg_setup
  
@@ -25,12 +25,23 @@
 +# PYTHON_ENABLE_IF=python3_6
 +# @CODE
 +
-+: ${PYTHON_ENABLED_IF_SOURCE:=python3_5}
-+: ${PYTHON_ENABLE_IF:=python3_7 pypy3}
++: ${PYTHON_ENABLED_IF_SOURCE:=python3_6}
++: ${PYTHON_ENABLE_IF:=python3_7}
++: ${PYPY_ENABLED_IF_SOURCE:=python3_5}
++: ${PYPY_ENABLE_IF:=pypy3}
 +[[ -n ${PYTHON_ENABLED_IF_SOURCE} && -n ${PYTHON_ENABLE_IF} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
 +&& PYTHON_COMPAT+=( ${PYTHON_ENABLE_IF} )
++case "${EAPI:-0}" in
++	5|6|7)
++		# EAPI=5 is required
++		[[ -n ${PYPY_ENABLED_IF_SOURCE} && -n ${PYPY_ENABLE_IF} ]] \
++		&& [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
++		&& [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
++		&& PYTHON_COMPAT+=( ${PYPY_ENABLE_IF} )
++		;;
++esac
 +
  # @ECLASS-VARIABLE: PYTHON_COMPAT
  # @REQUIRED
