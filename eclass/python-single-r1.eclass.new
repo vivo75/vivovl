@@ -85,11 +85,17 @@ EXPORT_FUNCTIONS pkg_setup
 [[ -n ${PYTHON_ENABLED_IF_SOURCE} && -n ${PYTHON_ENABLE_IF} ]] \
 && [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
 && [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
-&& PYTHON_COMPAT+=( ${PYTHON_ENABLE_IF} )
+&& for _add_python_ver in ${PYTHON_ENABLE_IF} ; do
+	[[ ${PYTHON_COMPAT[@]/${_add_python_ver}} != ${PYTHON_COMPAT[@]} ]] \
+	&& PYTHON_COMPAT+=( ${_add_python_ver} )
+done
 [[ -n ${PYPY_ENABLED_IF_SOURCE} && -n ${PYPY_ENABLE_IF} ]] \
 && [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
 && [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
-&& PYTHON_COMPAT+=( ${PYPY_ENABLE_IF} )
+&& for _add_python_ver in ${PYPY_ENABLE_IF} ; do
+	[[ ${PYTHON_COMPAT[@]/${_add_python_ver}} != ${PYTHON_COMPAT[@]} ]] \
+	&& PYTHON_COMPAT+=( ${_add_python_ver} )
+done
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT
 # @REQUIRED
