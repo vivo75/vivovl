@@ -26,7 +26,7 @@
 +# @CODE
 +
 +: ${PYTHON_ENABLED_IF_SOURCE:=python3_5}
-+: ${PYTHON_ENABLE_IF:=python3_7 pyp3}
++: ${PYTHON_ENABLE_IF:=python3_7 pypy3}
 +[[ -n ${PYTHON_ENABLED_IF_SOURCE} && -n ${PYTHON_ENABLE_IF} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
 +&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
