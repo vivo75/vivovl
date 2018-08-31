@@ -1,6 +1,6 @@
---- python-any-r1.eclass.orig	2018-08-29 18:02:40.784938544 -0000
-+++ python-any-r1.eclass.new	2018-08-31 08:42:26.427964538 -0000
-@@ -58,6 +58,51 @@
+--- python-any-r1.eclass.orig	2018-08-29 20:02:40.784938544 +0200
++++ python-any-r1.eclass.new	2018-08-31 23:55:39.523462101 +0200
+@@ -58,6 +58,43 @@
  
  EXPORT_FUNCTIONS pkg_setup
  
@@ -25,29 +25,21 @@
 +# PYTHON_ENABLE_IF=python3_6
 +# @CODE
 +
-+: ${PYTHON_ENABLED_IF_SOURCE:=python3_6}
-+: ${PYTHON_ENABLE_IF:=python3_7}
-+: ${PYPY_ENABLED_IF_SOURCE:=python3_5}
-+: ${PYPY_ENABLE_IF:=pypy3}
-+[[ -n ${PYTHON_ENABLED_IF_SOURCE} && -n ${PYTHON_ENABLE_IF} ]] \
-+&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
-+&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
-+&& for _add_python_ver in ${PYTHON_ENABLE_IF} ; do
-+	[[ ${PYTHON_COMPAT[@]/${_add_python_ver}} != ${PYTHON_COMPAT[@]} ]] \
-+	&& PYTHON_COMPAT+=( ${_add_python_ver} )
-+done
-+case "${EAPI:-0}" in
-+	5|6|7)
-+		# EAPI=5 is required
-+		[[ -n ${PYPY_ENABLED_IF_SOURCE} && -n ${PYPY_ENABLE_IF} ]] \
-+		&& [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLED_IF_SOURCE}} != ${PYTHON_COMPAT[@]} ]] \
-+		&& [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLE_IF}} == ${PYTHON_COMPAT[@]} ]] \
-+		&& for _add_python_ver in ${PYPY_ENABLE_IF} ; do
-+			[[ ${PYTHON_COMPAT[@]/${_add_python_ver}} != ${PYTHON_COMPAT[@]} ]] \
-+			&& PYTHON_COMPAT+=( ${_add_python_ver} )
-+		done
-+		;;
-+esac
++: ${PYTHON_ENABLED_OLD:=python3_6}
++: ${PYTHON_ENABLE_NEW:=python3_7}
++: ${PYPY_ENABLED_OLD:=python3_5}
++: ${PYPY_ENABLE_NEW:=pypy3}
++
++[[ -n ${PYTHON_ENABLED_OLD} && -n ${PYTHON_ENABLE_NEW} ]] \
++&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLED_OLD}} != ${PYTHON_COMPAT[@]} ]] \
++&& [[ ${PYTHON_COMPAT[@]/${PYTHON_ENABLE_NEW}} == ${PYTHON_COMPAT[@]} ]] \
++&& PYTHON_COMPAT+=( ${PYTHON_ENABLE_NEW} )
++
++[[ -n ${PYPY_ENABLED_OLD} && -n ${PYPY_ENABLE_NEW} ]] \
++&& [[ ${EAPI} == [567] ]] \
++&& [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLED_OLD}} != ${PYTHON_COMPAT[@]} ]] \
++&& [[ ${PYTHON_COMPAT[@]/${PYPY_ENABLE_NEW}} == ${PYTHON_COMPAT[@]} ]] \
++&& PYTHON_COMPAT+=( ${PYPY_ENABLE_NEW} )
 +
  # @ECLASS-VARIABLE: PYTHON_COMPAT
  # @REQUIRED
