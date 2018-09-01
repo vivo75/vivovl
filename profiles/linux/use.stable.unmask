@@ -1,9 +1,0 @@
-# Michał Górny <mgorny@gentoo.org> (25 Jan 2017)
-# Early pre-stabilization mask for dev-lang/python:3.6
-python_targets_python3_6
-python_single_target_python3_6
-# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
-# PyPy is unstable on this arch.
-python_targets_pypy3
-python_single_target_pypy3
-
