@@ -7,7 +7,7 @@ DESCRIPTION="A virtual for PyPy3 Python implementation"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 SLOT="0/60"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm ncurses sqlite tk xml"
+IUSE="bzip2 gdbm ncurses sqlite tk xml ncurses readline"
 
 RDEPEND="
 	|| (
