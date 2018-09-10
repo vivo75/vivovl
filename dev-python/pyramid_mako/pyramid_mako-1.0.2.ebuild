@@ -16,9 +16,6 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pyramid[${PYTHON_USEDEP}]
-	dev-python/pyramid_mako[${PYTHON_USEDEP}]
-	dev-python/repoze-lru[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]"
+	dev-python/mako[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
