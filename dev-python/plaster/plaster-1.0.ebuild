@@ -25,8 +25,7 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	dev-python/translationstring[${PYTHON_USEDEP}]
 	dev-python/pastedeploy[${PYTHON_USEDEP}]
-	dev-python/venusian[${PYTHON_USEDEP}]
-	dev-python/plaster[${PYTHON_USEDEP}]"
+	dev-python/venusian[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/webtest[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep \

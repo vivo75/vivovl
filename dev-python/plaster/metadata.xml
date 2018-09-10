@@ -2,6 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<upstream>
-		<remote-id type="pypi">pyramid</remote-id>
+		<remote-id type="pypi">plaster</remote-id>
 	</upstream>
 </pkgmetadata>
