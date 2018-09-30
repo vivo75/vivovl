@@ -4,4 +4,5 @@ sys-devel/gcc:7.3.0 amd64
 ~dev-python/six-1.11.0 amd64
 
 # not stable yet
+<net-misc/netifrc-0.6.2 amd64
 <net-vpn/wireguard-9999 amd64
