@@ -5,7 +5,7 @@ dev-python/pyyaml libyaml
 net-misc/openssh hpn
 sys-apps/openrc tools
 net-misc/lldpd seccomp
-app-admin/rsyslog rfc3195
+app-admin/rsyslog rfc3195 openssl
 dev-libs/liblogging rfc3195
 dev-python/ipython -smp
 net-misc/openssh -ssh1
