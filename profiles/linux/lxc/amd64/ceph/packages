@@ -1,0 +1,23 @@
+# monit
+app-admin/sysstat
+app-antivirus/clamav
+app-forensics/aide
+app-forensics/chkrootkit
+app-forensics/unhide
+dev-util/fatrace
+dev-util/ltrace
+dev-util/strace
+sys-apps/dstat
+sys-process/acct
+sys-process/htop
+sys-process/iotop
+sys-process/lsof
+sys-process/nmon
+sys-process/tiptop
+
+# config
+dev-db/etcd
+sys-fs/etcd-fs
+
+# ceph
+sys-cluster/ceph
