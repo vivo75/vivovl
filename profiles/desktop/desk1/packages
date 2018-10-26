@@ -64,7 +64,6 @@ app-vim/ntp-syntax
 app-vim/securemodelines
 app-vim/udev-syntax
 app-vim/vimpython
-dev-db/pgadmin3
 dev-db/pgadmin4
 dev-db/postgresql
 dev-java/icedtea

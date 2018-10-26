@@ -2,6 +2,9 @@
 app-emulation/libvirt -virtualbox virt-network libssh
 net-dns/dnsmasq script
 
+# prepare for eBPF
+sys-apps/iproute2 elf
+
 ##########################
 # this stuff need  sorting
 
