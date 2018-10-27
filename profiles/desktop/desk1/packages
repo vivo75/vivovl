@@ -207,7 +207,6 @@ media-libs/waffle
 media-sound/alsa-utils
 media-sound/cdparanoia
 media-sound/mpg123
-media-sound/pavucontrol
 media-sound/qjackctl
 media-sound/spotify
 media-video/mplayer
