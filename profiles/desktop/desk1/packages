@@ -208,7 +208,6 @@ media-sound/alsa-utils
 media-sound/cdparanoia
 media-sound/mpg123
 media-sound/qjackctl
-media-sound/spotify
 media-video/mplayer
 media-video/mpv
 media-video/plasma-mediacenter
