@@ -1,0 +1,15 @@
+--- virtualbox-5.2.22.ebuild	2018-11-11 18:47:54.316240576 -0000
++++ virtualbox-5.2.20.ebuild	2018-11-11 18:00:02.468573738 -0000
+@@ -18,10 +18,10 @@
+ LICENSE="GPL-2"
+ SLOT="0"
+ KEYWORDS="~amd64 ~x86"
+-IUSE="alsa debug doc headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
++IUSE="alsa debug doc headless java libressl lvm +modules +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+ 
+ RDEPEND="!app-emulation/virtualbox-bin
+-	~app-emulation/virtualbox-modules-${PV}
++	modules? ( ~app-emulation/virtualbox-modules-${PV} )
+ 	dev-libs/libIDL
+ 	>=dev-libs/libxslt-1.1.19
+ 	net-misc/curl
