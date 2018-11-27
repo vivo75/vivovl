@@ -19,11 +19,14 @@ mail-filter
 media-gfx
 media-libs
 media-video
+net-dns
 net-mail
 net-misc
 profiles
 sci-libs
+sys-cluster
 sys-fs
+virtual
 virtuals
 x11-libs
 x11-misc

@@ -1,0 +1,11 @@
+[Unit]
+Description=A container orchestration platform for Mesos
+
+[Service]
+EnvironmentFile=/etc/marathon/environment
+ExecStart=/usr/bin/java -jar /usr/share/marathon/lib/marathon-assembly.jar --master $MARATHON_MASTER --zk $MARATHON_ZK
+User=marathon
+Group=marathon
+
+[Install]
+WantedBy=multi-user.target

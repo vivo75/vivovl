@@ -1,0 +1,12 @@
+MESOS_HOSTNAME=localhost
+MESOS_IP=127.0.0.1
+MESOS_WORK_DIR=/var/lib/mesos/
+MESOS_ZK=zk://localhost:2181/mesos
+MESOS_QUORUM=1
+
+MESOS_MASTER=zk://localhost:2181/mesos
+MESOS_ADVERTISE_IP=127.0.0.1
+MESOS_CONTAINERIZERS=mesos,docker
+MESOS_ISOLATION=posix/cpu,posix/mem,network/port_mapping
+MESOS_RESOURCES=ports:[31000-32000];ephemeral_ports:[32768-57344]
+MESOS_EPHEMERAL_PORTS_PER_CONTAINER=128
