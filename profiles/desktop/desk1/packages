@@ -299,7 +299,6 @@ sys-boot/grub
 sys-boot/os-prober
 sys-devel/bc
 sys-devel/crossdev
-sys-devel/distcc
 sys-firmware/b43-firmware
 sys-firmware/intel-microcode
 sys-fs/btrfs-progs
