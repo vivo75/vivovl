@@ -127,7 +127,7 @@ games-action/minetest_game
 gnome-base/libgnome
 kde-apps/akonadi-import-wizard
 kde-apps/akonadiconsole
-kde-apps/dolphin-plugins
+kde-apps/dolphin-plugins-git
 kde-apps/dragon
 kde-apps/kapptemplate
 kde-apps/kate

@@ -105,7 +105,6 @@ dev-vcs/subversion -kde -kwallet
 gnome-base/orbit debug
 gnome-extra/nm-applet -modemmanager
 kde-apps/akonadi  sqlite tools
-kde-apps/dolphin-plugins git -dropbox
 kde-apps/kdegraphics-meta scanner
 kde-apps/kdeutils-meta -qt4
 kde-apps/khelpcenter handbook
