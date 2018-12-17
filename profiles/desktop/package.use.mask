@@ -2,7 +2,7 @@
 #### Imported from gentoo desktop profiles
 ##########################################
 
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # USE=gles2 in the following packages disables full OpenGL
@@ -25,7 +25,7 @@ kde-plasma/kwin gles2
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Rick Farina <zerochaos@gentoo.org> (04 Mar 2017)

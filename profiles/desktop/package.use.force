@@ -2,7 +2,7 @@
 #### Imported from gentoo desktop profiles
 ##########################################
 
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (03 Jun 2014)
@@ -12,7 +12,7 @@ dev-libs/glib mime
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Mike Gilbert <floppym@gentoo.org> (22 Apr 2015)
