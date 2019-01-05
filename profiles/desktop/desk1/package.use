@@ -1,5 +1,3 @@
-# virtualbox started to force kernel modules
-app-emulation/libvirt -virtualbox virt-network libssh
 net-dns/dnsmasq script
 
 # prepare for eBPF
@@ -21,7 +19,6 @@ app-crypt/qca qt5 -qt4
 app-emulation/lxc cgmanager python
 app-emulation/qemu -aio infiniband -iscsi nfs numa sdl sdl2 smartcard snappy spice ssh vde virtfs   static-user -alsa -bluetooth -gtk -opengl -pulseaudio
 >=app-emulation/spice-0.13.90 static-libs
-app-emulation/virtualbox qt5 extensions python sdk
 app-emulation/wine -mono
 app-eselect/eselect-php fpm
 app-misc/ca-certificates -cacert

@@ -17,13 +17,5 @@
 <sys-libs/efivar-9999 amd64
 <sys-libs/libapparmor-9999 amd64
 
-# virtualbox as needed by libvirt
-<app-emulation/virtualbox-9999 amd64
-<app-emulation/virtualbox-extpack-oracle-9999 amd64
-<app-emulation/virtualbox-modules-9999 amd64
-<app-emulation/virtualbox-additions-9999 amd64
-<app-emulation/virtualbox-guest-additions-9999 amd64
-<dev-util/kbuild-9999 amd64
-
 # backup
 =app-backup/zfs-auto-snapshot-9999 amd64
