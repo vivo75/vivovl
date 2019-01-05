@@ -34,5 +34,5 @@ dev-php/pecl-geoip
 # useful for Nextcloud
 app-admin/sudo
 dev-db/redis
-net-mail/up-imapproxy
+# net-mail/up-imapproxy  1.2.7 does not work with openssl-1.1
 www-servers/uwsgi

@@ -239,7 +239,6 @@ net-libs/libtorrent
 net-libs/miniupnpc
 net-libs/nodejs
 net-mail/email
-net-mail/up-imapproxy
 net-misc/bridge-utils
 net-misc/chrony
 net-misc/dhcp
