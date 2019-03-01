@@ -248,9 +248,6 @@ net-misc/dropbear
 net-misc/keychain
 net-misc/mosh
 net-misc/netifrc
-net-misc/networkmanager-fortisslvpn
-net-misc/networkmanager-openconnect
-net-misc/networkmanager-openvpn
 net-misc/nextcloud-client
 net-misc/ntp
 net-misc/putty
@@ -262,6 +259,7 @@ net-misc/whois
 net-misc/youtube-dl
 net-print/cups-pdf
 net-print/hplip
+net-vpn/networkmanager-openvpn
 net-wireless/wireless-tools
 sci-geosciences/gpx-viewer
 sci-geosciences/gpxsee
