@@ -20,7 +20,6 @@ app-backup/duplicity
 app-crypt/easy-rsa
 app-crypt/efitools
 app-crypt/seahorse
-app-editors/retext
 app-editors/vim
 app-emulation/aqemu
 app-emulation/lxc
