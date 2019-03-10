@@ -3,11 +3,11 @@
 app-antivirus/clamav
 dev-db/mysql-connector-c
 mail-filter/amavisd-new
-mail-filter/dovecot-antispam
 mail-filter/dspam
 mail-filter/opendkim
 mail-filter/opendmarc
 mail-filter/razor
+mail-filter/rspamd
 mail-filter/spamassassin
 mail-filter/spampd
 mail-mta/postfix
