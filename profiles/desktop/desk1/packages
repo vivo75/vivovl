@@ -119,7 +119,6 @@ dev-util/squashdelta
 dev-util/squashmerge
 dev-util/strace
 dev-util/valgrind
-dev-vcs/subversion
 dev-vcs/tig
 games-action/minetest
 games-action/minetest_game

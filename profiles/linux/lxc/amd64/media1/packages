@@ -60,7 +60,6 @@ dev-util/dialog
 dev-util/diffstat
 dev-util/strace
 dev-vcs/cvs
-dev-vcs/subversion
 gnome-extra/libgsf
 mail-mta/postfix
 media-fonts/liberation-fonts
