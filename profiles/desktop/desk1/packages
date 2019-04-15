@@ -120,8 +120,6 @@ dev-util/squashmerge
 dev-util/strace
 dev-util/valgrind
 dev-vcs/tig
-games-action/minetest
-games-action/minetest_game
 gnome-base/libgnome
 kde-apps/akonadi-import-wizard
 kde-apps/akonadiconsole
