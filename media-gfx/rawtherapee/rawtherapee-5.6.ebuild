@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils flag-o-matic gnome2-utils toolchain-funcs xdg-utils
+inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
 
 MY_P=${P/_rc/-rc}
 DESCRIPTION="A powerful cross-platform raw image processing program"
@@ -28,11 +28,11 @@ RDEPEND="dev-libs/expat
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/gtk+:3"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	app-arch/xz-utils
 	dev-cpp/gtkmm:3.0
-	virtual/pkgconfig
-	gnome-base/librsvg"
+	gnome-base/librsvg
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -62,11 +62,11 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
