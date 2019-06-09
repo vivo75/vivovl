@@ -6,7 +6,7 @@ sys-apps/iproute2 elf
 ##########################
 # this stuff need  sorting
 
-app-admin/keepassxc browser network yubikey
+app-admin/keepassxc browser network
 >=app-arch/bzip2-1.0.6-r8 static-libs
 >=app-arch/lz4-1.8.0 static-libs
 app-arch/p7zip -kde
