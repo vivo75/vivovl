@@ -180,7 +180,6 @@ media-gfx/mozjpeg
 media-gfx/openscad
 media-gfx/pdf2svg
 media-gfx/rawtherapee
-media-gfx/ufraw
 media-gfx/xsane
 media-libs/elles_icc_profiles
 media-libs/exempi
@@ -258,7 +257,6 @@ sci-geosciences/gpxsee
 sci-libs/alglib
 sci-libs/scipy
 sci-libs/umfpack
-sci-mathematics/octave
 sys-apps/cpuid
 sys-apps/ed
 sys-apps/elivepatch-client
