@@ -1,0 +1,15 @@
+<app-antivirus/clamav-unofficial-sigs-9999 amd64
+<app-forensics/lynis-9999 amd64
+<dev-go/go-crypto-9999 amd64
+<dev-go/go-net-9999 amd64
+<dev-go/go-text-9999 amd64
+<dev-lang/tcc-9999 amd64
+<net-analyzer/zabbix-5
+<net-misc/netpipe-9999 amd64
+<net-vpn/openvpn-9999 amd64
+<sys-block/megamgr-9999 amd64
+<sys-block/megarc-9999 amd64
+<sys-block/thin-provisioning-tools-9999 amd64
+
+# backup
+=app-backup/zfs-auto-snapshot-9999 amd64

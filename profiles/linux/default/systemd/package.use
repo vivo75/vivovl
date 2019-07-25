@@ -1,0 +1,6 @@
+# try to make compilation faster
+sys-devel/gcc pgo
+
+# prepare for eBPF
+sys-apps/iproute2 elf
+

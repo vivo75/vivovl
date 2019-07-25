@@ -1,0 +1,14 @@
+# managment
+app-admin/ansible
+
+# monitoring (by default install only the client)
+net-analyzer/zabbix
+
+# essentials
+net-ftp/vsftpd
+net-vpn/openvpn
+net-vpn/wireguard
+sys-kernel/linux-firmware
+
+# needed to use debian lxc images
+dev-util/debootstrap
