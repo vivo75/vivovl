@@ -28,5 +28,4 @@ sys-devel/gcc:7.3.0 arm
 <sys-fs/zfs-kmod-0.7.9999 ~*
 <sys-kernel/spl-0.7.9999 ~*
 <sys-libs/libapparmor-9999 ~*
-<sys-process/tiptop-9999 ~*
 <www-misc/awstats-9999 ~*

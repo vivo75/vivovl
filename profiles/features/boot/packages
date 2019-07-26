@@ -13,7 +13,6 @@ sys-apps/rng-tools
 sys-apps/smartmontools
 sys-apps/usbutils
 sys-block/blktrace
-sys-block/megacli
 sys-block/megactl
 sys-block/nbd
 sys-block/parted

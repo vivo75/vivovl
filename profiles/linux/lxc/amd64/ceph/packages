@@ -13,7 +13,6 @@ sys-process/htop
 sys-process/iotop
 sys-process/lsof
 sys-process/nmon
-sys-process/tiptop
 
 # config
 dev-db/etcd
