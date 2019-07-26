@@ -1,4 +1,4 @@
-sys-devel/gcc-9.* amd64
+<sys-devel/gcc-10 amd64
 
 # not stable yet
 <net-misc/netifrc-0.6.2 amd64
