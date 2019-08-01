@@ -4,15 +4,16 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
+IUSE="zfs"
+
 DESCRIPTION="A collection of small tools for sysadmins"
 HOMEPAGE="https://github.com/vivo75/smalltools"
 
 RDEPEND="
-	sys-apps/util-linux
-	dev-db/sqlite
-	sys-fs/zfs
-	app-backup/zfs-auto-snapshot
-"
+	docs? ( sys-apps/util-linux 
+			dev-db/sqlite
+			sys-fs/zfs
+			app-backup/zfs-auto-snapshot )"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit distutils-r1 git-r3
