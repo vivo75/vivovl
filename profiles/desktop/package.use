@@ -155,3 +155,7 @@ sys-libs/zlib minizip
 # absolutely needed to avoid conflict with openrc
 # openrc start the container, systemd the baremetal
 sys-apps/systemd -sysv-utils
+
+# for backups
+app-admin/smalltools zfs
+
