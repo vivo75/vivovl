@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Gentoo Authors
+# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ DESCRIPTION="A collection of small tools for sysadmins"
 HOMEPAGE="https://github.com/vivo75/smalltools"
 
 RDEPEND="
-	docs? ( sys-apps/util-linux 
+	zfs? ( sys-apps/util-linux
 			dev-db/sqlite
 			sys-fs/zfs
 			app-backup/zfs-auto-snapshot )"
