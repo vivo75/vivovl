@@ -10,6 +10,7 @@ sys-devel/gcc:7.3.0 amd64
 <sys-fs/zfs-kmod-0.7.9999 amd64
 <sys-fs/zfs-0.7.9999 amd64
 <sys-kernel/spl-0.7.9999 amd64
+app-backup/zfs-auto-snapshot amd64
 
 # Allow root password logins in the live-cds
 =net-misc/openssh-7.5*
