@@ -7,3 +7,6 @@ sys-kernel/dracut crypt mdraid syslog
 net-vpn/wireguard -module
 dev-util/sysdig -modules
 sys-fs/zfs kernel-builtin
+
+# for backups
+app-admin/smalltools zfs
