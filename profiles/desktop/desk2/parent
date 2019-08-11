@@ -1,2 +1,2 @@
-/var/portage/repos/gentoo/profiles/default/linux/amd64/17.1/desktop/plasma/systemd
-..
+gentoo:default/linux/amd64/17.1/desktop/plasma/systemd
+gentoo:arch/amd64/no-multilib
