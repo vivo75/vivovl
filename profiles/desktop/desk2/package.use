@@ -26,7 +26,6 @@ app-misc/jq oniguruma
 app-office/kmymoney calendar quotes
 app-office/libreoffice  -bluetooth branding cups dbus -gtk java -kde gtk3 mysql googledrive odk
 app-portage/layman git
-app-text/asciidoc python_single_target_python2_7
 app-text/ghostscript-gpl X
 app-text/poppler qt5 -qt4
 >=app-text/texlive-core-2017-r2 xetex
@@ -64,7 +63,6 @@ dev-libs/xerces-c icu
 dev-python/ipython -qt4
 dev-python/matplotlib -qt4
 >=dev-python/numpy-1.10.4 lapack
-dev-python/pychroot  -python_single_target_python2_7
 dev-python/pypy3 sqlite
 >=dev-python/PyQt4-4.11.4-r1 compat
 dev-python/PyQt4 declarative script sql webkit
@@ -139,7 +137,7 @@ media-gfx/ufraw gtk openmp contrast timezone
 media-libs/freeimage openexr
 >=media-libs/freetype-2.6.3-r1 infinality
 media-libs/gd jpeg png
-media-libs/gegl -ffmpeg openexr gexiv2 ffmpeg lensfun raw umfpack webp
+media-libs/gegl -ffmpeg openexr gexiv2 ffmpeg raw umfpack webp
 media-libs/gexiv2 -python -introspection
 media-libs/gexiv2 python introspection
 media-libs/gst-plugins-bad -opengl
@@ -165,6 +163,7 @@ media-libs/phonon qt5 -qt4 -designer
 media-libs/phonon-vlc  -qt4 qt5 x265
 media-libs/qt-gstreamer qt5
 media-libs/sdl2-image webp
+media-libs/tiff -webp
 >=media-libs/vigra-1.9.0 openexr
 media-libs/x265 12bit
 media-plugins/audacious-plugins -gtk -gtk3 qt5
@@ -211,7 +210,8 @@ net-misc/remmina rdp spice ssh vnc
 # sasl usbredir required by app-emulation/virt-manager
 >=net-misc/spice-gtk-0.34 gtk3 sasl usbredir
 >=net-misc/vde-2.3.2-r4 static-libs
-net-print/hplip -qt4 qt5 -kde hpijs scanner
+net-print/cups -python
+net-print/hplip -qt4 qt5 -kde hpijs scanner minimal
 net-vpn/openvpn -lzo iproute2 inotify lz4
 net-wireless/bluez user-session
 >=sci-libs/adolc-2.6.3 sparse
@@ -232,7 +232,7 @@ sys-apps/hwloc -cuda plugins
 sys-apps/openrc tools
 =sys-apps/pciutils-3.4.1 -udev
 sys-apps/systemd cryptsetup curl elfutils gnuefi lzma qrcode xkb
-sys-apps/util-linux  -python_single_target_python2_7 tty-helpers
+sys-apps/util-linux  tty-helpers
 sys-auth/consolekit policykit cgroups
 sys-auth/polkit-qt qt5
 sys-block/gparted btrfs f2fs fat kde mdadm ntfs xfs
@@ -287,132 +287,4 @@ x11-libs/libxkbcommon X
 x11-misc/colord argyllcms extra-print-profiles
 x11-plugins/pidgin-sipe kerberos openssl telepathy voice
 x11-wm/openbox xdg
-
-###################################################
-# 2017-12 a bunch of packages still need python 2.7
-# try to limit the disease
-
-dev-python/git-python    -python_targets_python2_7
-app-crypt/gpgme    -python_targets_python2_7
-app-editors/vim    -python_targets_python2_7
-app-office/libreoffice    -python_targets_python2_7
-app-portage/gentoolkit    -python_targets_python2_7
-app-portage/gentoopm    -python_targets_python2_7
-app-portage/repoman    -python_targets_python2_7
-app-text/htmlmin    -python_targets_python2_7
-app-vim/vimpython    -python_targets_python2_7
-dev-db/postgresql    -python_targets_python2_7
-dev-java/java-config    -python_targets_python2_7
-dev-libs/botan    -python_targets_python2_7
-dev-libs/capstone    -python_targets_python2_7
-dev-libs/gobject-introspection    -python_targets_python2_7
-dev-libs/libbytesize    -python_targets_python2_7
-dev-libs/libnl    -python_targets_python2_7
-dev-libs/libpwquality    -python_targets_python2_7
-dev-python/PyPDF2    -python_targets_python2_7
-dev-python/alembic    -python_targets_python2_7
-dev-python/aniso8601    -python_targets_python2_7
-dev-python/astroid    -python_targets_python2_7
-dev-python/batinfo    -python_targets_python2_7
-dev-python/blinker    -python_targets_python2_7
-dev-python/clang-python    -python_targets_python2_7
-dev-python/click    -python_targets_python2_7
-dev-python/diff-match-patch    -python_targets_python2_7
-dev-python/flask    -python_targets_python2_7
-dev-python/flask-babel    -python_targets_python2_7
-dev-python/flask-gravatar    -python_targets_python2_7
-dev-python/flask-htmlmin    -python_targets_python2_7
-dev-python/flask-login    -python_targets_python2_7
-dev-python/flask-mail    -python_targets_python2_7
-dev-python/flask-migrate    -python_targets_python2_7
-dev-python/flask-paranoid    -python_targets_python2_7
-dev-python/flask-principal    -python_targets_python2_7
-dev-python/flask-restful    -python_targets_python2_7
-dev-python/flask-script    -python_targets_python2_7
-dev-python/flask-security    -python_targets_python2_7
-dev-python/flask-sqlalchemy    -python_targets_python2_7
-dev-python/flask-testing    -python_targets_python2_7
-dev-python/flask-uploads    -python_targets_python2_7
-dev-python/flask-wtf    -python_targets_python2_7
-dev-python/iniparse    -python_targets_python2_7
-dev-python/isort    -python_targets_python2_7
-dev-python/itsdangerous    -python_targets_python2_7
-dev-python/lazy-object-proxy    -python_targets_python2_7
-dev-python/markdown    -python_targets_python2_7
-dev-python/markups    -python_targets_python2_7
-dev-python/passlib    -python_targets_python2_7
-dev-python/protobuf-python    -python_targets_python2_7
-dev-python/psycopg    -python_targets_python2_7
-dev-python/py-cpuinfo    -python_targets_python2_7
-dev-python/pychroot    -python_targets_python2_7
-dev-python/pyenchant    -python_targets_python2_7
-dev-python/pygame    -python_targets_python2_7
-dev-python/pygraphviz    -python_targets_python2_7
-dev-python/pyinotify    -python_targets_python2_7
-dev-python/pylibmc    -python_targets_python2_7
-dev-python/pylint    -python_targets_python2_7
-dev-python/pymdstat    -python_targets_python2_7
-dev-python/pysmi    -python_targets_python2_7
-dev-python/pysnmp    -python_targets_python2_7
-dev-python/pysnmp-apps    -python_targets_python2_7
-dev-python/pysnmp-mibs    -python_targets_python2_7
-dev-python/pytest-xprocess    -python_targets_python2_7
-dev-python/python-editor    -python_targets_python2_7
-dev-python/python-evdev    -python_targets_python2_7
-dev-python/python-levenshtein    -python_targets_python2_7
-dev-python/python-memcached    -python_targets_python2_7
-dev-python/python-sqlparse    -python_targets_python2_7
-dev-python/python-xlib    -python_targets_python2_7
-dev-python/pytidylib    -python_targets_python2_7
-dev-python/pyudev    -python_targets_python2_7
-dev-python/reportlab    -python_targets_python2_7
-dev-python/scrypt    -python_targets_python2_7
-dev-python/setproctitle    -python_targets_python2_7
-dev-python/snakeoil    -python_targets_python2_7
-dev-python/speaklater    -python_targets_python2_7
-dev-python/texttable    -python_targets_python2_7
-dev-python/tinycss    -python_targets_python2_7
-dev-python/translate-toolkit    -python_targets_python2_7
-dev-python/utidylib    -python_targets_python2_7
-dev-python/vobject    -python_targets_python2_7
-dev-python/webob    -python_targets_python2_7
-dev-python/werkzeug    -python_targets_python2_7
-dev-python/wrapt    -python_targets_python2_7
-dev-python/wtforms    -python_targets_python2_7
-dev-util/bcc    -python_targets_python2_7
-kde-frameworks/ki18n    -python_targets_python2_7
-media-gfx/hugin    -python_targets_python2_7
-media-libs/gexiv2    -python_targets_python2_7
-media-libs/opencv    -python_targets_python2_7
-media-libs/openimageio    -python_targets_python2_7
-media-video/mpv    -python_targets_python2_7
-net-irc/hexchat    -python_targets_python2_7
-net-libs/gupnp-igd    -python_targets_python2_7
-net-mail/notmuch    -python_targets_python2_7
-net-misc/youtube-dl    -python_targets_python2_7
-net-print/hplip    -python_targets_python2_7
-sci-libs/scipy    -python_targets_python2_7
-sci-libs/vtk    -python_targets_python2_7
-sys-apps/elivepatch-client    -python_targets_python2_7
-sys-apps/elivepatch-server    -python_targets_python2_7
-sys-apps/file    -python_targets_python2_7
-sys-apps/kmod    -python_targets_python2_7
-sys-apps/pkgcore    -python_targets_python2_7
-sys-apps/util-linux    -python_targets_python2_7
-sys-devel/gdb    -python_targets_python2_7
-sys-fs/cryptsetup    -python_targets_python2_7
-sys-fs/zfs    -python_targets_python2_7
-sys-libs/libcap-ng    -python_targets_python2_7
-sys-process/glances    -python_targets_python2_7
-sys-process/iotop    -python_targets_python2_7
-virtual/python-singledispatch    -python_targets_python2_7
-www-servers/gunicorn    -python_targets_python2_7
-dev-python/backports-functools-lru-cache    -python_targets_python2_7
-dev-python/gitdb    -python_targets_python2_7
-dev-python/gitdb2    -python_targets_python2_7
-dev-python/nosexcover    -python_targets_python2_7
-dev-python/singledispatch    -python_targets_python2_7
-dev-python/smmap    -python_targets_python2_7
-dev-python/smmap2    -python_targets_python2_7
-dev-python/twill    -python_targets_python2_7
 
