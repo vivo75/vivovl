@@ -3,6 +3,7 @@ app-arch
 app-backup
 app-emulation
 app-forensics
+app-misc
 app-portage
 app-text
 dev-db
