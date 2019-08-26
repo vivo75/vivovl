@@ -1,9 +1,11 @@
 # globally useful packages
 app-admin/apachetop
 app-crypt/certbot
+app-crypt/certbot-apache
 app-text/htmldoc
 dev-lang/php
 dev-libs/elfutils
+dev-php/composer
 dev-php/PEAR-Auth_SASL
 dev-php/PEAR-Mail_Mime
 dev-php/PEAR-Net_IDNA2
@@ -13,6 +15,7 @@ dev-util/source-highlight
 media-gfx/dcraw
 media-gfx/imagemagick
 media-libs/gd
+net-dns/bind-tools
 net-misc/curl
 net-misc/socat
 dev-db/mariadb
@@ -26,8 +29,10 @@ dev-lang/php:5.6
 # php pecl additions (also used by Nextcloud)
 dev-php/pecl-apcu
 dev-php/pecl-apcu_bc
+dev-php/pecl-imagick
 dev-php/pecl-mailparse
 dev-php/pecl-memcached
+dev-php/pecl-mysqlnd_qc
 dev-php/pecl-redis
 dev-php/pecl-geoip
 

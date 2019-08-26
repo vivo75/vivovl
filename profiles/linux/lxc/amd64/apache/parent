@@ -1,4 +1,4 @@
 ../base
 vivovl:features/compress
 vivovl:features/lamp
-
+vivovl:features/gentoo-util
