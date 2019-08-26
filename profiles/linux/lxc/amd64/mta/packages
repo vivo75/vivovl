@@ -1,14 +1,22 @@
 -mail-mta/ssmtp
 
-app-antivirus/clamav
 dev-db/mysql-connector-c
-mail-filter/amavisd-new
-mail-filter/dspam
+dev-db/redis
 mail-filter/opendkim
 mail-filter/opendmarc
+mail-filter/rspamd
+mail-mta/postfix
+net-libs/libnsl
+net-mail/dovecot
+dev-perl/ZMQ-LibZMQ3
+
+# Antispam
+mail-filter/amavisd-new
 mail-filter/razor
 mail-filter/rspamd
 mail-filter/spamassassin
 mail-filter/spampd
-mail-mta/postfix
-net-mail/dovecot
+
+# Antivirus
+app-antivirus/clamav
+app-antivirus/clamav-unofficial-sigs
