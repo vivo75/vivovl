@@ -4,8 +4,8 @@ sys-devel/gcc:7.3.0 amd64
 virtual/mysql amd64
 virtual/libmysqlclient amd64
 =dev-db/mariadb-10.3* amd64
-dev-db/mysql-connector-c amd64
-dev-db/mariadb-connector-c amd64
+<dev-db/mysql-connector-c-9999 amd64
+<dev-db/mariadb-connector-c-9999 amd64
 
 # wireguard support
 <net-misc/netifrc-0.6.2 amd64
