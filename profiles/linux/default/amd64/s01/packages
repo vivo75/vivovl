@@ -1,1 +1,8 @@
 app-backup/zfs-auto-snapshot
+app-crypt/certbot-apache
+app-emulation/libguestfs
+app-emulation/libvirt
+app-portage/unsymlink-lib
+dev-python/libvirt-python
+net-dns/ldns-utils
+
