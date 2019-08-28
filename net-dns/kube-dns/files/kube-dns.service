@@ -1,7 +1,0 @@
-[Service]
-EnvironmentFile=/etc/kubernetes/environment
-ExecStart=/usr/bin/kube-dns --kube-master-url=${KUBERNETES_MASTER} --healthz-port=0
-KillSignal=SIGKILL
-
-[Install]
-WantedBy=default.target

@@ -1,7 +1,0 @@
-[Service]
-EnvironmentFile=/etc/kubernetes/environment
-ExecStart=/usr/bin/kube-controller-manager --kubeconfig=/etc/kubernetes/kubeconfig
-Restart=on-failure
-
-[Install]
-WantedBy=default.target
