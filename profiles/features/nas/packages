@@ -1,9 +1,0 @@
-app-benchmarks/iozone
-dev-python/psutil
-dev-python/s3fs
-net-fs/cifs-utils
-net-fs/s3fs
-net-fs/samba
-net-misc/rclone
-net-p2p/go-ipfs-bin
-sys-fs/ntfs3g

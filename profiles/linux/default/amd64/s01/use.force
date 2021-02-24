@@ -1,5 +1,0 @@
-vivovl-s01
-
-# dependancies for static-libs are not totally implemented in gentoo repo
-# we want to be able to build qemu with [static-user] so force this
-static-libs

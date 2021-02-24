@@ -1,4 +1,0 @@
-# crash too often
-dev-lang/ekopath
-sys-apps/man-db
-

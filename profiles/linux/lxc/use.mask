@@ -1,8 +1,0 @@
-nls
-bash-completion
-vim-syntax
-sqlite
-udev
-gpm
-netifrc
-pam

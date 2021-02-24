@@ -1,8 +1,0 @@
-..
-vivovl:features/boot
-vivovl:features/compress
-vivovl:features/gentoo-util
-vivovl:features/monit
-vivovl:features/network-tools
-vivovl:features/utils
-vivovl:features/virt-host

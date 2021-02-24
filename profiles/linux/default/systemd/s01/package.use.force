@@ -1,3 +1,0 @@
-# fail to build, missing conntrack functions
-net-firewall/iptables -static-libs
-dev-libs/leveldb -static-libs

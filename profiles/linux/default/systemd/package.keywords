@@ -1,5 +1,0 @@
-<sys-devel/gcc-10 amd64
-
-# not stable yet
-<net-misc/netifrc-0.6.2 amd64
-<net-vpn/wireguard-9999 amd64

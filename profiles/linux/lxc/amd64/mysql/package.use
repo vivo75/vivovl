@@ -1,4 +1,0 @@
-# required by mariadb
-sys-libs/zlib minizip
-
-dev-db/mariadb -client-libs openssl extraengine perl server xml innodb-lz4 numa oqgraph profiling rocksdb

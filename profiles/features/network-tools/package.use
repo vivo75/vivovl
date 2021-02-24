@@ -1,5 +1,0 @@
-net-dns/bind-tools idn
-net-firewall/ipset -modules
-net-misc/bridge-utils sysfs
-net-misc/ntp caps
-net-vpn/openvpn ssl examples iproute2 -minimal passwordsave -static threads

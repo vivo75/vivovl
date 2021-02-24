@@ -1,6 +1,0 @@
-# Richard Yao <ryao@gentoo.org> (22 August 2012)
-# USE=kernel-builtin is dangerous. Only those that know what they are doing
-# should use it until documentation improves.
-# Thankyou Richard, but I know
-sys-fs/zfs -kernel-builtin
-

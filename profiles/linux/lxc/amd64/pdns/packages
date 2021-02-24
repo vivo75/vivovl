@@ -1,9 +1,0 @@
-dev-db/innotop
-dev-db/mongodb
-dev-db/mysql-connector-c
-dev-db/mysqltuner
-dev-db/percona-toolkit
-dev-python/mysql-python
-dev-python/pymysql
-net-dns/pdns
-net-dns/pdns-recursor

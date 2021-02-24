@@ -1,2 +1,0 @@
-# test require python:2.7 - https://bugs.gentoo.org/648940
-sys-devel/automake test
