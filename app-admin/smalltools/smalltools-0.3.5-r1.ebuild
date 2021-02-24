@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_8 python3_7 python3_9 )
 
 IUSE="zfs"
 
@@ -13,12 +13,12 @@ RDEPEND="
 	zfs? ( sys-apps/util-linux
 			dev-db/sqlite
 			sys-fs/zfs
-			app-backup/zfs-auto-snapshot )"
+			sys-fs/zfs-auto-snapshot )"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit distutils-r1 git-r3
 	EGIT_REPO_URI="https://github.com/vivo75/${PN}.git"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 else
 	inherit distutils-r1
 	SRC_URI="https://github.com/vivo75/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
