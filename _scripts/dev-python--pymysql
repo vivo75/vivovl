@@ -1,6 +1,6 @@
 #! /bin/bash
 
-source /lib64/rc/sh/functions.sh
+source /lib/gentoo/functions.sh
 
 # known variables
 source "${0%/*}"/common.sh

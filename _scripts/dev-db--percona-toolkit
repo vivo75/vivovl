@@ -2,7 +2,7 @@
 
 # <option value="percona-toolkit/3.0.2" selected>Percona Toolkit 3.0.2</option>
 
-source /lib64/rc/sh/functions.sh
+source /lib/gentoo/functions.sh
 
 # known variables
 source "${0%/*}"/common.sh

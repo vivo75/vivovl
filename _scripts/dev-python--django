@@ -3,7 +3,7 @@
 # gpg --keyserver pgp.mit.edu --recv-key 1E8ABDC773EDE252
 #  <p>The latest official version is 1.11. Read the
 
-source /lib64/rc/sh/functions.sh
+source /lib/gentoo/functions.sh
 
 # known variables
 source "${0%/*}"/common.sh

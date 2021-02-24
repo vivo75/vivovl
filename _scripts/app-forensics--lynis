@@ -5,7 +5,7 @@
 # <li>SHA1 hash: 91b7e94c1b39c4b41340c55c0ff601e04aef7387</li>
 # <li>SHA256 hash: 6be0dcb0e3c66c76266944b1c5b6f1d8ba617dc1ce89b8d278f4e1f990a6f70a</li>
 
-source /lib64/rc/sh/functions.sh
+source /lib/gentoo/functions.sh
 
 # known variables
 source "${0%/*}"/common.sh
