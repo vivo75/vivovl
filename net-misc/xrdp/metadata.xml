@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Hüttel</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>vivo75@gmail.com</email>
+		<name>Francsco Riosa</name>
+	</maintainer>
+	<use>
+		<flag name="fuse">Enable clipboard file / device redirection via <pkg>sys-fs/fuse</pkg></flag>
+		<flag name="pixman">Use pixman library <pkg>x11-libs/pixman</pkg></flag>
+	</use>
+</pkgmetadata>

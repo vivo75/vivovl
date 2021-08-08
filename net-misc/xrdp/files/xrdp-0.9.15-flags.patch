@@ -1,0 +1,17 @@
+diff -ruN xrdp-0.9.15.orig/configure.ac xrdp-0.9.15/configure.ac
+--- xrdp-0.9.15.orig/configure.ac	2020-12-28 15:03:43.000000000 +0100
++++ xrdp-0.9.15/configure.ac	2021-04-13 00:00:48.367314011 +0200
+@@ -156,13 +156,6 @@
+ AX_CFLAGS_WARN_ALL
+ AX_APPEND_COMPILE_FLAGS([-Wwrite-strings])
+ 
+-AM_COND_IF([LINUX],
+-  [AX_APPEND_COMPILE_FLAGS([-Werror])]) # bsd has warnings that have not been fixed yet
+-
+-AM_COND_IF([XRDP_DEBUG],
+-  [AX_APPEND_COMPILE_FLAGS([-g -O0])],
+-  [AX_APPEND_COMPILE_FLAGS([-O2])])
+-
+ # Don't fail without working nasm if rfxcodec is not enabled
+ if test "x$enable_rfxcodec" != xyes; then
+   with_simd=no
